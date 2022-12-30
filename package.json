@@ -1,0 +1,30 @@
+{
+  "name": "saawit",
+  "version": "1.0.0",
+  "description": "API que permita gestionar noticias colaborativas",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuanGarridoTroche/saawit.git"
+  },
+  "author": "Juan Garrido Troche, Muchika Chettakul, Ana Arévano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JuanGarridoTroche/saawit/issues"
+  },
+  "homepage": "https://github.com/JuanGarridoTroche/saawit#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.30.0",
+    "nodemon": "^2.0.20"
+  }
+}
