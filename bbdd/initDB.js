@@ -1,33 +1,33 @@
-'use strict';
-require('dotenv').config();
+"use strict";
+require("dotenv").config();
 
 // Importamos la función que retorna una conexión libre con la BBDD.
-const getConnection = require('./getConnection');
+const getConnection = require("./getConnection");
 
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 
 const initDB = async () => {
-    let connection;
+  let connection;
 
-    try {
-        // Intentamos obtener una conexión de las 10 conexiones libres que tenemos.
-        connection = await getConnection();
+  try {
+    // Intentamos obtener una conexión de las 10 conexiones libres que tenemos.
+    connection = await getConnection();
 
-        console.log('Borrando tablas...');
+    console.log("Borrando tablas...");
 
-        await connection.query('DROP TABLE IF EXISTS votes');
-        await connection.query('DROP TABLE IF EXISTS news');
-        await connection.query('DROP TABLE IF EXISTS users');
+    await connection.query("DROP TABLE IF EXISTS votes");
+    await connection.query("DROP TABLE IF EXISTS news");
+    await connection.query("DROP TABLE IF EXISTS users");
 
-        console.log('Creando tablas...');
+    console.log("Creando tablas...");
 
-        await connection.query(`
+    await connection.query(`
             CREATE TABLE IF NOT EXISTS users (
                 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
                 username VARCHAR(100) UNIQUE NOT NULL,
                 email VARCHAR(100) UNIQUE NOT NULL,
                 password VARCHAR(100) NOT NULL,
-                avatar VARCHAR(100),
+                photo VARCHAR(100),
                 role ENUM('admin', 'mod', 'user') DEFAULT 'user',
                 registrationCode VARCHAR(100),
                 recoverPassCode VARCHAR(20),
@@ -36,23 +36,27 @@ const initDB = async () => {
                 modifiedAt TIMESTAMP
             )
         `);
-        console.log('tabla users...');
+    console.log("tabla users...");
 
-        await connection.query(`
+    await connection.query(`
         CREATE TABLE IF NOT EXISTS news (
-          id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-          category ENUM('deportes', 'videojuegos', 'noticias', 'programación', 'viajes', 'tecnología', 'música', 'memes', 'general') DEFAULT 'general',
-          score INT DEFAULT 0,	
-          idUser INT UNSIGNED NOT NULL,
-          FOREIGN KEY (idUser) REFERENCES users(id),
-          createdAt TIMESTAMP NOT NULL,
-          modifiedAt TIMESTAMP
-          )
+            id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+            category ENUM('deportes', 'videojuegos', 'noticias', 'programación', 'viajes', 'tecnología', 'música', 'memes', 'general') DEFAULT 'general',
+            feedback INT DEFAULT 0,	
+            idUser INT UNSIGNED NOT NULL,
+            FOREIGN KEY (idUser) REFERENCES users(id),
+            title VARCHAR(100) NOT NULL,
+            photo VARCHAR(100),
+            summary VARCHAR(250),
+            body MEDIUMTEXT NOT NULL,
+            createdAt TIMESTAMP NOT NULL,
+            modifiedAt TIMESTAMP
+            )
         `);
 
-        console.log('tabla news...');
+    console.log("tabla news...");
 
-        await connection.query(`
+    await connection.query(`
         CREATE TABLE IF NOT EXISTS votes (
           id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
           value BOOLEAN NOT NULL DEFAULT false,
@@ -60,34 +64,36 @@ const initDB = async () => {
           FOREIGN KEY (idUSer) REFERENCES users(id),
           idNews INT UNSIGNED NOT NULL,
           FOREIGN KEY (idNews) REFERENCES news(id),
-          createdAt TIMESTAMP NOT NULL)
+          title VARCHAR(100) NOT NULL,
+          createdAt TIMESTAMP NOT NULL
+          )
         `);
-       
-        console.log('tabla votes...');
 
-        console.log('¡Tablas creadas!');
+    console.log("tabla votes...");
 
-        // Encriptamos la contraseña del admin.
-        const adminPass = await bcrypt.hash(process.env.ADMIN_PASS, 10);
+    console.log("¡Tablas creadas!");
 
-        // Insertamos el usuario administrador.
-        await connection.query(
-            `
+    // Encriptamos la contraseña del admin.
+    const adminPass = await bcrypt.hash(process.env.ADMIN_PASS, 10);
+
+    // Insertamos el usuario administrador.
+    await connection.query(
+      `
                 INSERT INTO users (username, email, password, role, active, createdAt)
                 VALUES ('admin', 'juan@darhtvader.es', ?, 'admin', true, ?)
             `,
-            [adminPass, new Date()]
-        );
+      [adminPass, new Date()]
+    );
 
-        console.log('¡Usuario administrador creado!');
-    } catch (err) {
-        console.error(err);
-    } finally {
-        if (connection) connection.release();
+    console.log("¡Usuario administrador creado!");
+  } catch (err) {
+    console.error(err);
+  } finally {
+    if (connection) connection.release();
 
-        // Cerramos el proceso.
-        process.exit();
-    }
+    // Cerramos el proceso.
+    process.exit();
+  }
 };
 
 // Ejecutamos la función main.
