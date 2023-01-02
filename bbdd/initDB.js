@@ -80,7 +80,7 @@ const initDB = async () => {
     await connection.query(
       `
                 INSERT INTO users (username, email, password, role, active, createdAt)
-                VALUES ('admin', 'juan@darhtvader.es', ?, 'admin', true, ?)
+                VALUES ('admin', 'juan@darthvader.es', ?, 'admin', true, ?)
             `,
       [adminPass, new Date()]
     );

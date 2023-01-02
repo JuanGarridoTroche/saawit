@@ -4,26 +4,24 @@ const express = require("express");
 
 const { PORT } = process.env;
 
+
+
 const app = express();
 
-app.get("/users", (req, res, next) => {
-  res.send("Petición realizada a través del método GET");
-});
 
-app.post("/users", (req, res) => {
-  res.status(200).send({
-    status: "Ok",
-    message: "Método POST Ok",
-  });
-});
+app.use(express.json());
 
-app.put("/users", (req, res, next) => {
-  res.send({
-    staus: 'Error',
-    message: "Error creado al entrar en el método PUT"
-  });
-  next(err);
-});
+/*
+ * ###########################
+ * ## Middleware de /users  ##
+ * ###########################
+ */
+const loginUser = require('./controllers/users/loginUser.js');
+
+app.post('/users/login', loginUser);
+
+
+
 
 /*
  * ##########################################
