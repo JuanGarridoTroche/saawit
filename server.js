@@ -2,8 +2,8 @@
 require("dotenv").config();
 const express = require("express");
 const isAuth = require("./middlewares/isAuth");
-const fileUpload = require('express-fileupload')
-
+const fileUpload = require("express-fileupload");
+const isImg = require("./middlewares/isImg");
 
 const { PORT } = process.env;
 const app = express();
@@ -13,7 +13,6 @@ app.use(express.json());
 
 // Deserializa el body con formato form-data
 app.use(fileUpload());
-
 
 /*
  * ###########################
@@ -32,7 +31,7 @@ app.post("/users", newUser);
 
 //Editar mi Foto del usuario
 const editPhoto = require("./controllers/users/editPhoto");
-app.put("/users/photo", isAuth, editPhoto);
+app.put("/users/photo", isAuth, isImg, editPhoto);
 
 //Editar password del usuario
 
