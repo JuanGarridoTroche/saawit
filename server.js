@@ -16,12 +16,16 @@ app.use(express.json());
  * ## Middleware de /users  ##
  * ###########################
  */
+
+// Login de usuario
 const loginUser = require('./controllers/users/loginUser.js');
 
 app.post('/users/login', loginUser);
 
 
-
+// Nuevo usuario
+const newUser = require('./controllers/users/newUser');
+app.post('/users', newUser);
 
 /*
  * ##########################################
