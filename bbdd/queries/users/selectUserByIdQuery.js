@@ -5,7 +5,6 @@ const getConnection = require("../../getConnection");
 
 const selectUserByIdQuery = async (idUser) => {
   let connection;
-  console.log("entramos en selectUserByIdQuery");
   try {
     connection = await getConnection();
 
@@ -15,12 +14,11 @@ const selectUserByIdQuery = async (idUser) => {
       [idUser]
     );
 
-    console.log(users);
-
     // Comprobamos que existe un registro en el resultado de la consulta a la BBDD
     if (users.length < 1) {
       throw generateError("Usuario no encontrado", 404);
     }
+    return users[0];
   } finally {
     if (connection) connection.release();
   }
