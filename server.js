@@ -1,15 +1,19 @@
 "use strict";
 require("dotenv").config();
 const express = require("express");
+const isAuth = require("./middlewares/isAuth");
+const fileUpload = require('express-fileupload')
+
 
 const { PORT } = process.env;
-
-
-
 const app = express();
 
-
+// Deserializa el body con formato JSON
 app.use(express.json());
+
+// Deserializa el body con formato form-data
+app.use(fileUpload());
+
 
 /*
  * ###########################
@@ -18,14 +22,19 @@ app.use(express.json());
  */
 
 // Login de usuario
-const loginUser = require('./controllers/users/loginUser.js');
+const loginUser = require("./controllers/users/loginUser.js");
 
-app.post('/users/login', loginUser);
-
+app.post("/users/login", loginUser);
 
 // Nuevo usuario
-const newUser = require('./controllers/users/newUser');
-app.post('/users', newUser);
+const newUser = require("./controllers/users/newUser");
+app.post("/users", newUser);
+
+//Editar mi Foto del usuario
+const editPhoto = require("./controllers/users/editPhoto");
+app.put("/users/photo", isAuth, editPhoto);
+
+//Editar password del usuario
 
 /*
  * ##########################################

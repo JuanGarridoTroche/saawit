@@ -3,6 +3,7 @@
 const generateError = require("../../helpers");
 const selectUserByEmailQuery = require("../../bbdd/queries/users/selectUserByEmailQuery");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const loginUser = async (req, res, next) => {
   try {
@@ -23,9 +24,26 @@ const loginUser = async (req, res, next) => {
       throw generateError("Contraseña incorrecta", 401);
     }
 
+    //Comprobamos que el usuario está activo
+    if (!user.active) {
+      throw generateError("El usuario no está activo", 401);
+    }
+
+    // Creamos el objeto con los datos que queremos guardar dentro del token
+    const tokenIfo = {
+      id: user.id,
+      role: user.role,
+    };
+
+    // Creamos el token
+    const token = jwt.sign(tokenIfo, process.env.SECRET);
+
     res.send({
       status: "ok",
       message: "Login realizado con éxito",
+      data: {
+        token,
+      },
     });
   } catch (err) {
     next(err);
