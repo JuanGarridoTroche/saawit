@@ -34,6 +34,8 @@ const editPhoto = require("./controllers/users/editPhoto");
 app.put("/users/photo", isAuth, isImg, editPhoto);
 
 //Editar password del usuario
+const editPassword = require('./controllers/users/editPassword');
+app.put('/users/password', isAuth, editPassword);
 
 /*
  * ##########################################

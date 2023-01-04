@@ -1,7 +1,6 @@
 "use strict";
 
 const generateError = require("../helpers");
-const jwt = require("jsonwebtoken");
 
 const isImg = async (req, res, next) => {
   try {
