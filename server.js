@@ -2,7 +2,7 @@
 require("dotenv").config();
 const express = require("express");
 const isAuth = require("./middlewares/isAuth");
-const fileUpload = require("express-fileupload");
+const fileupload = require("express-fileupload");
 const isImg = require("./middlewares/isImg");
 
 const { PORT } = process.env;
@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 
 // Deserializa el body con formato form-data
-app.use(fileUpload());
+app.use(fileupload());
 
 /*
  * ###########################
