@@ -37,6 +37,16 @@ app.put("/users/photo", isAuth, isImg, editPhoto);
 const editPassword = require('./controllers/users/editPassword');
 app.put('/users/password', isAuth, editPassword);
 
+
+
+/*
+ * ##########################
+ * ## Middleware de /news  ##
+ * ##########################
+ */
+const createNews = require('./controllers/news/createNews')
+app.post('/news', isAuth, createNews)
+
 /*
  * ##########################################
  * ## Middleware de Error y 404 NOT FOUND  ##

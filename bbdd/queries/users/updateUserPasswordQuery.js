@@ -1,15 +1,21 @@
 "use strict";
 
 const getConnection = require("../../getConnection");
+const bcrypt = require('bcrypt');
 
 const updateUserPasswordQuery = async (password, idUser) => {
   let connection;
   try {
     connection = await getConnection();
+
+    // Encriptamos la contraseña
+    const hashPass = await bcrypt.hash(password, 10);
+
+
     await connection.query(
       `
     UPDATE users SET password = ?, modifiedAt = ? WHERE id = ?`,
-      [password, new Date(), idUser]
+      [hashPass, new Date(), idUser]
     );
   } finally {
     if (connection) connection.release();
