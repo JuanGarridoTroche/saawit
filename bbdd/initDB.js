@@ -15,6 +15,7 @@ const initDB = async () => {
 
     console.log("Borrando tablas...");
 
+    await connection.query("DROP TABLE IF EXISTS photoNews");
     await connection.query("DROP TABLE IF EXISTS votes");
     await connection.query("DROP TABLE IF EXISTS news");
     await connection.query("DROP TABLE IF EXISTS users");
@@ -71,6 +72,18 @@ const initDB = async () => {
 
     console.log("tabla votes...");
 
+    await connection.query(`
+      CREATE TABLE IF NOT EXISTS photoNews (
+        id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+        name VARCHAR(100) NOT NULL,
+        idNews INT UNSIGNED NOT NULL,
+        FOREIGN KEY (idNews) REFERENCES news(id),
+        createdAt TIMESTAMP NOT NULL,
+        modifiedAt TIMESTAMP
+        )
+    `);
+
+    console.log("tabla photoNews...");
     console.log("¡Tablas creadas!");
 
     // Encriptamos la contraseña del admin.

@@ -1,7 +1,7 @@
 'use strict'
 const getConnection = require("../../getConnection");
 
-const insertNewQuery = async (title, body, category, IdUser) => {
+const insertNewsQuery = async (title, body, category, IdUser) => {
   let connection;
   try {
     connection = await getConnection();
@@ -14,6 +14,9 @@ const insertNewQuery = async (title, body, category, IdUser) => {
     VALUES (?, ?, ?, ?, ? )`,
     [title, body, category, IdUser, new Date()]
     )    
+
+    // Devolvemos el id del nuevo registro que le hemos asignado a nuestra nueva noticia
+    return news.insertId;
     
   } finally {
     if (connection) connection.release();
@@ -21,4 +24,4 @@ const insertNewQuery = async (title, body, category, IdUser) => {
 
 }
 
-module.exports = insertNewQuery;
+module.exports = insertNewsQuery;

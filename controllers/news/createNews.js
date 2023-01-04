@@ -1,7 +1,7 @@
 "use strict";
 
 const { generateError, savePhoto } = require("../../helpers");
-const insertNewQuery = require("../../bbdd/queries/news/insertNewQuery");
+const insertNewsQuery = require("../../bbdd/queries/news/insertNewsQuery");
 const isImg = require("../../middlewares/isImg");
 
 const createNews = async (req, res, next) => {
@@ -29,7 +29,7 @@ const createNews = async (req, res, next) => {
     if (!listOfCategories.find((e) => e === category)) category = "general";
 
     // Insertar la noticia en la BBDD con el id del usuario registrado pero solo los campos obligatorios
-    await insertNewQuery(title, body, category, req.user.id);
+    const idNews = await insertNewsQuery(title, body, category, req.user.id);
 
     // Vamos a comprobar si hay fotos (máximo 3) y si tienen la extensión de una imagen válida
     const photos = [];
@@ -38,15 +38,17 @@ const createNews = async (req, res, next) => {
     if (req.files) {
       // Recorremos las fotos. Si existen más de 3 solo subirá las 3 primeras
       // Comprobamos que las 3 son imágenes
-      const ValidExtensions = ["jpeg", "jpg", "bmp", "png", "raw", "gif", "webp", "jpe"];
+      
       for (const photo of Object.values(req.files).slice(0, 3)) {
-        const typeImg = req.files.photo;
-        console.log(typeImg);
-        if (!ValidExtensions.includes(typeImg)) {
-          throw generateError(
-            "La foto que pretendes subir no es una imagen válida", 401);
-        }
-        // const photoName = await savePhoto(photo, 1);
+        // Guardamos la foto en el disco
+        const photoName = await savePhoto(photo, 1); 
+        
+        // Pusheamos el nombre de la foto al array de fotos
+        photos.push(photoName);
+
+        // Guardamos el nombre de la foto en el registro de la BBDD
+        await insertPhotoQuery(photoName, idNews)
+        
       }
     }
     //Comprobar si existe Imagen para subir y si es una imagen válida
@@ -55,6 +57,16 @@ const createNews = async (req, res, next) => {
     res.send({
       status: "Ok",
       message: "Noticia subida correctamente",
+      data: {
+        id: idNews,
+        title,
+        summary,
+        body,
+        category,
+        photos,
+        idUser: req.user.id,
+        createdAt: new Date(),
+      }
     });
   } catch (err) {
     next(err);
