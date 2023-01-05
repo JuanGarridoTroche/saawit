@@ -44,8 +44,14 @@ app.put('/users/password', isAuth, editPassword);
  * ## Middleware de /news  ##
  * ##########################
  */
+
+// Crear una noticia
 const createNews = require('./controllers/news/createNews')
 app.post('/news', isAuth, createNews)
+
+// Eliminar una noticia
+const deleteNews = require('./controllers/news/deleteNews');
+app.delete('/news/:idNews', isAuth, deleteNews);
 
 /*
  * ##########################################
