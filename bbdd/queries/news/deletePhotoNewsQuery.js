@@ -8,7 +8,7 @@ const deletePhotoNewsQuery = async (idNews) => {
   try {
     connection = await getConnection();
     const [news] = await connection.query(
-      `SELECT name FROM photoNews WHERE id = ?`,
+      `SELECT id FROM photoNews WHERE idNews = ?`,
       [idNews]
     );
 
@@ -19,7 +19,7 @@ const deletePhotoNewsQuery = async (idNews) => {
 
     // Eliminamos la foto del disco
     await connection.query(`
-    DELETE FROM photoNews WHERE id = ?`,
+    DELETE FROM photoNews WHERE idNews = ?`,
     [idNews]
     )
   } finally {

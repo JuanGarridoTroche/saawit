@@ -3,7 +3,7 @@
 const getConnection = require('../../getConnection');
 
 
-const insertPhotoQuery = async (idNews) => {
+const selectNewsByIdQuery = async (idNews) => {
   let connection;
   try {
     connection = await getConnection();
@@ -18,4 +18,4 @@ const insertPhotoQuery = async (idNews) => {
   }
 }
 
-module.exports = insertPhotoQuery;
+module.exports = selectNewsByIdQuery;
