@@ -2,7 +2,7 @@
 
 const { generateError, savePhoto } = require("../../helpers");
 const insertNewsQuery = require("../../bbdd/queries/news/insertNewsQuery");
-const isImg = require("../../middlewares/isImg");
+const insertPhotoQuery = require('../../bbdd/queries/news/insertPhotoQuery')
 
 const createNews = async (req, res, next) => {
   try {
@@ -29,7 +29,7 @@ const createNews = async (req, res, next) => {
     if (!listOfCategories.find((e) => e === category)) category = "general";
 
     // Insertar la noticia en la BBDD con el id del usuario registrado pero solo los campos obligatorios
-    const idNews = await insertNewsQuery(title, body, category, req.user.id);
+    const idNews = await insertNewsQuery(title, body, summary,  category, req.user.id);
 
     // Vamos a comprobar si hay fotos (máximo 3) y si tienen la extensión de una imagen válida
     const photos = [];

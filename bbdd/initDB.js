@@ -47,7 +47,6 @@ const initDB = async () => {
             idUser INT UNSIGNED NOT NULL,
             FOREIGN KEY (idUser) REFERENCES users(id),
             title VARCHAR(100) NOT NULL,
-            photo VARCHAR(100),
             summary VARCHAR(250),
             body MEDIUMTEXT NOT NULL,
             createdAt TIMESTAMP NOT NULL,
