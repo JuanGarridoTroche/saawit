@@ -59,12 +59,11 @@ const initDB = async () => {
     await connection.query(`
         CREATE TABLE IF NOT EXISTS votes (
           id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-          value BOOLEAN NOT NULL DEFAULT false,
+          value BOOLEAN NOT NULL,
           idUser INT UNSIGNED NOT NULL,
           FOREIGN KEY (idUSer) REFERENCES users(id),
           idNews INT UNSIGNED NOT NULL,
           FOREIGN KEY (idNews) REFERENCES news(id),
-          title VARCHAR(100) NOT NULL,
           createdAt TIMESTAMP NOT NULL
           )
         `);

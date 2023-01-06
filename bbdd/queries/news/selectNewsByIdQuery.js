@@ -13,7 +13,7 @@ const selectNewsByIdQuery = async (idNews) => {
       [idNews]
     )
     if(!news[0]) {
-      throw generateError('El id de la noticia enviado, no existe', 400)
+      throw generateError('El id de la noticia enviada, no existe', 400)
     }
     return news[0];
   } finally {

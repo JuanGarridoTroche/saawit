@@ -14,7 +14,7 @@ const deleteNewsQuery = async (idNews) => {
 
     // Comprobamos que existe algún registro
     if(news.length < 1) {
-      throw generateError('Foto no encontrada.', 404);
+      throw generateError('Noticia no encontrada.', 404);
     }
 
     // Eliminamos la foto del disco
