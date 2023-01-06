@@ -49,9 +49,26 @@ app.put('/users/password', isAuth, editPassword);
 const createNews = require('./controllers/news/createNews')
 app.post('/news', isAuth, createNews)
 
+// Editar una noticia ya creada
+const editNews = require('./controllers/news/editNews');
+app.put('/news/:idNews', isAuth, editNews);
+
+
 // Eliminar una noticia
 const deleteNews = require('./controllers/news/deleteNews');
 app.delete('/news/:idNews', isAuth, deleteNews);
+
+// Lista de las últimas noticias del día ordenadas por valoración
+
+
+// Noticias de días anteriores
+
+
+// Noticias filtradas por categoría
+
+
+// Vota una noticia publicada (de otro usuario registrado)
+
 
 /*
  * ##########################################
