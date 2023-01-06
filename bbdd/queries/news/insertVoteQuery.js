@@ -13,20 +13,18 @@ const insertVoteQuery = async (value, idUSer, idNews) => {
       `SELECT id FROM votes WHERE idUser = ? AND idNews = ?`,
       [idUSer, idNews]
     );
-    console.log(votes);
-    console.log(votes[0]);
-
-    if(votes[0].length > 1) {
-      throw generateError('Ya has votado esta noticia', 403)
+  
+    if (votes[0]) {
+      throw generateError("Ya has votado esta noticia", 403);
     }
 
     // Insertamos el voto
-    await connection.query(`
-    INSERT INTO votes (value, idUSer, idNews, createdAt, title)
-    VALUES(?, ?, ?, ?, 'título')`,
-    [value, idUSer, idNews, new Date()]
-    )
-    
+    await connection.query(
+      `
+    INSERT INTO votes (value, idUSer, idNews, title, createdAt)
+    VALUES(?, ?, ?, 'título', ?)`,
+      [value, idUSer, idNews, new Date()]
+    );
   } finally {
     if (connection) connection.release();
   }

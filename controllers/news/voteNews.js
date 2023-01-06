@@ -20,14 +20,14 @@ const voteNews = async (req, res, next) => {
     }
 
     // Comprobamos si es un voto true o false
-    console.log(like);
+    let value;
     if(like) {
-      const value = true
+      value = true
     } else {
-      const value = false
+      value = false
     }
 
-    console.log(value);
+   
     // Insertamos el voto
     await insertVoteQuery(value, req.user.id, idNews);
 
