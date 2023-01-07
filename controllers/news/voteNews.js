@@ -36,7 +36,6 @@ const voteNews = async (req, res, next) => {
 
     // Hacemos el cálculo de los votos a favor - votos en contra para obtener el resultado
     const feedback = await selectTotalVotesQuery(idNews);
-    console.log(feedback);
 
     // Lo añadimos en la tabla news a la columna f;eedback
     await updateFeedbackQuery(idNews, feedback)
