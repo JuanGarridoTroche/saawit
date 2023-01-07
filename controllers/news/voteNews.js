@@ -2,6 +2,8 @@
 
 const selectNewsByIdQuery = require("../../bbdd/queries/news/selectNewsByIdQuery");
 const insertVoteQuery = require('../../bbdd/queries/news/insertVoteQuery')
+const selectTotalVotesQuery = require('../../bbdd/queries/news/selectTotalVotesQuery')
+const updateFeedbackQuery = require('../../bbdd/queries/news/updateFeedbackQuery')
 const { generateError } = require("../../helpers");
 
 const voteNews = async (req, res, next) => {
@@ -30,6 +32,14 @@ const voteNews = async (req, res, next) => {
    
     // Insertamos el voto
     await insertVoteQuery(value, req.user.id, idNews);
+
+
+    // Hacemos el cálculo de los votos a favor - votos en contra para obtener el resultado
+    const feedback = await selectTotalVotesQuery(idNews);
+    console.log(feedback);
+
+    // Lo añadimos en la tabla news a la columna f;eedback
+    await updateFeedbackQuery(idNews, feedback)
 
     res.send({
       status: 'Ok',

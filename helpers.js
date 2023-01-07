@@ -13,6 +13,7 @@ const { UPLOADS_DIR } = process.env;
 
 const generateError = (msg, status) => {
   const err = new Error(msg);
+  console.log(err);
   err.statusCode = status;
   return err;
 };

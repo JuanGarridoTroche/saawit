@@ -17,7 +17,7 @@ const insertVoteQuery = async (value, idUSer, idNews) => {
     if (votes[0]) {
       throw generateError("Ya has votado esta noticia", 403);
     }
-
+    console.log(value);
     // Insertamos el voto
     await connection.query(
       `

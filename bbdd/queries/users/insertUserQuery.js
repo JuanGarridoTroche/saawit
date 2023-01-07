@@ -30,7 +30,7 @@ const insertUserQuery = async (username, email, password) => {
 
     if (emailUsers.length > 0) {
       throw generateError(
-        "El email ya existe en nuestra Base de datos. Por favor, introduce otro email correcto", 403
+        "El email ya está registrado. Por favor, introduce otro email correcto", 403
       );
     }
 
