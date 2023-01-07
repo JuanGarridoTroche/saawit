@@ -51,7 +51,7 @@ app.put("/news/:idNews", isAuth, editNews);
 app.delete("/news/:idNews", isAuth, deleteNews);
 
 // Lista de las últimas noticias del día ordenadas por valoración
-app.get('news', topRankedNews)
+app.get('/news/top', topRankedNews);
 
 // Noticias de días anteriores
 
