@@ -10,7 +10,7 @@ const insertNewsQuery = async (title, body, summary, category, IdUser) => {
 
 
     const [news] = await connection.query(`
-    INSERT INTO votes (title, body, category, summary, IdUser, createdAt) 
+    INSERT INTO news (title, body, category, summary, IdUser, createdAt) 
     VALUES (?, ?, ?, ?, ?, ?)`,
     [title, body, category, summary, IdUser, new Date()]
     )    

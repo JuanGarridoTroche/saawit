@@ -10,12 +10,10 @@ const deleteNews = async (req, res, next) => {
 
     //Obtenemos la noticia
     const news = await selectNewsByIdQuery(idNews);
-
-    console.log("Tipo de dato: ", typeof news.idUser,"IdUSer del usuario que creó la noticia: ",  news.idUser);
-    console.log("Tipo de dato: ", typeof req.user.id," Id del usuario registrado: ", req.user.id);
+    const idUser = news.idUser;
 
     // Comprobamos que somos los propietarios de la news que vamos a borrar
-    if (news.idUSer !== req.user.id) {
+    if(idUser !== req.user.id) {
       throw generateError("No eres propietario de esta noticia, no la puedes eliminar.", 403);
     }
 

@@ -21,8 +21,8 @@ const insertVoteQuery = async (value, idUSer, idNews) => {
     // Insertamos el voto
     await connection.query(
       `
-    INSERT INTO votes (value, idUSer, idNews, title, createdAt)
-    VALUES(?, ?, ?, 'título', ?)`,
+    INSERT INTO votes (value, idUSer, idNews, createdAt)
+    VALUES(?, ?, ?, ?)`,
       [value, idUSer, idNews, new Date()]
     );
   } finally {
