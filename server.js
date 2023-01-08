@@ -2,9 +2,9 @@
 require("dotenv").config();
 const express = require("express");
 const isAuth = require("./middlewares/isAuth");
+const isImg = require("./middlewares/isImg");
 const newsExists = require("./middlewares/newsExists");
 const fileupload = require("express-fileupload");
-const isImg = require("./middlewares/isImg");
 
 const { PORT } = process.env;
 const app = express();
