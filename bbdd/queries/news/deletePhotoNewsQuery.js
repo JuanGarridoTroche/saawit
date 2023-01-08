@@ -10,7 +10,7 @@ const deletePhotoNewsQuery = async (idNews) => {
     connection = await getConnection();   
 
 
-    // Eliminamos el registro de la foto de la tabla photoNews correspondiente a la noticia que vamos a eliminar
+    // Eliminamos el/los registro/s de la/s foto/s de la tabla photoNews que pertenezcan a la noticia que vamos a eliminar
     await connection.query(`
     DELETE FROM photoNews WHERE idNews = ?`,
     [idNews]
