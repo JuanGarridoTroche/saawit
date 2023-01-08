@@ -65,6 +65,7 @@ const deletePhoto = async (imgName) => {
   try {
     // Creamos la ruta de la imagen
     const photoPath = path.join(__dirname, UPLOADS_DIR, imgName);
+    
     try {
       // Intentamos acceder a la foto
       await fs.access(photoPath);
@@ -75,7 +76,7 @@ const deletePhoto = async (imgName) => {
     // Si la imagen existe, la eliminamos
     await fs.unlink(photoPath);
   } catch {
-    throw generateError("Error al eliminar la foto de perfil actual", 401);
+    throw generateError(`Error al eliminar la foto de perfil actual ${imgName}`, 401);
   }
 };
 

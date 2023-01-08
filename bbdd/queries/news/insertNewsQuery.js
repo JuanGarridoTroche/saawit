@@ -6,9 +6,6 @@ const insertNewsQuery = async (title, body, summary, category, IdUser) => {
   try {
     connection = await getConnection();
 
-    
-
-
     const [news] = await connection.query(`
     INSERT INTO news (title, body, category, summary, IdUser, createdAt) 
     VALUES (?, ?, ?, ?, ?, ?)`,

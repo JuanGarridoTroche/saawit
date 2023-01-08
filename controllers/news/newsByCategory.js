@@ -29,6 +29,9 @@ const newsByCategory = async (req, res, next) => {
 
     const byCategory = await selectByCategoryQuery(category);
 
+    // console.log([byCategory]);
+    
+
     res.send({
       status: 'Ok',
       message: `Listado de las noticias con la categoría ${category}:`,

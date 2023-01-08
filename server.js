@@ -2,6 +2,7 @@
 require("dotenv").config();
 const express = require("express");
 const isAuth = require("./middlewares/isAuth");
+const newsExists = require("./middlewares/newsExists");
 const fileupload = require("express-fileupload");
 const isImg = require("./middlewares/isImg");
 
@@ -48,7 +49,7 @@ app.post("/news", isAuth, createNews);
 app.put("/news/:idNews", isAuth, editNews);
 
 // Eliminar una noticia
-app.delete("/news/:idNews", isAuth, deleteNews);
+app.delete("/news/:idNews", isAuth, newsExists, deleteNews);
 
 // Lista de las últimas noticias del día ordenadas por valoración
 app.get('/news/top', topRankedNews);
@@ -60,7 +61,7 @@ app.get('/news', newsByDate);
 app.get('/news/filter', newsByCategory);
 
 // Vota una noticia publicada (de otro usuario registrado)
-app.post("/news/:idNews/votes", isAuth, voteNews);
+app.post("/news/:idNews/votes", isAuth, newsExists, voteNews);
 
 /*
  * ##########################################

@@ -8,7 +8,11 @@ const selectByCategoryQuery = async (category) => {
 
    
     const [newsByCategory] = await connection.query(
-      `SELECT id, feedback, category, idUser, title, summary, body, createdAt FROM news WHERE category = ? ORDER BY createdAt DESC`,
+      `SELECT N.id,  N.feedback, N.category, N.idUser, N.title, N.summary, N.body, N.createdAt, PN.name as photoName
+      FROM news N
+      LEFT JOIN photoNews PN ON N.id = PN.idNews
+      WHERE category = ?
+      ORDER BY createdAt DESC`,
         [category]
     );
     return newsByCategory;

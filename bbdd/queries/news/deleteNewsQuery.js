@@ -7,13 +7,16 @@ const deleteNewsQuery = async (idNews) => {
   let connection;
   try {
     connection = await getConnection();
+
+    // Buscamos la noticia por id
     const [news] = await connection.query(
       `SELECT title FROM news WHERE id = ?`,
       [idNews]
     );
+    console.log(news[0]);
 
     // Comprobamos que existe algún registro
-    if(news.length < 1) {
+    if(news[0].length < 1) {
       throw generateError('Noticia no encontrada.', 404);
     }
 

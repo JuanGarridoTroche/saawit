@@ -1,23 +1,16 @@
 "use strict";
 
-const { generateError } = require("../../../helpers");
 const getConnection = require("../../getConnection");
+
+const deletePhoto = require('../../../helpers');
 
 const deletePhotoNewsQuery = async (idNews) => {
   let connection;
   try {
-    connection = await getConnection();
-    const [news] = await connection.query(
-      `SELECT id FROM photoNews WHERE idNews = ?`,
-      [idNews]
-    );
+    connection = await getConnection();   
 
-    // Comprobamos que existe algún registro
-    if(news.length < 1) {
-      throw generateError('Foto no encontrada.', 404);
-    }
 
-    // Eliminamos la foto del disco
+    // Eliminamos el registro de la foto de la tabla photoNews correspondiente a la noticia que vamos a eliminar
     await connection.query(`
     DELETE FROM photoNews WHERE idNews = ?`,
     [idNews]

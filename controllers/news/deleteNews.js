@@ -1,8 +1,10 @@
 "use strict";
-const deletePhotoNewsQuery = require("../../bbdd/queries/news/deletePhotoNewsQuery");
 const selectNewsByIdQuery = require("../../bbdd/queries/news/selectNewsByIdQuery");
-const { generateError } = require("../../helpers");
+const deletePhotoNewsQuery = require("../../bbdd/queries/news/deletePhotoNewsQuery");
 const deleteNewsQuery = require("../../bbdd/queries/news/deleteNewsQuery");
+const deleteVotesNewsQuery = require('../../bbdd/queries/news/deleteVotesNewsQuery')
+const selectPhotoNewsByIdQuery = require('../../bbdd/queries/news/selectPhotoNewsByIdQuery');
+const { generateError, deletePhoto } = require("../../helpers");
 
 const deleteNews = async (req, res, next) => {
   try {
@@ -17,8 +19,23 @@ const deleteNews = async (req, res, next) => {
       throw generateError("No eres propietario de esta noticia, no la puedes eliminar.", 403);
     }
 
-    // Borramos la/s foto/s asociadas a la noticia
-    await deletePhotoNewsQuery(idNews);
+    
+    // Borramos los votos que tiene la noticia
+    await deleteVotesNewsQuery(idNews);
+    
+    // Seleccionamos las imágenes que hay que eliminar
+    const photoNews = await selectPhotoNewsByIdQuery(idNews);
+
+    // Borramos la/s foto/s asociadas a la noticia de la carpeta uploads
+    for(const value of Object.keys(photoNews)) {  
+      if(photoNews[value].name) {
+        await deletePhoto(photoNews[value].name);
+      }
+    }
+
+    // Borramos los nombres de las fotos de photoNews
+    const deletePhotoNews = await deletePhotoNewsQuery(idNews);
+
 
     // Borramos la noticia
     await deleteNewsQuery(idNews);
