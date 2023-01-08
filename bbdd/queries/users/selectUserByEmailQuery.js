@@ -1,4 +1,4 @@
-const generateError = require("../../../helpers");
+
 const getConnection = require("../../getConnection");
 
 const selectUserByEmailQuery = async (email) => {
@@ -8,13 +8,10 @@ const selectUserByEmailQuery = async (email) => {
     connection = await getConnection();
     const [users] = await connection.query(
       `
-    SELECT id, password, role, active FROM users WHERE email = ?`,
+    SELECT id, username, password, role, active FROM users WHERE email = ?`,
       [email]
     );
 
-    if (users.length < 1) {
-      throw generateError("Email incorrecto", 404);
-    }
     return users[0];
   } finally {
     if (connection) connection.release();

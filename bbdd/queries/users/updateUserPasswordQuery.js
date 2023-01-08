@@ -14,7 +14,7 @@ const updateUserPasswordQuery = async (password, idUser) => {
 
     await connection.query(
       `
-    UPDATE users SET password = ?, modifiedAt = ? WHERE id = ?`,
+    UPDATE users SET password = ?, recoverPassCode = null, modifiedAt = ? WHERE id = ?`,
       [hashPass, new Date(), idUser]
     );
   } finally {

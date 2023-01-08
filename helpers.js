@@ -2,8 +2,24 @@
 const fs = require("fs/promises");
 const path = require("path");
 const sharp = require("sharp");
+const nodemailer = require('nodemailer');
 const { v4: uuid } = require("uuid");
-const { UPLOADS_DIR } = process.env;
+const { UPLOADS_DIR, SIB_SMTP_USER, SIB_SMTP_PASS } = process.env;
+
+/* *
+ * #################################################################
+ * ##  Configuración de transporte de nuestro correo electrónico  ##
+ * #################################################################
+ */
+const transport = nodemailer.createTransport({
+  host: 'smtp-relay.sendinblue.com',
+  port: 587,
+  auth: {
+      user: SIB_SMTP_USER,
+      pass: SIB_SMTP_PASS,
+  },
+});
+
 
 /* *
  * ######################
@@ -80,8 +96,27 @@ const deletePhoto = async (imgName) => {
   }
 };
 
+/* 
+ * ###############
+ * ## Send Mail ##
+ * ###############
+ */
+
+const sendMail = async (to, subject, text) => {
+  const mailOptions = {
+      from: SIB_SMTP_USER,
+      to,
+      subject,
+      text,
+  };
+
+  await transport.sendMail(mailOptions);
+};
+
+
 module.exports = {
   generateError,
   savePhoto,
   deletePhoto,
+  sendMail,
 };

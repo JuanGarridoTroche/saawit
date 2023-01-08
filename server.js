@@ -21,7 +21,14 @@ app.use(fileupload());
  * ###########################
  */
 
-const {loginUser, newUser, editPhoto, editPassword} = require("./controllers/users");
+const {
+  loginUser,
+  newUser,
+  editPhoto,
+  editPassword,
+  sendRecoverPassword,
+  recoverPassword
+} = require("./controllers/users");
 // Login de usuario
 
 app.post("/users/login", loginUser);
@@ -35,12 +42,26 @@ app.put("/users/photo", isAuth, isImg, editPhoto);
 //Editar password del usuario
 app.put("/users/password", isAuth, editPassword);
 
+// Envío de Código de recuperación de contraseña a través de email
+app.put("/users/password/solicitude", sendRecoverPassword);
+
+// Recuperación de contraseña
+app.put('/users/password/recover', recoverPassword)
+
 /*
  * ##########################
  * ## Middleware de /news  ##
  * ##########################
  */
-const { createNews, editNews, deleteNews, voteNews, topRankedNews, newsByDate, newsByCategory } = require("./controllers/news");
+const {
+  createNews,
+  editNews,
+  deleteNews,
+  voteNews,
+  topRankedNews,
+  newsByDate,
+  newsByCategory,
+} = require("./controllers/news");
 
 // Crear una noticia
 app.post("/news", isAuth, createNews);
@@ -52,13 +73,13 @@ app.put("/news/:idNews", isAuth, editNews);
 app.delete("/news/:idNews", isAuth, newsExists, deleteNews);
 
 // Lista de las últimas noticias del día ordenadas por valoración
-app.get('/news/top', topRankedNews);
+app.get("/news/top", topRankedNews);
 
 // Noticias de días anteriores
-app.get('/news', newsByDate);
+app.get("/news", newsByDate);
 
 // Noticias filtradas por categoría
-app.get('/news/filter', newsByCategory);
+app.get("/news/filter", newsByCategory);
 
 // Vota una noticia publicada (de otro usuario registrado)
 app.post("/news/:idNews/votes", isAuth, newsExists, voteNews);
