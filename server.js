@@ -39,7 +39,7 @@ app.put("/users/password", isAuth, editPassword);
  * ## Middleware de /news  ##
  * ##########################
  */
-const { createNews, editNews, deleteNews, voteNews, topRankedNews, NewsByDate } = require("./controllers/news");
+const { createNews, editNews, deleteNews, voteNews, topRankedNews, newsByDate } = require("./controllers/news");
 
 // Crear una noticia
 app.post("/news", isAuth, createNews);
@@ -54,7 +54,7 @@ app.delete("/news/:idNews", isAuth, deleteNews);
 app.get('/news/top', topRankedNews);
 
 // Noticias de días anteriores
-app.get('/news/:date', NewsByDate);
+app.get('/news', newsByDate);
 
 // Noticias filtradas por categoría
 

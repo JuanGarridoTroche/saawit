@@ -2,15 +2,16 @@
 
 const selectNewsByDateQuery = require('../../bbdd/queries/news/selectNewsByDateQuery')
 
-const NewsByDate = async (req, res, next) => {
+const newsByDate = async (req, res, next) => {
   try {
-      const {date} = req.params;
-      console.log(date);
-      const [news] = await selectNewsByDateQuery();
+      const {dateFrom, dateTo} = req.query;
+      const news = await selectNewsByDateQuery(dateFrom, dateTo);
+      console.log(news);
+
 
       res.send({
       status: "Ok",
-      message: `Listado de las noticias del día ${date}`,
+      message: `Listado de las noticias desde el ${dateFrom} hasta el ${dateTo}`,
       data: {
         news,
       }
@@ -20,4 +21,4 @@ const NewsByDate = async (req, res, next) => {
   }
 };
 
-module.exports = NewsByDate;
+module.exports = newsByDate;
