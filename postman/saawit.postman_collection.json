@@ -1,0 +1,510 @@
+{
+	"info": {
+		"_postman_id": "4a3d63c7-a895-4b2a-9f0b-0bafbb1767e1",
+		"name": "saawit",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "loginUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"annwhogar@hotmail.com\",\r\n    \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "newUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"annwhogar\",\r\n    \"email\": \"annwhogar@hotmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit Photo",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_ID1}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/C:/Users/annwh/Pictures/199196_10151291960952303_1429590285_n.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:4000/users/photo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"users",
+								"photo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_ID3}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"123456\",\r\n    \"newPassword\":\"123456789\",\r\n    \"newPasswordRepeated\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/users/password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"users",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Solicitud de Recuperación de contraseña por email",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"annwhogar@hotmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/users/password/solicitude",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"users",
+								"password",
+								"solicitude"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editando la constraseña",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"recoverPassCode\": \"9iBi9yQPM5IhooaW\",\r\n    \"newPassword\": \"123456789\",\r\n    \"newPasswordRepeated\":\"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/users/password/recover",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"users",
+								"password",
+								"recover"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "news",
+			"item": [
+				{
+					"name": "create News",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_ID1}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Usando Dall E",
+									"type": "default"
+								},
+								{
+									"key": "body",
+									"value": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+									"type": "default"
+								},
+								{
+									"key": "category",
+									"value": "tecnología",
+									"type": "default"
+								},
+								{
+									"key": "summary",
+									"value": "Inventando fotos en mi ciudad",
+									"type": "default"
+								},
+								{
+									"key": "photo[0]",
+									"type": "file",
+									"src": "/C:/Users/annwh/Pictures/dalle/DALL·E 2022-12-16 21.12.25 - celtics fighting against Thracians in A Coruña on a fort hill moody spooky octane.png"
+								},
+								{
+									"key": "photo[1]",
+									"type": "file",
+									"src": "/C:/Users/annwh/Pictures/dalle/DALL·E 2022-12-16 21.16.12 - celtics fighting against Thracians in A Coruña on a fort hill moody spooky.png"
+								},
+								{
+									"key": "photo[2]",
+									"type": "file",
+									"src": "/C:/Users/annwh/Pictures/dalle/DALL·E 2022-12-16 21.16.16 - celtics fighting against Thracians in A Coruña on a fort hill moody spooky.png",
+									"disabled": true
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/news",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"news"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete news",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_ID1}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/news/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"news",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit News",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_ID2}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Messi ficha por el Alcorcón",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "summary",
+									"value": "Fútbol sala",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "música",
+									"type": "default"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/news/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"news",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Votar news",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_ID3}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"like\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/news/11/votes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"news",
+								"11",
+								"votes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Noticias mejor valoradas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/news/top",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"news",
+								"top"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Noticias por fecha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/news?dateFrom=07/01/2023&dateTo=07/01/2023",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"news"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "07/01/2023"
+								},
+								{
+									"key": "dateTo",
+									"value": "07/01/2023"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista de noticias por categoría",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/news/filter?category=música",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"news",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "música"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token_ID1",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "token_ID2",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "token_ID3",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "token_ID4",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
