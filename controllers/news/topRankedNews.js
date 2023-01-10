@@ -1,6 +1,6 @@
 'use strict';
 
-const selectTopTenRankedNewsQuery =require('../../bbdd/queries/news/selectTopTenRankedNewsQuery')
+const selectTopTenRankedNewsQuery =require('../../bbdd/queries/news/selectTopTenRankedNewsQuery');
 
 const topRankedNews = async (req, res, next) => {
   try {

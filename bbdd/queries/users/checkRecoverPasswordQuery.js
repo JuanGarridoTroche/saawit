@@ -1,9 +1,9 @@
 "use strict";
 
-const generateError = require("../../../helpers");
+const {generateError} = require("../../../helpers");
 const getConnection = require("../../getConnection");
 
-const checkRecoverPasswordQuery = async (recoverPassCode, newPassword) => {
+const checkRecoverPasswordQuery = async (recoverPassCode) => {
   let connection;
   try {
     connection = await getConnection();
@@ -13,6 +13,11 @@ const checkRecoverPasswordQuery = async (recoverPassCode, newPassword) => {
     SELECT id FROM users WHERE recoverPassCode = ?`,
       [recoverPassCode]
     );
+    
+    // Comprobamos que existe un registro en el resultado de la consulta a la BBDD
+    if (!check[0]) {
+      throw generateError("Pass Code incorrecto", 404);
+    }
   
     return check[0];
   } finally {

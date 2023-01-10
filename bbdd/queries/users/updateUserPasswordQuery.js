@@ -11,7 +11,7 @@ const updateUserPasswordQuery = async (password, idUser) => {
     // Encriptamos la contraseña
     const hashPass = await bcrypt.hash(password, 10);
 
-
+    // Actualizamos la password encriptada en la BBDD
     await connection.query(
       `
     UPDATE users SET password = ?, recoverPassCode = null, modifiedAt = ? WHERE id = ?`,

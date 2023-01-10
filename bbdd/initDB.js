@@ -108,5 +108,5 @@ const initDB = async () => {
   }
 };
 
-// Ejecutamos la función main.
+// Ejecutamos la función initDB.
 initDB();

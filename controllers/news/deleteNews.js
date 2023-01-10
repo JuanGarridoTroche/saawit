@@ -23,7 +23,7 @@ const deleteNews = async (req, res, next) => {
     // Borramos los votos que tiene la noticia
     await deleteVotesNewsQuery(idNews);
     
-    // Seleccionamos las imágenes que hay que eliminar
+    // Seleccionamos las imágenes pertenecientes a la noticia (máximo 3) que hay que eliminar
     const photoNews = await selectPhotoNewsByIdQuery(idNews);
 
     // Borramos la/s foto/s asociadas a la noticia de la carpeta uploads

@@ -29,7 +29,6 @@ const transport = nodemailer.createTransport({
 
 const generateError = (msg, status) => {
   const err = new Error(msg);
-  console.log(err);
   err.statusCode = status;
   return err;
 };

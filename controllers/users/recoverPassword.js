@@ -22,14 +22,9 @@ const recoverPassword = async (req, res, next) => {
     }
 
     // Comprobamos que la password es la correcta en nuestra BBDD
-    const checkRecPassCode = await checkRecoverPasswordQuery(recoverPassCode, newPassword);
-
+    const checkRecPassCode = await checkRecoverPasswordQuery(recoverPassCode);   
+    
     const idUser = checkRecPassCode.id;
-
-    // Comprobamos que existe un registro en el resultado de la consulta a la BBDD
-    if (!checkRecPassCode) {
-      throw generateError("Pass Code incorrecto", 404);
-    }
     
 
     //Actualizamos la contraseña del usuario

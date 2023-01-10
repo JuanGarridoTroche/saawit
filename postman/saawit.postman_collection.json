@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"annwhogar@hotmail.com\",\r\n    \"password\": \"123456789\"\r\n}",
+							"raw": "{\r\n    \"email\": \"annwhogar@hotmail.com\",\r\n    \"password\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -44,7 +44,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"annwhogar\",\r\n    \"email\": \"annwhogar@hotmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"username\": \"Jota\",\r\n    \"email\": \"annwhogar@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"bio\":\"Esta es mi bio\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -82,7 +82,7 @@
 								{
 									"key": "photo",
 									"type": "file",
-									"src": "/C:/Users/annwh/Pictures/199196_10151291960952303_1429590285_n.jpg"
+									"src": []
 								}
 							]
 						},
@@ -173,7 +173,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"recoverPassCode\": \"9iBi9yQPM5IhooaW\",\r\n    \"newPassword\": \"123456789\",\r\n    \"newPasswordRepeated\":\"123456789\"\r\n}",
+							"raw": "{\r\n    \"recoverPassCode\": \"cohdSbB5Iftr09AP\",\r\n    \"newPassword\": \"123456\",\r\n    \"newPasswordRepeated\":\"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -195,6 +195,47 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "edit Profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token_ID3}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"\",\r\n    \"email\":\"\",\r\n    \"bio\":\"Hola a todo el mundo. Aquí podrás ver todas las noticias que iré añadiendo de mis viajes\",\r\n    \"active\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/users/profile?username",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"users",
+								"profile"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -208,7 +249,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token_ID1}}",
+								"value": "{{token_ID3}}",
 								"type": "default"
 							}
 						],
@@ -217,7 +258,7 @@
 							"formdata": [
 								{
 									"key": "title",
-									"value": "Usando Dall E",
+									"value": "Viajes en verano",
 									"type": "default"
 								},
 								{
@@ -226,29 +267,24 @@
 									"type": "default"
 								},
 								{
-									"key": "category",
-									"value": "tecnología",
-									"type": "default"
-								},
-								{
 									"key": "summary",
-									"value": "Inventando fotos en mi ciudad",
+									"value": "Viajando con buen tiempo",
 									"type": "default"
 								},
 								{
 									"key": "photo[0]",
 									"type": "file",
-									"src": "/C:/Users/annwh/Pictures/dalle/DALL·E 2022-12-16 21.12.25 - celtics fighting against Thracians in A Coruña on a fort hill moody spooky octane.png"
+									"src": []
 								},
 								{
 									"key": "photo[1]",
 									"type": "file",
-									"src": "/C:/Users/annwh/Pictures/dalle/DALL·E 2022-12-16 21.16.12 - celtics fighting against Thracians in A Coruña on a fort hill moody spooky.png"
+									"src": []
 								},
 								{
 									"key": "photo[2]",
 									"type": "file",
-									"src": "/C:/Users/annwh/Pictures/dalle/DALL·E 2022-12-16 21.16.16 - celtics fighting against Thracians in A Coruña on a fort hill moody spooky.png",
+									"src": [],
 									"disabled": true
 								}
 							],
@@ -283,6 +319,21 @@
 								"type": "default"
 							}
 						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"type": "file",
+									"src": []
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:4000/news/10",
 							"protocol": "http",
@@ -305,7 +356,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token_ID2}}",
+								"value": "{{token_ID4}}",
 								"type": "default"
 							}
 						],
@@ -314,7 +365,7 @@
 							"formdata": [
 								{
 									"key": "title",
-									"value": "Messi ficha por el Alcorcón",
+									"value": "Años 60",
 									"type": "default",
 									"disabled": true
 								},
@@ -358,7 +409,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token_ID3}}",
+								"value": "{{token_ID4}}",
 								"type": "default"
 							}
 						],
@@ -372,7 +423,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:4000/news/11/votes",
+							"raw": "http://localhost:4000/news/5/votes",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -380,7 +431,7 @@
 							"port": "4000",
 							"path": [
 								"news",
-								"11",
+								"5",
 								"votes"
 							]
 						}
@@ -413,7 +464,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/news?dateFrom=07/01/2023&dateTo=07/01/2023",
+							"raw": "http://localhost:4000/news?dateFrom=07/01/2023&dateTo=10/01/2023",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -429,7 +480,7 @@
 								},
 								{
 									"key": "dateTo",
-									"value": "07/01/2023"
+									"value": "10/01/2023"
 								}
 							]
 						}

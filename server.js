@@ -27,7 +27,8 @@ const {
   editPhoto,
   editPassword,
   sendRecoverPassword,
-  recoverPassword
+  recoverPassword,
+  editProfile
 } = require("./controllers/users");
 // Login de usuario
 
@@ -38,6 +39,9 @@ app.post("/users", newUser);
 
 //Editar mi Foto del usuario
 app.put("/users/photo", isAuth, isImg, editPhoto);
+
+//Editar datos de usuario
+app.put('/users/profile', isAuth, editProfile);
 
 //Editar password del usuario
 app.put("/users/password", isAuth, editPassword);

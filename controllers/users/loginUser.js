@@ -1,6 +1,4 @@
-"use strict";
-
-const generateError = require("../../helpers");
+const { generateError } = require("../../helpers");
 const selectUserByEmailQuery = require("../../bbdd/queries/users/selectUserByEmailQuery");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -14,7 +12,7 @@ const loginUser = async (req, res, next) => {
       throw generateError("Faltan campos", 400);
     }
 
-    //Vamos a comprobar quye existe el email en nuestra base de datos
+    //Vamos a comprobar que existe el email en nuestra base de datos
     const user = await selectUserByEmailQuery(email);
 
     //Comprobamos que la contraseña es válida
