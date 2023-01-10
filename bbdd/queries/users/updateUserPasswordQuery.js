@@ -1,7 +1,7 @@
 "use strict";
 
 const getConnection = require("../../getConnection");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 
 const updateUserPasswordQuery = async (password, idUser) => {
   let connection;
@@ -14,7 +14,7 @@ const updateUserPasswordQuery = async (password, idUser) => {
     // Actualizamos la password encriptada en la BBDD
     await connection.query(
       `
-    UPDATE users SET password = ?, recoverPassCode = null, modifiedAt = ? WHERE id = ?`,
+    UPDATE users SET password = ?, recoverPassCode = null, active = 1, modifiedAt = ? WHERE id = ?`,
       [hashPass, new Date(), idUser]
     );
   } finally {
