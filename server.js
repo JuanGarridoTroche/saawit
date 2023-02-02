@@ -5,6 +5,7 @@ const isAuth = require("./middlewares/isAuth");
 const isImg = require("./middlewares/isImg");
 const newsExists = require("./middlewares/newsExists");
 const fileupload = require("express-fileupload");
+const cors = require("cors");
 
 const { PORT } = process.env;
 const app = express();
@@ -14,6 +15,10 @@ app.use(express.json());
 
 // Deserializa el body con formato form-data
 app.use(fileupload());
+
+// Cross-Origin of Resource Sharing: Dependencia que facilita que un user-agent obtenga permiso para acceder a recursos seleccionados desde este servidor
+// Middleware que permite conectar el backend (éste) con el frontend (React)
+app.use(cors());
 
 /*
  * ###########################

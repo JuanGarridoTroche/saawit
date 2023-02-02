@@ -1,4 +1,3 @@
-
 const { generateError } = require("../../../helpers");
 const getConnection = require("../../getConnection");
 
@@ -14,8 +13,8 @@ const selectUserByEmailQuery = async (email) => {
     );
 
     if (users.length < 1) {
-      throw generateError('Email incorrecto', 404);
-  }
+      throw generateError("Email y/o contraseña inválidos", 404);
+    }
 
     return users[0];
   } finally {
