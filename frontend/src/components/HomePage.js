@@ -1,7 +1,7 @@
 export const HomePage = ()=> {
   return (
-    <section>
+    <main>
       <h2>Últimos posts</h2>
-    </section>
+    </main>
   )
 }

@@ -1,38 +1,91 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,500&display=swap');
+
+:root {
+  --font-ibm: 'IBM Plex Sans', sans-serif;
+  --font-noto: 'Noto Sans', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  min-height: 100vh;
+  position: relative;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: var(--font-ibm);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+
+header>.header {
+  display: flex;
+  gap: 1rem;
+  flex-grow: 1;
+}
+
+header>input {
+  flex-grow: 4;
+  padding: 10px;
+  border-radius: 40px;
+  border: 1px solid rgb(10, 10, 10);
+  background-color: rgb(248, 248, 248);
+}
+
+header>input:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+header>.header>a>img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+header>nav {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 2;
+  gap: 1rem;
+}
+
+header>nav>ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+header > nav > ul li > a {
+  padding: .5rem;
+  text-decoration: none;
+  color: rgb(10, 10, 10);
+  font-weight: 600;
+}
+
+header > nav > ul li > a:hover {
+  color: rgb(237, 28, 36);
+}
+
+main {
+  padding-top: 50px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 5%;
+  text-align: center;
 }

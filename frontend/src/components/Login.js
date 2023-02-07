@@ -1,7 +1,10 @@
 export const Login = ()=> {
   return (
-    <>
-      <button>Login</button>
-    </>
+    <section>
+      <h1>Login de usuario</h1>
+      <form>
+        Formulario de login de usuario
+      </form>
+    </section>
   )
 }
