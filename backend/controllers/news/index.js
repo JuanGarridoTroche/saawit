@@ -4,6 +4,7 @@ const deleteNews = require("./deleteNews");
 const voteNews = require("./voteNews");
 const topRankedNews = require('./topRankedNews')
 const newsByDate = require('./newsByDate')
+const readNews = require('./readNews');
 const newsByCategory = require('./newsByCategory')
 
 module.exports = {
@@ -14,4 +15,5 @@ module.exports = {
   topRankedNews,
   newsByDate,
   newsByCategory,
+  readNews,
 };

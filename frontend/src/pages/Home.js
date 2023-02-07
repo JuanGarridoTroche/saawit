@@ -1,10 +1,10 @@
-import { useNews } from "../hooks/useNews";
+import  useNews  from "../hooks/useNews";
 import { NewsList } from "../components/NewsList";
 
 export const Home = () => {
-  const { news, loading, error } = useNews();
+  const { news, loading, error } = useNews();  
 
-  if (loading) return <p>Cargando news...</p>;
+  if (loading) return <p>Cargando noticias...</p>;
   if (error) return <p>{error}</p>;
 
   return (

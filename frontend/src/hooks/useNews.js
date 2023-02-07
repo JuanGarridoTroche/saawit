@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { loadNewsService } from "../services/loadNewsService";
+import { loadNewsService } from "../services";
 
-export const useNews = () => {
+const useNews = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("inicio");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const loadNews = async () => {
@@ -13,15 +13,17 @@ export const useNews = () => {
 
         const data = await loadNewsService();
         setNews(data);
-        setLoading(false);
+
       } catch (error) {
-        setError(error);
+        setError(error.message);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     };
     loadNews();
   }, []);
 
-  return (news, loading, error);
+  return {news, loading, error};
 };
+
+export default useNews;

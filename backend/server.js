@@ -33,7 +33,8 @@ const {
   editPassword,
   sendRecoverPassword,
   recoverPassword,
-  editProfile
+  editProfile,
+  readProfile,
 } = require("./controllers/users");
 // Login de usuario
 
@@ -47,6 +48,9 @@ app.put("/users/photo", isAuth, isImg, editPhoto);
 
 //Editar datos de usuario
 app.put('/users/profile', isAuth, editProfile);
+
+// Ver perfil de usuario
+app.get('/users/profile/:idUSer', readProfile);
 
 //Editar password del usuario
 app.put("/users/password", isAuth, editPassword);
@@ -70,10 +74,17 @@ const {
   topRankedNews,
   newsByDate,
   newsByCategory,
+  readNews,
 } = require("./controllers/news");
 
 // Crear una noticia
 app.post("/news", isAuth, createNews);
+
+// Lista de las últimas noticias del día ordenadas por valoración
+app.get("/news/top", topRankedNews);
+
+// Leer una noticia
+app.get("/news/:idNews", readNews)
 
 // Editar una noticia ya creada
 app.put("/news/:idNews", isAuth, editNews);
@@ -81,8 +92,6 @@ app.put("/news/:idNews", isAuth, editNews);
 // Eliminar una noticia
 app.delete("/news/:idNews", isAuth, newsExists, deleteNews);
 
-// Lista de las últimas noticias del día ordenadas por valoración
-app.get("/news/top", topRankedNews);
 
 // Noticias de días anteriores
 app.get("/news", newsByDate);
