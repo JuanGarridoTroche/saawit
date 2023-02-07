@@ -2,9 +2,9 @@ import { News } from "./News";
 
 export const NewsList = ({ news }) => {
   return news.length ? (
-    <ul>{news.map(singleNews => {
+    <ul className="news-list">{news.map(singleNews => {
       return (
-        <li key={singleNews.id}>
+        <li key={singleNews.id} className="single-news">
           <News news={singleNews} />
         </li>
       )

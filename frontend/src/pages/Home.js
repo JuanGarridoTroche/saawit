@@ -8,9 +8,9 @@ export const Home = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <main>
+    <section>
       <h2>Últimas noticias</h2>
       <NewsList news={news} />
-    </main>
+    </section>
   );
 };
