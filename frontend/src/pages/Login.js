@@ -1,4 +1,5 @@
 import { useContext, useState } from "react"
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { loginUserService } from "../services";
 
@@ -8,6 +9,7 @@ export const Login = ()=> {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const {login} = useContext(AuthContext);
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e)=> {
     e.preventDefault();
@@ -16,6 +18,7 @@ export const Login = ()=> {
     try {
       const data = await loginUserService({email, password});
       login(data.token);
+      navigate("/");
       
     } catch (error) {
       setError(error.message)
@@ -25,7 +28,7 @@ export const Login = ()=> {
 
   return (
     <section>
-      <h1>Login de usuario</h1>
+      <h1>Iniciar sesión</h1>
       {error ? <p>{error}</p> : null}
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">email </label>

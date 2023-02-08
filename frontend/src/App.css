@@ -67,15 +67,29 @@ header>nav>ul {
 }
 
 header>nav>ul li>a {
-  padding: .5rem;
+  padding: .9rem;
   text-decoration: none;
-  color: rgb(10, 10, 10);
+  color: rgb(245, 245, 245);
   font-weight: 600;
+  background-color: var(--color-logo);
+  border-radius: 20px;
+  margin: 0 .5rem;
 }
 
 header>nav>ul li>a:hover {
-  /* color: rgb(237, 28, 36); */
-  color: var(--color-logo);
+  opacity: .8;
+}
+
+header>nav>ul li > button {
+  background-color: var(--color-logo);
+  border: none;
+  border-radius: 25px;
+  padding: .5rem;
+  margin: .5rem;
+  width: 70px;
+  cursor: pointer;
+  color: rgb(245, 245, 245);
+  font-weight: 600 ;
 }
 
 main {
