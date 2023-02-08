@@ -3,14 +3,16 @@ import { loadNewsService } from "../services";
 
 const useNews = () => {
   const [news, setNews] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+
+// Se carga solo la primera vez. Función asíncrona ya que solictamos datos a elementos externos como nuestro backend
   useEffect(() => {
     const loadNews = async () => {
       try {
-        setLoading(true);
-
+        // FIXME: Habría que solicitar las noticias de la más actual a la más antigua (crear el endpoint en el backend)
+        // Nos conectamos al backend y solicitamos las noticias ordenadas de mejor a peor feedback (/news/top)
         const data = await loadNewsService();
         setNews(data);
 

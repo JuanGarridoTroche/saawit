@@ -1,4 +1,5 @@
 
+// NO SE UTILIZA. lo he creado por si ejecutamos un modal al clicar en la noticia (al no tener creado lo de añadir comentarios, no creo que lo usemos).
 export const SingleNews = ({singleNews})=> {
   return (
     <section>

@@ -3,6 +3,7 @@
 :root {
   --font-ibm: 'IBM Plex Sans', sans-serif;
   --font-noto: 'Noto Sans', sans-serif;
+  --color-logo: rgb(255, 69, 0);
 }
 
 * {
@@ -14,12 +15,12 @@
 html {
   font-size: 62.5%;
   min-height: 100vh;
-  position: relative;
 }
 
 body {
   font-size: 1.6rem;
   font-family: var(--font-ibm);
+  position: relative;
 }
 
 header {
@@ -74,7 +75,8 @@ header>nav>ul li>a {
 }
 
 header>nav>ul li>a:hover {
-  color: rgb(237, 28, 36);
+  /* color: rgb(237, 28, 36); */
+  color: var(--color-logo);
 }
 
 main {
@@ -114,7 +116,7 @@ main>.categories>a {
 }
 
 main>.categories>a:hover {
-  color: rgb(237, 28, 36);
+  color: var(--color-logo);
 }
 
 main>.breaking-news>h2 {
@@ -153,11 +155,11 @@ main>.breaking-news>.news-list>.single-news>figure img {
 
 main>.breaking-news>.news-list>.single-news>figure .arrow-up:hover {  
   background-color: rgb(218, 224, 230);
-  color: red;
+  color: var(--color-logo);
   /* fill: red; */
   /* filter: invert(100%); */
-  border: 1px solid red;
-  stroke: red;
+  border: 1px solid var(--color-logo);
+  stroke: var(--color-logo);
 }
 
 main>.breaking-news>.news-list>.single-news>figure .arrow-down:hover {  

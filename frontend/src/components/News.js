@@ -11,8 +11,9 @@ export const News =  ({ news }) => {
         <img src="/arrow-down.svg" alt="arrow down" className="arrow-down"/>
       </figure>
       <section>
-        <p>{news.category} · Publicado por {news.idUser} desde {news.createdAt} </p>
+        <p>{news.category} · Publicado por {news.idUser} el {new Date(news.createdAt).toLocaleString()} </p>
         <p className="title">{news.title}</p>
+        <p className="summary">{news.summary}</p>
         <p className="body">{news.body}</p>      
       </section>
     </>

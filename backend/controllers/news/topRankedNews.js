@@ -8,7 +8,7 @@ const topRankedNews = async (req, res, next) => {
 
       res.send({
       status: "Ok",
-      message: "Listado de las noticias mejor valoradas",
+      message: "Listado de las noticias más valoradas",
       data: {
         rankedNews,
       }
