@@ -31,5 +31,22 @@ export const registerUserService = async ({ username, email, password, bio }) =>
   if(!response.ok) {
     throw new Error(json.message);
   }
-  return "Registro con éxito"
 };
+
+
+export const loginUserService = async ({email, password}) => {
+  const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/login`, 
+  {
+    method: 'POST',
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({email, password}),
+  })
+  const json = await response.json();
+
+  if(!response.ok) {
+    throw new Error(json.message)
+  }
+
+}

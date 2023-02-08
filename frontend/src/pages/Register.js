@@ -1,7 +1,9 @@
 import { useState } from "react"
+import {useNavigate} from "react-router-dom";
 import { registerUserService } from "../services";
 
 export const Register = ()=> {
+  const navigate = useNavigate();
   const [email, setEmail] =useState('');
   const [password, setPwd] = useState('');
   const [username, setUsername] = useState('');
@@ -18,7 +20,7 @@ export const Register = ()=> {
     
     try {
       await registerUserService({ username, email, password, bio });
-      
+      navigate("/users/login");
       
     } catch (error) {
       setError(error.message);
