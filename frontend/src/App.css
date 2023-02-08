@@ -183,6 +183,14 @@ main>.breaking-news>.news-list>.single-news>section>.body {
   text-align: left;
 }
 
+.required {
+  color: red;
+}
+
+.register > form {
+  height: 90vh;
+}
+
 
 footer {
   position: absolute;
