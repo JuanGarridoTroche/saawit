@@ -66,14 +66,14 @@ header>nav>ul {
   align-items: center;
 }
 
-header > nav > ul li > a {
+header>nav>ul li>a {
   padding: .5rem;
   text-decoration: none;
   color: rgb(10, 10, 10);
   font-weight: 600;
 }
 
-header > nav > ul li > a:hover {
+header>nav>ul li>a:hover {
   color: rgb(237, 28, 36);
 }
 
@@ -88,7 +88,7 @@ main {
   background-color: rgb(218, 224, 230);
 }
 
-main > .categories {
+main>.categories {
   position: fixed;
   left: 0;
   top: 65px;
@@ -101,11 +101,11 @@ main > .categories {
   height: 100vh;
 }
 
-main > .categories > h2 {
+main>.categories>h2 {
   padding: 0 1rem;
 }
 
-main > .categories > a {
+main>.categories>a {
   text-decoration: none;
   color: black;
   font-family: var(--font-noto);
@@ -113,18 +113,18 @@ main > .categories > a {
   padding: .5rem 2rem;
 }
 
-main > .categories > a:hover {
+main>.categories>a:hover {
   color: rgb(237, 28, 36);
 }
 
-main > .breaking-news > h2 {
+main>.breaking-news>h2 {
   padding: 2rem;
   margin: 0;
   color: rgb(50, 50, 50);
   text-transform: uppercase;
 }
 
-main > .breaking-news > .news-list {  
+main>.breaking-news>.news-list {
   display: grid;
   grid-template-columns: repeat(1fr, minmax(225px, 1fr));
   max-width: 50vw;
@@ -134,7 +134,7 @@ main > .breaking-news > .news-list {
   margin: 0 1rem;
 }
 
-main > .breaking-news > .news-list > .single-news {
+main>.breaking-news>.news-list>.single-news {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -144,21 +144,40 @@ main > .breaking-news > .news-list > .single-news {
   padding: .5rem;
   border-radius: 4px;
   box-shadow: 1px 2px 10px rgb(10, 10, 10);
+  cursor: pointer;
 }
 
-main > .breaking-news > .news-list > .single-news > figure img {
+main>.breaking-news>.news-list>.single-news>figure img {
   width: 25px;
 }
 
-main > .breaking-news > .news-list > .single-news > section > p {
+main>.breaking-news>.news-list>.single-news>figure .arrow-up:hover {  
+  background-color: rgb(218, 224, 230);
+  color: red;
+  /* fill: red; */
+  /* filter: invert(100%); */
+  border: 1px solid red;
+  stroke: red;
+}
+
+main>.breaking-news>.news-list>.single-news>figure .arrow-down:hover {  
+  background-color: rgb(218, 224, 230);
+  color: blue;
+  /* fill: red; */
+  /* filter: invert(100%); */
+  border: 1px solid blue;
+  stroke: blue;
+}
+
+main>.breaking-news>.news-list>.single-news>section>p {
   padding: 0 1rem;
 }
 
-main > .breaking-news > .news-list > .single-news > section > .title {
+main>.breaking-news>.news-list>.single-news>section>.title {
   font-weight: 800;
 }
 
-main > .breaking-news > .news-list > .single-news > section > .body {
+main>.breaking-news>.news-list>.single-news>section>.body {
   text-align: left;
 }
 
