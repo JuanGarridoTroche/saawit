@@ -4,7 +4,7 @@ const generateError = require("../../../helpers");
 const getConnection = require("../../getConnection");
 
 const selectUserByIdQuery = async (idUser) => {
-  console.log(idUser);
+  
   let connection;
   try {
     connection = await getConnection();

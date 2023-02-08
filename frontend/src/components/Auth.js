@@ -5,12 +5,9 @@ import { AuthContext } from "../context/AuthContext";
 export const Auth = () => {
   const { loggedUser, logout} = useContext(AuthContext);
   return loggedUser ? (
-    <ul>
-      <li>logueado como </li>
-      <li><button onClick={()=> {
-        logout()
-      }}>Salir</button></li>
-    </ul>
+    <p>
+      Conectado como {loggedUser.username} <button onClick={()=>{logout()}}>Salir</button>
+    </p>
      ) : (
     <ul>  
       <li>      

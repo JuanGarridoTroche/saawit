@@ -35,6 +35,7 @@ const {
   recoverPassword,
   editProfile,
   readProfile,
+  readLoggedProfile,
 } = require("./controllers/users");
 // Login de usuario
 
@@ -51,6 +52,9 @@ app.put('/users/profile', isAuth, editProfile);
 
 // Ver perfil de usuario
 app.get('/users/profile/:idUSer', readProfile);
+
+// Ver el perfil del usuario loggeado
+app.get('/users', isAuth, readLoggedProfile);
 
 //Editar password del usuario
 app.put("/users/password", isAuth, editPassword);

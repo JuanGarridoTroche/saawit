@@ -18,8 +18,8 @@ export const AuthProviderComponent = ({ children }) => {
     const getUserData = async () => {
       try {
         const data = await getLoggedUserDataService({ token });
-        console.log(data);
         setLoggedUser(data);
+        
       } catch (error) {
         logout();
       }

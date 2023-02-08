@@ -64,9 +64,8 @@ export const loginUserService = async ({ email, password }) => {
 // Servicio que nos facilita los datos del usuario logueado a partir de su token
 export const getLoggedUserDataService = async ({ token }) => {
   const response = await fetch(
-    `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/login`,
+    `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users`,
     {
-      method:'POST',
       headers: {
         Authorization: token,
       },
@@ -78,6 +77,6 @@ export const getLoggedUserDataService = async ({ token }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
-  console.log(json.data);
+  
   return json.data
 };
