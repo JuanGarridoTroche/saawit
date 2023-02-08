@@ -7,7 +7,7 @@ export const Auth = () => {
         <Link to="/register">Registro</Link>
       </li>
       <li>
-        <Link to="/users/login">Login</Link>
+        <Link to="/users/login">Iniciar sesión</Link>
       </li>
       {/* <li><Link to="/news/top">Top ranked news</Link></li> */}
     </ul>

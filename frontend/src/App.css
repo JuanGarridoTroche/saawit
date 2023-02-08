@@ -78,24 +78,63 @@ header > nav > ul li > a:hover {
 }
 
 main {
-  padding-top: 50px;
+  /* padding-top: 50px; */
   text-align: center;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  position: relative;
+  background-color: rgb(218, 224, 230);
 }
 
-main > section > .news-list {  
+main > .categories {
+  position: fixed;
+  left: 0;
+  top: 65px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: white;
+  width: 20vw;
+  height: 100vh;
+}
+
+main > .categories > h2 {
+  padding: 0 1rem;
+}
+
+main > .categories > a {
+  text-decoration: none;
+  color: black;
+  font-family: var(--font-noto);
+  padding: .5rem 0;
+  padding: .5rem 2rem;
+}
+
+main > .categories > a:hover {
+  color: rgb(237, 28, 36);
+}
+
+main > .breaking-news > h2 {
+  padding: 2rem;
+  margin: 0;
+  color: rgb(50, 50, 50);
+  text-transform: uppercase;
+}
+
+main > .breaking-news > .news-list {  
   display: grid;
   grid-template-columns: repeat(1fr, minmax(225px, 1fr));
-  max-width: 60vw;
+  max-width: 50vw;
   align-items: center;
-  gap: 2rem;
-  padding: 1rem;
-  margin: 1rem;
+  gap: 1rem;
+  padding: 0 2rem;
+  margin: 0 1rem;
 }
 
-main > section > .news-list > .single-news {
+main > .breaking-news > .news-list > .single-news {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -107,21 +146,19 @@ main > section > .news-list > .single-news {
   box-shadow: 1px 2px 10px rgb(10, 10, 10);
 }
 
-main > section > .news-list > .single-news > figure img {
+main > .breaking-news > .news-list > .single-news > figure img {
   width: 25px;
 }
 
-main > section > .news-list > .single-news > section > p {
+main > .breaking-news > .news-list > .single-news > section > p {
   padding: 0 1rem;
-  /* text-align: left; */
-  /* margin: 1rem; */
 }
 
-main > section > .news-list > .single-news > section > .title {
+main > .breaking-news > .news-list > .single-news > section > .title {
   font-weight: 800;
 }
 
-main > section > .news-list > .single-news > section > .body {
+main > .breaking-news > .news-list > .single-news > section > .body {
   text-align: left;
 }
 
