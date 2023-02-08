@@ -10,7 +10,7 @@ export const News =  ({ news }) => {
         <p>{news.feedback}</p>
         <img src="/arrow-down.svg" alt="arrow down" className="arrow-down"/>
       </figure>
-      <section>
+      <section key={news.id}>
         <p>{news.category} · Publicado por {news.idUser} el {new Date(news.createdAt).toLocaleString()} </p>
         <p className="title">{news.title}</p>
         <p className="summary">{news.summary}</p>

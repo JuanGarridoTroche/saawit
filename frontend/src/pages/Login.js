@@ -1,17 +1,21 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { AuthContext } from "../context/AuthContext";
 import { loginUserService } from "../services";
+
 
 export const Login = ()=> {
   const [email, setEmail] =useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const {login} = useContext(AuthContext);
 
   const handleSubmit = async (e)=> {
     e.preventDefault();
     setError('');
 
     try {
-      await loginUserService();
+      const data = await loginUserService({email, password});
+      login(data.token);
       
     } catch (error) {
       setError(error.message)

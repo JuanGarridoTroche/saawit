@@ -20,17 +20,16 @@ html {
 body {
   font-size: 1.6rem;
   font-family: var(--font-ibm);
-  position: relative;
 }
 
-header {
+#root > header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem;
+  margin: 1rem; 
 }
 
-header>.header {
+header > .brand {
   display: flex;
   gap: 1rem;
   flex-grow: 1;
@@ -48,7 +47,7 @@ header>input:hover {
   background-color: rgb(255, 255, 255);
 }
 
-header>.header>a>img {
+header>.brand>a>img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -193,9 +192,13 @@ main>.breaking-news>.news-list>.single-news>section>.body {
 
 
 footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
+  left:0px; 
+  right:0px;
   width: 100vw;
   height: 5%;
   text-align: center;
+  overflow: hidden;
+  background-color: white;
 }

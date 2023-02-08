@@ -11,7 +11,7 @@ import { ReadNews } from "./pages/ReadNews";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Header />
       <main>
         <Routes>
@@ -44,7 +44,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
 

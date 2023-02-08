@@ -4,7 +4,7 @@ import { Auth } from "./Auth"
 export const Header = ()=> {
   return (
     <header>
-      <section className="header">
+      <section className="brand">
         <Link to="/"><img src="/logo.png" alt="logo-saawit"/></Link>
         <h2>sa<span style={{color:"red"}}>a</span>wit</h2>
       </section>

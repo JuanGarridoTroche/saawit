@@ -21,8 +21,8 @@ export const NewsList = ({ news }) => {
         <ul className="news-list">
           {news.map((singleNews) => {
             return (
-              <>              
-                <li key={singleNews.id} className="single-news">
+              <>
+                <li key={news.id} className="single-news">
                   <News news={singleNews} />
                 </li>
               </>
