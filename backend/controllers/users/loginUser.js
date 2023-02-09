@@ -46,6 +46,8 @@ const loginUser = async (req, res, next) => {
     const tokenIfo = {
       id: user.id,
       role: user.role,
+      email:user.email,
+      username:user.username,
     };
 
     // Creamos el token

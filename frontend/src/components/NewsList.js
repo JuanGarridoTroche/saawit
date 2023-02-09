@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { News } from "./News";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { NewsContainer } from "./NewsContainer";
 
 export const NewsList = ({ news }) => {
+  const { loggedUser } = useContext(AuthContext);
   return news.length ? (
     <>
       <section className="categories">
@@ -18,6 +22,7 @@ export const NewsList = ({ news }) => {
       </section>
       <section className="breaking-news">
         <h2>Últimas noticias</h2>
+        {loggedUser ? <NewsContainer /> : null}
         <ul className="news-list">
           {news.map((singleNews) => {
             return (

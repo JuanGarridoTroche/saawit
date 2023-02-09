@@ -51,9 +51,11 @@ export const loginUserService = async ({ email, password }) => {
       },
       body: JSON.stringify({ email, password }),
     }
-  );
+  ); 
+  
   const json = await response.json();
 
+  
   if (!response.ok) {
     throw new Error(json.message);
   }
@@ -80,3 +82,27 @@ export const getLoggedUserDataService = async ({ token }) => {
   
   return json.data
 };
+
+
+// Servicio que envía los datos de una nueva noticia
+export const createNewsService = async ({data, token}) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news`,
+    {
+      method: "POST",
+      body: data,
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+
+  const json = await response.json();
+  console.log(json.data);
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  
+  return json.data
+}

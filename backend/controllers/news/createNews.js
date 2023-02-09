@@ -3,6 +3,7 @@
 const { generateError, savePhoto } = require("../../helpers");
 const insertNewsQuery = require("../../bbdd/queries/news/insertNewsQuery");
 const insertPhotoQuery = require('../../bbdd/queries/news/insertPhotoQuery')
+const joi = require("@hapi/joi");
 
 const createNews = async (req, res, next) => {
   try {
@@ -12,6 +13,30 @@ const createNews = async (req, res, next) => {
     // Comprobar que los campos requeridos tengan algún valor (title y body)
     if (!title || !body) {
       throw generateError("Faltan campos", 400);
+    }
+
+    const schemaTitle = joi
+      .string()
+      .min(4)
+      .max(100)
+      .required()
+      .error(new Error("El título no puede ser menor a 4 caracteres ni mayor a 100 caracteres", 400));
+    const validationTitle = schemaTitle.validate(title);
+
+    if (validationTitle.error || validationTitle === null) {
+      throw generateError(validationTitle.error.message);
+    }
+
+    const schemaBody = joi
+      .string()
+      .min(10)
+      .max(1000)
+      .required()
+      .error(new Error("El texto no puede ser menor a 10 caracteres o mayor a 1000 caracteres", 400));
+    const validationBody = schemaBody.validate(body);
+
+    if (validationBody.error || validationBody === null) {
+      throw generateError(validationBody.error.message);
     }
 
     // Si category no corresponde a ninguna categoría válida, category = 'general'

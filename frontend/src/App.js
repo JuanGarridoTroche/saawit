@@ -8,6 +8,7 @@ import { NotFoundPage } from "./components/NotFoundPage";
 import { Register } from "./pages/Register";
 import { TopRankedNews } from "./components/TopRankedNews";
 import { ReadNews } from "./pages/ReadNews";
+import { CreateNews } from "./components/CreateNews";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
           <Route path="/users/password/solicitude" element={<Home />} />
           <Route path="/users/password/recover" element={<Home />} />
           {/* Crear una noticia, método: post */}
-          <Route path="/news" element={<Home />} />
+          <Route path="/news" element={<CreateNews />} />
           {/* Leer una noticia, método: get */}
           <Route path="/news/:idNews" element={<ReadNews />} />  
           {/* Editar una noticia creada por el usuario registrado método: put */}
