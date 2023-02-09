@@ -63,7 +63,7 @@ export const CreateNews = () => {
           placeholder="Texto de la noticia..."
           required
         />
-        <input type="file" id="photos" name="photos" accept="image/*" multiple />
+        <input type="file" id="photos" name="photos" accept="image/*"/>
       </fieldset>
       <button>Enviar</button>      
     </form>
