@@ -11,8 +11,8 @@ export const NewsContainer = () => {
       </Link>
       <Link to="/news">
         <input placeholder="Escribe una nueva noticia" />
+        <input type="file" id="image" name="image" multiple />
       </Link>
-      <input type="file" id="image" name="image" multiple />
     </form>
   );
 };

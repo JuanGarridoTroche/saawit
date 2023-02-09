@@ -10,10 +10,7 @@ export const Home = () => {
   if (loading) return <p>Cargando noticias...</p>;
   if (error) return <ErrorMessage message={error}/>;
 
-  return (  
-    <> 
-           
-      <NewsList news={news} />    
-    </>
+  return (             
+      <NewsList news={news} />      
   );
 };

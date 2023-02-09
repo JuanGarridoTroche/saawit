@@ -12,8 +12,10 @@ export const CreateNews = () => {
     setError('');
     try {
       setSending(true);
+      console.log(new FormData(e.target));
+      
       const data = new FormData(e.target);
-      console.log("data: ", data);
+      console.log("datos del formulario: ", data);
       const news = await createNewsService({data, token});
 
       console.log("Nueva noticia: ", news);
@@ -61,7 +63,7 @@ export const CreateNews = () => {
           placeholder="Texto de la noticia..."
           required
         />
-        <input type="file" id="photo" name="photo" multiple />
+        <input type="file" id="photos" name="photos" accept="image/*" multiple />
       </fieldset>
       <button>Enviar</button>      
     </form>

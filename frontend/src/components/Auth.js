@@ -8,8 +8,10 @@ export const Auth = () => {
     <ul>
       <li>
         <img
-          src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/uploads/${loggedUser.photo}`}
+          // src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/uploads/${loggedUser.photo}`}
+          src="/logo192.png"
           alt="avatar"
+          style={{width:"25px"}}
         /> 
          {loggedUser.username}
       </li>
