@@ -8,7 +8,7 @@ export const Auth = () => {
     <ul>
       <li>
         <img
-          src={`./uploads/${loggedUser.photo}`}
+          src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/uploads/${loggedUser.photo}`}
           alt="avatar"
         /> 
          {loggedUser.username}

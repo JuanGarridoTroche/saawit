@@ -10,14 +10,14 @@ const readProfile = async (req, res, next) => {
     // Seleccionamos los datos actuales del usuario
     const user = await selectUserByIdQuery(idUSer);
     
-    const {id, username, email, photo, role, active, createdAt} = user;
+    const {id, username, email, bio, photo, role, active, createdAt} = user;
 
 
     res.send({
       status: "Ok",
       message: "perfil de usuario",
       data: {
-        id, username, email, photo, role, active, createdAt,
+        id, username, email, bio, photo, role, active, createdAt,
       }
     });
   } catch (err) {
