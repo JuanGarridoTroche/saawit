@@ -6,7 +6,7 @@ const newsByDate = async (req, res, next) => {
   try {
       const {dateFrom, dateTo} = req.query;
       const news = await selectNewsByDateQuery(dateFrom, dateTo);
-      console.log(news);
+      // console.log(news);
 
 
       res.send({

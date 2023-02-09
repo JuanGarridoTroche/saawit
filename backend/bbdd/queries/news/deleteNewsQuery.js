@@ -13,7 +13,7 @@ const deleteNewsQuery = async (idNews) => {
       `SELECT title FROM news WHERE id = ?`,
       [idNews]
     );
-    console.log(news[0]);
+    // console.log(news[0]);
 
     // Comprobamos que existe algún registro
     if(news[0].length < 1) {

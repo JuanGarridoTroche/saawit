@@ -3,7 +3,7 @@
 const selectUserByIdQuery = require("../../bbdd/queries/users/selectUserByIdQuery");
 
 const readProfile = async (req, res, next) => {
-  console.log(req.user.id);
+  // console.log(req.user.id);
   try {
     if (!req.user?.id) {
       throw generateError("El usuario no existe", 400);
