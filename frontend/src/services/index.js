@@ -1,8 +1,8 @@
-// Servicio que carga las 10 noticias  mejor valoradas (feedback)
+// Servicio que carga las noticias ordenadas desde la más actual a la más antigua
 export const loadNewsService = async () => {
   //Extraemos (fetch) desde nuestro Backend la info con el endpoint que necesitemos
   const response = await fetch(
-    `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/top`
+    `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news`
   );
 
   const json = await response.json();
@@ -11,8 +11,10 @@ export const loadNewsService = async () => {
   if (!response.ok) {
     throw new Error(json.message);
   }
+
+  // console.log(json.data);
   // console.log(json.data.rankedNews);
-  return json.data.rankedNews;
+  return json.data.news;
 };
 
 //  Servicio de registro de nuevo usuario
@@ -98,7 +100,7 @@ export const createNewsService = async ({data, token}) => {
   );
 
   const json = await response.json();
-  console.log(json.data);
+  // console.log(json.data);
 
   if (!response.ok) {
     throw new Error(json.message);
@@ -106,3 +108,40 @@ export const createNewsService = async ({data, token}) => {
   
   return json.data
 }
+
+// Servicio que carga las 10 noticias  mejor valoradas (feedback)
+export const loadNewsByCategoryService = async () => {
+  //Extraemos (fetch) desde nuestro Backend la info con el endpoint que necesitemos
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/categoria/:category`
+  );
+
+  const json = await response.json();
+
+  // Si la respuesta no es Ok, generamos un error
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  console.log(json.data);
+  // console.log(json.data.rankedNews);
+  return json.data;
+};
+
+
+// Servicio que carga las 10 noticias  mejor valoradas (feedback)
+export const loadNewsByFeedbackService = async () => {
+  //Extraemos (fetch) desde nuestro Backend la info con el endpoint que necesitemos
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/ByFeedback`
+  );
+
+  const json = await response.json();
+
+  // Si la respuesta no es Ok, generamos un error
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  // console.log(json.data.rankedNews);
+  return json.data.byFeedback;
+};

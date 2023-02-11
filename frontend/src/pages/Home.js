@@ -4,7 +4,7 @@ import { ErrorMessage } from "../components/ErrorMessage";
 
 
 export const Home = () => {
-  const { news, loading, error } = useNews();  
+  const { news, loading, error } = useNews('Home');  
   
 
   if (loading) return <p>Cargando noticias...</p>;

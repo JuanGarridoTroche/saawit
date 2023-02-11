@@ -10,15 +10,15 @@ export const NewsList = ({ news }) => {
     <>
       <section className="categories">
         <h2>Categorías</h2>
-        <Link to="/filter?category=deportes">deportes</Link>
-        <Link to="/filter?category=videojuegos">videojuegos</Link>
-        <Link to="/filter?category=noticias">noticias</Link>
-        <Link to="/filter?category=programación">programación</Link>
-        <Link to="/filter?category=viajes">viajes</Link>
-        <Link to="/filter?category=tecnología">tecnología</Link>
-        <Link to="/filter?category=música">música</Link>
-        <Link to="/filter?category=memes">memes</Link>
-        <Link to="/filter?category=general">general</Link>
+        <Link to="/news/categoria/deportes">deportes</Link>
+        <Link to="/news/categoria/videojuegos">videojuegos</Link>
+        <Link to="/news/categoria/noticias">noticias</Link>
+        <Link to="/news/categoria/programación">programación</Link>
+        <Link to="/news/categoria/viajes">viajes</Link>
+        <Link to="/news/categoria/tecnología">tecnología</Link>
+        <Link to="/news/categoria/música">música</Link>
+        <Link to="/news/categoria/memes">memes</Link>
+        <Link to="/news/categoria/general">general</Link>
       </section>
       <section className="breaking-news">
         <h2>Últimas noticias</h2>

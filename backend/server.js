@@ -75,17 +75,23 @@ const {
   editNews,
   deleteNews,
   voteNews,
-  topRankedNews,
-  newsByDate,
+  NewsOrderedByFeedback,
   newsByCategory,
   readNews,
+  newsOrderedByDate,
 } = require("./controllers/news");
+
+// Ver todas las noticias ordenadas por fecha: de la más actual a la más antigua.
+app.get("/news", newsOrderedByDate);
 
 // Crear una noticia
 app.post("/news", isAuth, createNews);
 
 // Lista de las últimas noticias del día ordenadas por valoración
-app.get("/news/top", topRankedNews);
+app.get("/news/ByFeedback", NewsOrderedByFeedback);
+
+//Lista de noticias según la categoría
+app.get("/news/categoria/:category", newsByCategory)
 
 // Leer una noticia
 app.get("/news/:idNews", readNews)
@@ -96,9 +102,6 @@ app.put("/news/:idNews", isAuth, editNews);
 // Eliminar una noticia
 app.delete("/news/:idNews", isAuth, newsExists, deleteNews);
 
-
-// Noticias de días anteriores
-app.get("/news", newsByDate);
 
 // Noticias filtradas por categoría
 app.get("/news/filter", newsByCategory);

@@ -12,13 +12,13 @@ export const CreateNews = () => {
     setError('');
     try {
       setSending(true);
-      console.log(new FormData(e.target));
+      // console.log(new FormData(e.target));
       
       const data = new FormData(e.target);
-      console.log("datos del formulario: ", data);
+      // console.log("datos del formulario: ", data);
       const news = await createNewsService({data, token});
 
-      console.log("Nueva noticia: ", news);
+      // console.log("Nueva noticia: ", news);
       
     } catch (error) {
       setError(error.message)

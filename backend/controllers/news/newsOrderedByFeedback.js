@@ -2,15 +2,15 @@
 
 const selectTopTenRankedNewsQuery =require('../../bbdd/queries/news/selectTopTenRankedNewsQuery');
 
-const topRankedNews = async (req, res, next) => {
+const NewsOrderedByFeedback = async (req, res, next) => {
   try {
-      const rankedNews = await selectTopTenRankedNewsQuery();
+      const byFeedback = await selectTopTenRankedNewsQuery();
 
       res.send({
       status: "Ok",
       message: "Listado de las noticias más valoradas",
       data: {
-        rankedNews,
+        byFeedback,
       }
     });
   } catch (err) {
@@ -18,4 +18,4 @@ const topRankedNews = async (req, res, next) => {
   }
 };
 
-module.exports = topRankedNews;
+module.exports = NewsOrderedByFeedback;
