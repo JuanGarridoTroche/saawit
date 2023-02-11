@@ -6,6 +6,7 @@ const useNews = (TypeOfNews) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [newsType, setNewsType] = useState(TypeOfNews);
+  
 
 
 // Se carga solo la primera vez. Función asíncrona ya que solictamos datos a elementos externos como nuestro backend
@@ -33,7 +34,11 @@ const useNews = (TypeOfNews) => {
     loadNews();
   }, [newsType]);
 
-  return {news, loading, error};
+  const addNews = (loadLastNews) => {
+    setNews([news, ...news]);
+  }
+
+  return {news, loading, error, addNews};
 };
 
 export default useNews;

@@ -1,24 +1,28 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { createNewsService } from "../services";
 
-export const CreateNews = () => {
+
+export const CreateNews = ({addNews}) => {
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
   const {token} = useContext(AuthContext);
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {    
     e.preventDefault();
     setError('');
     try {
       setSending(true);
-      // console.log(new FormData(e.target));
+      
       
       const data = new FormData(e.target);
       // console.log("datos del formulario: ", data);
       const news = await createNewsService({data, token});
-
+      addNews(news);
       // console.log("Nueva noticia: ", news);
+      navigate("/");
       
     } catch (error) {
       setError(error.message)
