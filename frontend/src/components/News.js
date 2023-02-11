@@ -14,7 +14,8 @@ export const News =  ({ news }) => {
         <p>{news.category} · Publicado por {news.idUser} el {new Date(news.createdAt).toLocaleString()} </p>
         <p className="title">{news.title}</p>
         <p className="summary">{news.summary}</p>
-        <p className="body">{news.body}</p>      
+        <a href={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/uploads/${news.name}`}><img src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/uploads/${news.name}`} alt={news.name}/></a>
+        <p className="body">{news.body}</p>     
       </section>
     </>
   );
