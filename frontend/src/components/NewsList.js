@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { NewsContainer } from "./NewsContainer";
 
-export const NewsList = ({ news }) => {
+export const NewsList = ({ news, removeNews }) => {
   const { loggedUser } = useContext(AuthContext);
   return news.length ? (
     <>
@@ -28,7 +28,7 @@ export const NewsList = ({ news }) => {
             return (
               <>
                 <li key={news.id} className="single-news">
-                  <News news={singleNews} />
+                  <News news={singleNews} removeNews={removeNews}/>
                 </li>
               </>
             );

@@ -7,7 +7,7 @@ import  useNews  from "../hooks/useNews";
 
 
 export const Home = () => {
-  const { news, loading, error, addNews } = useNews('Home');  
+  const { news, loading, error, addNews, removeNews } = useNews('Home');  
   const {user} = useContext(AuthContext);
   
 
@@ -17,7 +17,7 @@ export const Home = () => {
   return (      
     <>
       {user ? <CreateNews addNews={addNews}/> : null}       
-      <NewsList news={news} addNews={addNews} />      
+      <NewsList news={news} removeNews={removeNews} />      
     </>
   );
 };

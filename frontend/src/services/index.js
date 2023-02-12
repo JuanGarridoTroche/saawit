@@ -110,10 +110,10 @@ export const createNewsService = async ({data, token}) => {
 }
 
 // Servicio que carga las 10 noticias  mejor valoradas (feedback)
-export const loadNewsByCategoryService = async () => {
+export const loadNewsByCategoryService = async (category) => {
   //Extraemos (fetch) desde nuestro Backend la info con el endpoint que necesitemos
   const response = await fetch(
-    `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/categoria/:category`
+    `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/categoria/${category}`
   );
 
   const json = await response.json();
@@ -145,3 +145,20 @@ export const loadNewsByFeedbackService = async () => {
   // console.log(json.data.rankedNews);
   return json.data.byFeedback;
 };
+
+export const deleteNewsService = async ({id, token}) => {
+  const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/${id}`,
+  {
+    method: "DELETE",
+    headers: {
+      Authorization: token,
+    },
+  });
+  const json =await response.json();
+
+  if(!response.ok) {
+    throw new Error(json.message);
+  }
+
+
+}

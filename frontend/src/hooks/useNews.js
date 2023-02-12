@@ -34,11 +34,15 @@ const useNews = (TypeOfNews) => {
     loadNews();
   }, [newsType]);
 
-  const addNews = (loadLastNews) => {
-    setNews([news, ...news]);
-  }
+ const addNews = (singleNews) => {
+  setNews([singleNews, ...news])
+ }
 
-  return {news, loading, error, addNews};
+ const removeNews = (id) => {
+  setNews(news.filter((singleNews) => singleNews.id !== id));
+ }
+
+  return {news, loading, error, addNews, removeNews};
 };
 
 export default useNews;
