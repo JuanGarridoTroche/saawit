@@ -1,6 +1,6 @@
 "use strict";
 
-const generateError = require("../../../helpers");
+const {generateError} = require("../../../helpers");
 const getConnection = require("../../getConnection");
 
 const selectUserByIdQuery = async (idUser) => {
@@ -14,6 +14,7 @@ const selectUserByIdQuery = async (idUser) => {
     SELECT id, username, email, bio, photo, role, active, createdAt FROM users WHERE id = ?`,
       [idUser]
     );
+       
 
     // Comprobamos que existe un registro en el resultado de la consulta a la BBDD
     if (users.length < 1) {

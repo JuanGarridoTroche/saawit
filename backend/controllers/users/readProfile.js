@@ -1,6 +1,7 @@
 "use strict";
 
 const selectUserByIdQuery = require("../../bbdd/queries/users/selectUserByIdQuery");
+const { generateError } = require("../../helpers");
 
 const readProfile = async (req, res, next) => {
   try {
@@ -8,7 +9,7 @@ const readProfile = async (req, res, next) => {
     // console.log(idUSer);
 
     // Seleccionamos los datos actuales del usuario
-    const user = await selectUserByIdQuery(idUser);
+    const user = await selectUserByIdQuery(idUser);   
     
     const {id, username, email, bio, photo, role, active, createdAt} = user;
 

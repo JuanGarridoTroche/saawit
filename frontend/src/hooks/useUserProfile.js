@@ -5,7 +5,7 @@ const useUserProfile = (idUser) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] =useState('');
-  console.log(idUser);
+  // console.log(idUser);
 
   useEffect(()=> {
     const loadUserProfile = async () => {
