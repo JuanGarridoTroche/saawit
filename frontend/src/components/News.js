@@ -35,8 +35,9 @@ export const News =  ({ news, removeNews }) => {
         <p className="summary">{news.summary}</p>
         <a href={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/uploads/${news.name}`}><img src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/uploads/${news.name}`} alt={news.name}/></a>
         <p className="body">{news.body}</p>  
-        {loggedUser && loggedUser.id === news.idUSer ? <button onClick={()=> deleteNews(news.id)}>Borrar noticia</button> : null}   
+        {loggedUser && loggedUser.id === news.idUSer ? <button onClick={()=> {if(window.confirm('¿Estás seguro que quieres eliminar esta noticia?')) deleteNews(news.id)}}>Borrar noticia</button> : null}
       </section>
     </>
   );
 };
+  
