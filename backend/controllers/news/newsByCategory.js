@@ -33,7 +33,7 @@ const newsByCategory = async (req, res, next) => {
     res.send({
       status: "Ok",
       message: `Listado de las noticias con la categoría ${category}:`,
-      byCategory,
+      data: byCategory,
     });
   } catch (err) {
     next(err);

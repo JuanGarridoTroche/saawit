@@ -51,7 +51,7 @@ app.put("/users/photo", isAuth, isImg, editPhoto);
 app.put('/users/profile', isAuth, editProfile);
 
 // Ver perfil de usuario
-app.get('/users/profile/:idUSer', readProfile);
+app.get('/users/profile/:idUser', readProfile);
 
 // Ver el perfil del usuario loggeado
 app.get('/users', isAuth, readLoggedProfile);
@@ -102,9 +102,6 @@ app.put("/news/:idNews", isAuth, editNews);
 // Eliminar una noticia
 app.delete("/news/:idNews", isAuth, newsExists, deleteNews);
 
-
-// Noticias filtradas por categoría
-app.get("/news/filter", newsByCategory);
 
 // Vota una noticia publicada (de otro usuario registrado)
 app.post("/news/:idNews/votes", isAuth, newsExists, voteNews);

@@ -4,11 +4,11 @@ const selectUserByIdQuery = require("../../bbdd/queries/users/selectUserByIdQuer
 
 const readProfile = async (req, res, next) => {
   try {
-    const { idUSer } = req.params;
+    const { idUser } = req.params;
     // console.log(idUSer);
 
     // Seleccionamos los datos actuales del usuario
-    const user = await selectUserByIdQuery(idUSer);
+    const user = await selectUserByIdQuery(idUser);
     
     const {id, username, email, bio, photo, role, active, createdAt} = user;
 

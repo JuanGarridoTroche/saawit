@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { loadNewsByCategoryService } from "../services";
 
-export const NewsByCategory = ()=> {
+export const NewsByCategory = ({children: category})=> {
   const [newsByCat, setNewsByCat] = useState([]);
   const [loading, setLoading] =useState(true);
   const [error, setError] =useState('');
@@ -10,7 +10,7 @@ export const NewsByCategory = ()=> {
   useEffect(()=> {
     const loadNewsByCategory = async () => {
       try {
-        const data = await loadNewsByCategoryService();
+        const data = await loadNewsByCategoryService(category);
         setNewsByCat(data);
         
       } catch (error) {
@@ -20,7 +20,7 @@ export const NewsByCategory = ()=> {
       }
     }
     loadNewsByCategory();
-  }, []);
+  }, [category]);
 
 
   return {newsByCat, loading, error}

@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
-import { News } from "./News";
+
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { NewsContainer } from "./NewsContainer";
+// import { NewsByCategory } from "./NewsByCategory";
+// import { LoadingContent } from "./LoadingContent";
+import { News } from "./News";
 
 export const NewsList = ({ news, removeNews }) => {
   const { loggedUser } = useContext(AuthContext);
@@ -10,7 +13,7 @@ export const NewsList = ({ news, removeNews }) => {
     <>
       <section className="categories">
         <h2>Categorías</h2>
-        <Link to="/news/categoria/deportes">deportes</Link>
+        {/* <NewsByCategory category="deportes">deportes</NewsByCategory> */}
         <Link to="/news/categoria/videojuegos">videojuegos</Link>
         <Link to="/news/categoria/noticias">noticias</Link>
         <Link to="/news/categoria/programación">programación</Link>
@@ -20,15 +23,16 @@ export const NewsList = ({ news, removeNews }) => {
         <Link to="/news/categoria/memes">memes</Link>
         <Link to="/news/categoria/general">general</Link>
       </section>
+
       <section className="breaking-news">
-        <h2>Últimas noticias</h2>
         {loggedUser ? <NewsContainer /> : null}
+        <h2>Últimas noticias</h2>
         <ul className="news-list">
           {news.map((singleNews) => {
             return (
               <>
                 <li key={news.id} className="single-news">
-                  <News news={singleNews} removeNews={removeNews}/>
+                  <News news={singleNews} removeNews={removeNews} />
                 </li>
               </>
             );

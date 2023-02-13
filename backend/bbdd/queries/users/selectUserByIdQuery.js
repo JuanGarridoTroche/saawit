@@ -19,6 +19,7 @@ const selectUserByIdQuery = async (idUser) => {
     if (users.length < 1) {
       throw generateError("Usuario no encontrado", 404);
     }
+ 
     return users[0];
   } finally {
     if (connection) connection.release();

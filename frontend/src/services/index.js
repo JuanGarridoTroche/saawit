@@ -85,6 +85,24 @@ export const getLoggedUserDataService = async ({ token }) => {
   return json.data
 };
 
+export const getUserDataService = async ({ idUser }) => {
+  console.log(idUser);
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/profile/${idUser}`
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  console.log(json.data);
+  
+  return json.data
+};
+
+
+
 
 // Servicio que envía los datos de una nueva noticia
 export const createNewsService = async ({data, token}) => {
@@ -124,7 +142,6 @@ export const loadNewsByCategoryService = async (category) => {
   }
 
   console.log(json.data);
-  // console.log(json.data.rankedNews);
   return json.data;
 };
 

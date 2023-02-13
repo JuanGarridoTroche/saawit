@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { loadNewsByFeedbackService, loadNewsService } from "../services";
+import { loadNewsByCategoryService, loadNewsByFeedbackService, loadNewsService } from "../services";
 
 const useNews = (TypeOfNews) => {
   const [news, setNews] = useState([]);
@@ -22,6 +22,11 @@ const useNews = (TypeOfNews) => {
         }
         if(newsType === 'byFeedback'){
           const data = await loadNewsByFeedbackService();
+          setNews(data);
+        }
+
+        if(newsType === 'byCategory'){
+          const data = await loadNewsByCategoryService();
           setNews(data);
         }
 
