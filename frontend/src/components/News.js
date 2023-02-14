@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import { deleteNewsService } from "../services";
+import { deleteNewsService, getUserDataService } from "../services";
 
 export const News = ({ news, removeNews }) => {
   // Me faltaría traer los datos del usuario
@@ -20,8 +20,7 @@ export const News = ({ news, removeNews }) => {
       setError(error.message);
     }
   };
-  // console.log(news);
-
+    
   return (
     <>
       <figure>

@@ -13,6 +13,8 @@ export const Header = ()=> {
       </section>
       <input type="search" id="search" placeholder="Busca en Saawit" onChange={(e)=> {
         setSearch(e.target.value)
+        
+        
         return <Search search={search}/>        
       }}/>      
       <nav>  

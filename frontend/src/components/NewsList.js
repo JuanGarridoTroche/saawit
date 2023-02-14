@@ -30,6 +30,7 @@ export const NewsList = ({ news, removeNews }) => {
       <section className="categories">
         <h2>Categorías</h2>
         {/* <NewsByCategory category="deportes">deportes</NewsByCategory> */}
+        <Link to="/news/categoria/deportes">deportes</Link>
         <Link to="/news/categoria/videojuegos">videojuegos</Link>
         <Link to="/news/categoria/noticias">noticias</Link>
         <Link to="/news/categoria/programación">programación</Link>

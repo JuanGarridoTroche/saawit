@@ -4,6 +4,7 @@ import useUserProfile from "../hooks/useUserProfile";
 
 export const UserProfile = () => {
   const {idUser} = useParams();
+ 
   const {user, loading, error} = useUserProfile(idUser);
 
   if(loading) return <p>Cargando...</p>

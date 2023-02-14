@@ -16,7 +16,7 @@ const selectCharactersInBodyQuery = async (characters) => {
       ORDER BY N.id DESC`,
         [characters]
     )   
-    console.log("SearchBody: ", searchBody, searchBody.length);
+    // console.log("SearchBody: ", searchBody, searchBody.length);
     if(searchBody.length < 1) {
       throw generateError(`No existe ninguna noticia que contenga el filtro '${characters}'.`, 404);
     }

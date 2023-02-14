@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { searchingNewsService } from "../services";
-import { NewsList } from "./NewsList";
 
 export const Search = ({search})=> {
   const [news, setNews] = useState('');
@@ -11,7 +10,7 @@ export const Search = ({search})=> {
   useEffect(()=> {
   
     try {
-      const data = searchingNewsService(search);  
+      const data = searchingNewsService({search});  
       console.log(data);    
 
       if(data.length < 1) {

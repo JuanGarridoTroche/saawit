@@ -2,7 +2,14 @@
 export const loadNewsService = async () => {
   //Extraemos (fetch) desde nuestro Backend la info con el endpoint que necesitemos
   const response = await fetch(
-    `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news`
+    `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news`,
+    {
+      headers: {
+        'Content-type': 'application/json',
+        'Access-Control-Allow-Origin':'*',
+      }
+    }
+    
   );
 
   const json = await response.json();
@@ -84,7 +91,10 @@ export const getloggedUserDataService = async ({ token }) => {
   return json.data;
 };
 
-export const getUserDataService = async ({ idUser }) => {
+
+// Conseguir los datos de usuario a través del id
+export const getUserDataService = async ({idUser}) => {  
+ 
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/profile/${idUser}`
   );
@@ -94,7 +104,7 @@ export const getUserDataService = async ({ idUser }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
-
+  // console.log(json.data);
   return json.data;
 };
 
@@ -174,6 +184,7 @@ export const deleteNewsService = async ({ id, token }) => {
 };
 
 export const searchingNewsService = async ({search}) => {
+  console.log(search);
   const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/search/${search}`)
   const json =await response.json();
 
@@ -185,3 +196,5 @@ export const searchingNewsService = async ({search}) => {
   console.log(json.data);
   return json.data;
 }
+
+export const getUserNewsService = async

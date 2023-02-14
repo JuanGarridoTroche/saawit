@@ -17,7 +17,7 @@ export const Home = () => {
   return (      
     <>
       {user ? <CreateNews addNews={addNews}/> : null}       
-      <NewsList news={news} removeNews={removeNews} />    
+      <NewsList news={news} removeNews={removeNews}/>    
     </>
   );
 };
