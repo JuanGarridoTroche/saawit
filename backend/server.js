@@ -104,6 +104,8 @@ app.put("/news/:idNews", isAuth, editNews);
 // Eliminar una noticia
 app.delete("/news/:idNews", isAuth, newsExists, deleteNews);
 
+
+// Buscar noticias con las letras/palabras indicadas
 // app.get("/news/search", searchingNews)
 
 
