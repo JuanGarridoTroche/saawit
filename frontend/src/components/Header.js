@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { Auth } from "./Auth"
+import { Search } from "./Search"
 
 export const Header = ()=> {
   const [search, setSearch] = useState('')
@@ -12,7 +13,7 @@ export const Header = ()=> {
       </section>
       <input type="search" id="search" placeholder="Busca en Saawit" onChange={(e)=> {
         setSearch(e.target.value)
-        
+        return <Search search={search}/>        
       }}/>      
       <nav>  
         <Auth/>     

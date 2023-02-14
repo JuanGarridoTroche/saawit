@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { NewsContainer } from "./NewsContainer";
 // import { NewsByCategory } from "./NewsByCategory";
@@ -9,6 +9,22 @@ import { News } from "./News";
 
 export const NewsList = ({ news, removeNews }) => {
   const { loggedUser } = useContext(AuthContext);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(true);
+  useEffect(()=> {
+    const loadNewsBySearch = async ()=> {
+      try {
+        loading(true);
+        
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false)
+      }
+    }
+    loadNewsBySearch();
+  }, [news, loading])
+
   return news.length ? (
     <>
       <section className="categories">

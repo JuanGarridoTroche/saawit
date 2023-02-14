@@ -172,3 +172,16 @@ export const deleteNewsService = async ({ id, token }) => {
     throw new Error(json.message);
   }
 };
+
+export const searchingNewsService = async ({search}) => {
+  const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/search/${search}`)
+  const json =await response.json();
+
+  console.log(json.data);
+
+  if(!response.ok) {
+    throw new Error(json.message)
+  }
+  console.log(json.data);
+  return json.data;
+}
