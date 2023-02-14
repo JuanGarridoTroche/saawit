@@ -6,11 +6,8 @@ export const UserProfile = () => {
   const {idUser} = useParams();
   const {user, loading, error} = useUserProfile(idUser);
 
-  // console.log(idUser);
-
   if(loading) return <p>Cargando...</p>
   if(error) return <ErrorMessage message={error} />
-
   
   return (
     <section>

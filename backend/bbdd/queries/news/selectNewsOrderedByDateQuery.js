@@ -8,7 +8,7 @@ const selectNewsOrderedByDateQuery = async () => {
   try {
     connection = await getConnection();
     const [news] = await connection.query(
-      `SELECT N.id, N.category, N.feedback, N.idUSer, N.title, N.summary, N.body, N.createdAt, N.modifiedAt, PN.name FROM news N LEFT JOIN photonews PN ON N.id = PN.idNews ORDER BY id DESC`
+      `SELECT N.id, N.category, N.feedback, N.idUser, N.title, N.summary, N.body, N.createdAt, N.modifiedAt, PN.name FROM news N LEFT JOIN photonews PN ON N.id = PN.idNews ORDER BY id DESC`
     );
 
     if (!news[0]) {

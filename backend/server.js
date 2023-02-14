@@ -79,7 +79,9 @@ const {
   newsByCategory,
   readNews,
   newsOrderedByDate,
+  newsShowImages,
 } = require("./controllers/news");
+const selectWordInBodyQuery = require("./bbdd/queries/news/selectWordInBodyQuery");
 
 // Ver todas las noticias ordenadas por fecha: de la más actual a la más antigua.
 app.get("/news", newsOrderedByDate);
@@ -102,9 +104,14 @@ app.put("/news/:idNews", isAuth, editNews);
 // Eliminar una noticia
 app.delete("/news/:idNews", isAuth, newsExists, deleteNews);
 
+// app.get("/news/search", searchingNews)
+
 
 // Vota una noticia publicada (de otro usuario registrado)
 app.post("/news/:idNews/votes", isAuth, newsExists, voteNews);
+
+// Ver imágenes de una noticia
+app.get("/uploads/:name", newsShowImages);
 
 /*
  * ##########################################

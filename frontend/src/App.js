@@ -41,11 +41,11 @@ function App() {
           <Route path="/news/:idNews" element={<ReadNews />} />
           {/* Editar una noticia creada por el usuario registrado método: put */}
           <Route path="/news/:idNews" element={<Home />} />
-          
+
           {/* Noticias fitradas por categoría */}
           <Route
             path="/news/categoria/:category"
-            element={<NewsByCategory/>}
+            element={<NewsByCategory />}
           />
           {/* Lista de las últimas noticias vloradas por feedback, método: get */}
           <Route path="/news/ByFeedback" element={<NewsByFeedback />} />
@@ -54,7 +54,7 @@ function App() {
           {/* Noticias filtrdas por categoría, método: get */}
           <Route path="/news/filter" element={<Home />} />
           {/* Votar una noticia publicada que no sea de tu propiedad, método: post */}
-          <Route path="/news/:idNews/votes" element={<Home />} />        
+          <Route path="/news/:idNews/votes" element={<Home />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
