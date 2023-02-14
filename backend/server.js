@@ -80,8 +80,9 @@ const {
   readNews,
   newsOrderedByDate,
   newsShowImages,
+  searchingNews,
 } = require("./controllers/news");
-const selectWordInBodyQuery = require("./bbdd/queries/news/selectWordInBodyQuery");
+const selectWordInBodyQuery = require("./bbdd/queries/news/selectCharactersInBodyQuery");
 
 // Ver todas las noticias ordenadas por fecha: de la más actual a la más antigua.
 app.get("/news", newsOrderedByDate);
@@ -106,7 +107,7 @@ app.delete("/news/:idNews", isAuth, newsExists, deleteNews);
 
 
 // Buscar noticias con las letras/palabras indicadas
-// app.get("/news/search", searchingNews)
+app.get("/news/search/:characters", searchingNews)
 
 
 // Vota una noticia publicada (de otro usuario registrado)

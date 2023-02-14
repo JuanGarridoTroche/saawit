@@ -7,6 +7,7 @@ const newsByCategory = require('./newsByCategory')
 const readNews = require('./readNews');
 const newsOrderedByDate = require ('./newsOrderedByDate')
 const newsShowImages = require('./newsShowImages')
+const searchingNews = require('./searchingNews')
 
 module.exports = {
   createNews,
@@ -18,4 +19,5 @@ module.exports = {
   newsOrderedByDate,
   NewsOrderedByFeedback,
   newsShowImages,
+  searchingNews,
 };

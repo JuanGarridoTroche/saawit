@@ -1,9 +1,10 @@
 'use strict';
 
+const { generateError } = require('../../../helpers');
 const getConnection = require('../../getConnection');
 
 
-const selectWordInBodyQuery = async (search) => {
+const selectCharactersInBodyQuery = async (characters) => {
   let connection;
   try {
     connection = await getConnection();
@@ -11,15 +12,18 @@ const selectWordInBodyQuery = async (search) => {
       `SELECT N.id,  N.feedback, N.category, N.idUser, N.title, N.summary, N.body, N.createdAt, PN.name as photoName
       FROM news N
       LEFT JOIN photoNews PN ON N.id = PN.idNews
-      WHERE N.body LIKE '%?%'
-      ORDER BY N.id DESC;`,
-        [search]
-    )
-      // console.log(news);
+      WHERE N.body LIKE "%"?"%"
+      ORDER BY N.id DESC`,
+        [characters]
+    )   
+    console.log("SearchBody: ", searchBody, searchBody.length);
+    if(searchBody.length < 1) {
+      throw generateError(`No existe ninguna noticia que contenga el filtro '${characters}'.`, 404);
+    }
     return searchBody;
   } finally {
     if(connection) connection.release();
   }
 }
 
-module.exports = selectWordInBodyQuery;
+module.exports = selectCharactersInBodyQuery;

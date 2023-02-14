@@ -1,10 +1,6 @@
 "use strict";
 const selectNewsByIdQuery = require("../../bbdd/queries/news/selectNewsByIdQuery");
-const deletePhotoNewsQuery = require("../../bbdd/queries/news/deletePhotoNewsQuery");
-const deleteNewsQuery = require("../../bbdd/queries/news/deleteNewsQuery");
-const deleteVotesNewsQuery = require('../../bbdd/queries/news/deleteVotesNewsQuery')
 const selectPhotoNewsByIdQuery = require('../../bbdd/queries/news/selectPhotoNewsByIdQuery');
-const { generateError, deletePhoto } = require("../../helpers");
 
 const readNews = async (req, res, next) => {
   try {
