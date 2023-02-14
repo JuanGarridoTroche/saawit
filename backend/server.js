@@ -36,6 +36,7 @@ const {
   editProfile,
   readProfile,
   readLoggedProfile,
+  getNews,
 } = require("./controllers/users");
 // Login de usuario
 
@@ -64,6 +65,9 @@ app.put("/users/password/solicitude", sendRecoverPassword);
 
 // Recuperación de contraseña
 app.put('/users/password/recover', recoverPassword)
+
+// Ver todas las noticias de un usuario
+app.get("/users/news", isAuth, getNews)
 
 /*
  * ##########################
@@ -115,6 +119,8 @@ app.post("/news/:idNews/votes", isAuth, newsExists, voteNews);
 
 // Ver imágenes de una noticia
 app.get("/uploads/:name", newsShowImages);
+
+
 
 /*
  * ##########################################

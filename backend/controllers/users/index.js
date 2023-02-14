@@ -7,6 +7,7 @@ const recoverPassword = require("./recoverPassword");
 const editProfile = require("./editProfile");
 const readProfile = require("./readProfile");
 const readLoggedProfile = require("./readLoggedProfile");
+const getNews = require("./getNews")
 
 module.exports = {
   loginUser,
@@ -18,4 +19,5 @@ module.exports = {
   editProfile,
   readProfile,
   readLoggedProfile,
+  getNews,
 };

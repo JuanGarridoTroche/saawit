@@ -193,8 +193,24 @@ export const searchingNewsService = async ({search}) => {
   if(!response.ok) {
     throw new Error(json.message)
   }
-  console.log(json.data);
+  // console.log(json.data);
   return json.data;
 }
 
-export const getUserNewsService = async
+export const getUserNewsService = async ({id, token}) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/users`,
+    {
+      headers: {
+        Authorization: token,
+      }
+    }
+    );
+
+    const json = response.json();
+    if(!response.ok) {
+      throw new Error(json.message)
+    }
+
+    return json.data;
+}
