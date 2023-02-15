@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import { deleteNewsService, getUserDataService } from "../services";
+import { deleteNewsService } from "../services";
 
 export const News = ({ news, removeNews }) => {
 
-  console.log(news);
+  // console.log(news);
   // Me faltaría traer los datos del usuario
   const { loggedUser, token } = useContext(AuthContext);
   const [error, setError] = useState("");
@@ -22,6 +22,9 @@ export const News = ({ news, removeNews }) => {
       setError(error.message);
     }
   };
+  const photoName = news.photos.map(e => e.name);
+  // console.log(photoName);
+  
     
   return (
     <>
@@ -38,13 +41,13 @@ export const News = ({ news, removeNews }) => {
         </p>
         <p className="title">{news.title}</p>
         {news.summary ? <p className="summary">{news.summary}</p> : null}
-        {news.name ? (
+        {photoName ? (
           <a
-            href={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${news.name}`}
+            href={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${photoName}`}
           >
             <img
-              src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${news.name}`}
-              alt={news.photos[0].name}
+              src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${photoName}`}
+              alt={news.photos.name}
             />
           </a>
         ) : null}

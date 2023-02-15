@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { loadNewsByCategoryService, loadNewsByFeedbackService, loadNewsService } from "../services";
+import { useParams } from "react-router-dom";
+import { loadNewsService } from "../services";
 
-const useNews = (TypeOfNews) => {
+const useNews = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [newsType, setNewsType] = useState(TypeOfNews);
+  const [newsType, setNewsType] = useState();
   
 
 
@@ -14,21 +15,10 @@ const useNews = (TypeOfNews) => {
     const loadNews = async () => {
       try {
         // FIXME: Habría que solicitar las noticias de la más actual a la más antigua (crear el endpoint en el backend)
-        // Nos conectamos al backend y solicitamos las noticias ordenadas de mejor a peor feedback (/news/top)
-        if(newsType === 'Home') {
-          const data = await loadNewsService();
-          setNews(data);
-          
-        }
-        if(newsType === 'byFeedback'){
-          const data = await loadNewsByFeedbackService();
-          setNews(data);
-        }
-
-        if(newsType === 'byCategory'){
-          const data = await loadNewsByCategoryService();
-          setNews(data);
-        }
+        // Nos conectamos al backend y solicitamos las noticias ordenadas de mejor a peor feedback (/news/top)        
+        
+        const data = await loadNewsService();
+        setNews(data);   
 
       } catch (error) {
         setError(error.message);
@@ -37,7 +27,7 @@ const useNews = (TypeOfNews) => {
       }
     };
     loadNews();
-  }, [newsType]);
+  }, []);
 
  const addNews = (singleNews) => {
   setNews([singleNews, ...news])
