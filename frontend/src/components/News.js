@@ -9,7 +9,7 @@ export const News = ({ news, removeNews }) => {
   // Me faltaría traer los datos del usuario
   const { loggedUser, token } = useContext(AuthContext);
   const [error, setError] = useState("");
-  console.log(news.photos[0].name);
+  // console.log(news.photos[0].name);
   // console.log(loggedUser);
 
   const deleteNews = async (id) => {
@@ -44,7 +44,7 @@ export const News = ({ news, removeNews }) => {
           >
             <img
               src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${news.name}`}
-              alt={news.name}
+              alt={news.photos[0].name}
             />
           </a>
         ) : null}
