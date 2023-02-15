@@ -7,8 +7,10 @@ const newsExists = require("./middlewares/newsExists");
 const fileupload = require("express-fileupload");
 const cors = require("cors");
 
-const { PORT } = process.env;
+const { PORT, UPLOADS_DIR } = process.env;
 const app = express();
+
+app.use(express.static(UPLOADS_DIR))
 
 // Deserializa el body con formato JSON
 app.use(express.json());
@@ -82,14 +84,14 @@ const {
   NewsOrderedByFeedback,
   newsByCategory,
   readNews,
-  newsOrderedByDate,
+  listNews,
   newsShowImages,
   searchingNews,
 } = require("./controllers/news");
 const selectWordInBodyQuery = require("./bbdd/queries/news/selectCharactersInBodyQuery");
 
 // Ver todas las noticias ordenadas por fecha: de la más actual a la más antigua.
-app.get("/news", newsOrderedByDate);
+app.get("/news", listNews);
 
 // Crear una noticia
 app.post("/news", isAuth, createNews);

@@ -4,10 +4,12 @@ import { AuthContext } from "../context/AuthContext";
 import { deleteNewsService, getUserDataService } from "../services";
 
 export const News = ({ news, removeNews }) => {
+
+  console.log(news);
   // Me faltaría traer los datos del usuario
   const { loggedUser, token } = useContext(AuthContext);
   const [error, setError] = useState("");
-  // console.log(news.id);
+  console.log(news.photos[0].name);
   // console.log(loggedUser);
 
   const deleteNews = async (id) => {
@@ -31,17 +33,17 @@ export const News = ({ news, removeNews }) => {
       <section key={news.id}>
         <p>
           {news.category} · Publicado por{" "}
-          <Link to={`/users/profile/${news.idUser}`}>{news.idUser}</Link> el{" "}
+          <Link to={`/users/profile/${news.idUser}`}>{news.username}</Link> el{" "}
           {new Date(news.createdAt).toLocaleString()}{" "}
         </p>
         <p className="title">{news.title}</p>
         {news.summary ? <p className="summary">{news.summary}</p> : null}
         {news.name ? (
           <a
-            href={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/uploads/${news.name}`}
+            href={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${news.name}`}
           >
             <img
-              src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/uploads/${news.name}`}
+              src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${news.name}`}
               alt={news.name}
             />
           </a>
