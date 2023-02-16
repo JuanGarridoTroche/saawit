@@ -1,0 +1,28 @@
+main>.categories {
+  position: fixed;
+  left: 0;
+  top: 65px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: white;
+  width: 20vw;
+  height: 100vh;
+}
+
+main>.categories>h2 {
+  padding: 0 1rem;
+}
+
+main>.categories>a {
+  text-decoration: none;
+  color: black;
+  font-family: var(--font-noto);
+  padding: .5rem 0;
+  padding: .5rem 2rem;
+}
+
+main>.categories>a:hover {
+  color: var(--color-logo);
+}

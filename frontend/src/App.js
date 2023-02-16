@@ -9,7 +9,6 @@ import { Register } from "./pages/Register";
 import { NewsByFeedback } from "./pages/NewsByFeedback";
 import { ReadNews } from "./pages/ReadNews";
 import { CreateNews } from "./components/CreateNews";
-import { NewsByCategory } from "./components/NewsByCategory";
 import { UserProfile } from "./pages/UserProfile";
 
 function App() {
@@ -24,35 +23,22 @@ function App() {
           {/* Registro de nuevo usuario */}
           <Route path="/register" element={<Register />} />
           {/* Añadir foto de perfil (avatar) del usuario */}
-          <Route path="/users/photo" element={<Home />} />
           {/* Ver el perfil de un usuario */}
           <Route path="/users/profile/:idUser" element={<UserProfile />} />
           {/* Modificar el perfil del usuario */}
-          <Route path="/users/profile" element={<Home />} />
           {/* Modificar la contraseña */}
-          <Route path="/users/password" element={<Home />} />
           {/* Solicitud para que nos envíen a nuestro correo el PassCode para cambiar la contraseña */}
-          <Route path="/users/password/solicitude" element={<Home />} />
           {/* Recuperación de contraseña (es necesario el Passcode) */}
-          <Route path="/users/password/recover" element={<Home />} />
           {/* Crear una noticia, método: post */}
           <Route path="/news" element={<CreateNews />} />
           {/* Leer una noticia, método: get */}
           <Route path="/news/:idNews" element={<ReadNews />} />
           {/* Editar una noticia creada por el usuario registrado método: put */}
-          <Route path="/news/:idNews" element={<Home />} />
 
-          {/* Noticias fitradas por categoría */}
-          <Route
-            path="/news/categoria/:category"
-            element={<NewsByCategory />}
-          />
+          {/* Noticias fitradas por categoría */}          
           {/* Lista de las últimas noticias vloradas por feedback, método: get */}
           <Route path="/news/ByFeedback" element={<NewsByFeedback />} />
           {/* Noticias filtradas con fecha inicio y fecha fin, método: get */}
-          <Route path="/news" element={<Home />} />
-          {/* Noticias filtrdas por categoría, método: get */}
-          <Route path="/news/filter" element={<Home />} />
           {/* Votar una noticia publicada que no sea de tu propiedad, método: post */}
           <Route path="/news/:idNews/votes" element={<Home />} />
           <Route path="*" element={<NotFoundPage />} />

@@ -14,7 +14,7 @@ export const Search = ({search})=> {
       console.log(data);    
 
       if(data.length < 1) {
-        setError(`No existe ninguna noticia con la búsqueda ${search}.`)
+        setError(`No existe ninguna noticia con la búsqueda "${search}".`)
       }
       setNews(data); 
 

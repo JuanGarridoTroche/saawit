@@ -22,75 +22,6 @@ body {
   font-family: var(--font-ibm);
 }
 
-#root > header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 1rem; 
-}
-
-header > .brand {
-  display: flex;
-  gap: 1rem;
-  flex-grow: 1;
-}
-
-header>input {
-  flex-grow: 4;
-  padding: 10px;
-  border-radius: 40px;
-  border: 1px solid rgb(10, 10, 10);
-  background-color: rgb(248, 248, 248);
-}
-
-header>input:hover {
-  background-color: rgb(255, 255, 255);
-}
-
-header>.brand>a>img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-header>nav {
-  display: flex;
-  justify-content: flex-end;
-  flex-grow: 2;
-  gap: 1rem;
-}
-
-header>nav>ul {
-  list-style: none;
-  display: flex;
-  align-items: center;
-}
-
-header>nav>ul li>a {
-  padding: .9rem;
-  text-decoration: none;
-  color: rgb(245, 245, 245);
-  font-weight: 600;
-  background-color: var(--color-logo);
-  border-radius: 20px;
-  margin: 0 .5rem;
-}
-
-header>nav>ul li>a:hover {
-  opacity: .8;
-}
-
-header>nav>ul li > button {
-  background-color: var(--color-logo);
-  border: none;
-  border-radius: 25px;
-  padding: .5rem;
-  margin: .5rem;
-  width: 70px;
-  cursor: pointer;
-  color: rgb(245, 245, 245);
-  font-weight: 600 ;
-}
 
 main {
   text-align: center;  
@@ -156,36 +87,11 @@ main {
   background-color: rgb(245, 245, 245);
 }
 
-
-
-main>.categories {
-  position: fixed;
-  left: 0;
-  top: 65px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  background-color: white;
-  width: 20vw;
-  height: 100vh;
+main {
+  padding: 70px 0;
 }
 
-main>.categories>h2 {
-  padding: 0 1rem;
-}
 
-main>.categories>a {
-  text-decoration: none;
-  color: black;
-  font-family: var(--font-noto);
-  padding: .5rem 0;
-  padding: .5rem 2rem;
-}
-
-main>.categories>a:hover {
-  color: var(--color-logo);
-}
 
 main>.breaking-news>h2 {
   padding: 2rem;
@@ -260,14 +166,3 @@ main>.breaking-news>.news-list>.single-news>section>.body {
 }
 
 
-footer {
-  position: fixed;
-  bottom: 0;
-  left:0px; 
-  right:0px;
-  width: 100vw;
-  height: 5%;
-  text-align: center;
-  overflow: hidden;
-  background-color: white;
-}
