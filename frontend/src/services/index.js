@@ -1,16 +1,14 @@
 // Servicio que carga las noticias ordenadas desde la más actual a la más antigua
-export const loadNewsService = async () => {
+export const loadNewsService = async (queryString) => {
+  // URL Base
+  let url = `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news`;
+
+  if(queryString) {
+    url+= queryString;
+  }
+
   //Extraemos (fetch) desde nuestro Backend la info con el endpoint que necesitemos
-  const response = await fetch(
-    `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news`,
-    {
-      headers: {
-        'Content-type': 'application/json',
-        'Access-Control-Allow-Origin':'*',
-      }
-    }
-    
-  );
+  const response = await fetch(url);
 
   const json = await response.json();
 

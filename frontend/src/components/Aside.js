@@ -1,23 +1,41 @@
-import '../css/Aside.css';
-import { Link } from "react-router-dom"
+import "../css/Aside.css";
+import { loadNewsService } from "../services";
 
+export const Aside = ({ setNews }) => {
+  const handleCategory = async (e) => {
+    try {
+      const queryString = `?category=${e.target.textContent}`;
 
-export const Aside =()=> {
+      const newsList = await loadNewsService(queryString);
+
+      if (newsList) {
+        setNews(newsList);
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   return (
     <section className="categories">
-        <h2>Categorías</h2>
-        {/* <NewsByCategory category="deportes">deportes</NewsByCategory> */}
-        <Link to="/news?category=deportes">deportes</Link>
-        <Link to="/news?category=videojuegos">videojuegos</Link>
-        <Link to="/news?category=noticias">noticias</Link>
-        <Link to="/news?category=programación">programación</Link>
-        <Link to="/news?category=viajes">viajes</Link>
-        <Link to="/news?category=tecnología">tecnología</Link>
-        <Link to="/news?category=música">música</Link>
-        <Link to="/news?category=memes">memes</Link>
-        <Link to="/news?category=general">general</Link>
-        
-      </section>
-  )
-}
+      <h2>Categorías</h2>
+      {/* <NewsByCategory category="deportes">deportes</NewsByCategory> */}
+      <ul
+        onClick={(e) => {
+          handleCategory(e);
+        }}
+      >
+        <li>deportes</li>
+        <li>videojuegos</li>
+        <li>noticias</li>
+        <li>programación</li>
+        <li>viajes</li>
+        <li>tecnología</li>
+        <li>música</li>
+        <li>memes</li>
+        <li>general</li>
+      </ul>
+      
+    </section>
+  );
+};

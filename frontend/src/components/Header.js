@@ -1,28 +1,48 @@
 import '../css/Header.css';
 import { useState } from "react"
-import { Link } from "react-router-dom"
-import useSearch from "../hooks/useSearch"
 import { Auth } from "./Auth"
-import { Search } from "./Search"
+import { loadNewsService } from '../services';
+import { NavLink } from 'react-router-dom';
 
-export const Header = ()=> {
+export const Header = ({setNews})=> {
   const [search, setSearch] = useState('')  
-  const {news, errorMessage, loading, searchParams, setSearchParams} = useSearch();
   
-  const handleSearch = (event)=> {
-    event.preventDefault();
+  
+  const resetNews = async () => {
+    try {
+      const newsList = await loadNewsService();
+      if (newsList) {
+        setNews(newsList);
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
-    return <Search search={search}/>  
+  const searchNews = async (e) => {
+    try {
+      e.preventDefault();
 
-  }
+      const queryString = `?keyword=${search}`;
+
+      const newsList = await loadNewsService(queryString);
+      if (newsList) {
+        setNews(newsList);
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   return (
     <header>
       <section className="brand">
-        <Link to="/"><img src="/logo.png" alt="logo-saawit"/></Link>
+        <NavLink to='/' onClick={()=> {
+          resetNews();
+        }}><img src="/logo.png" alt="logo-saawit"/></NavLink>
         <h2>sa<span style={{color:"rgb(255, 69, 0)"}}>a</span>wit</h2>
       </section>
-      <form onSubmit={handleSearch} className='search-form'>
+      <form className='search-form' onSubmit={searchNews}>
         <input type="search" value={search} placeholder="Busca en Saawit" onChange={(e)=> {
           setSearch(e.target.value)                    
         }}/>  

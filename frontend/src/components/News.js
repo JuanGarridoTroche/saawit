@@ -4,7 +4,6 @@ import { AuthContext } from "../context/AuthContext";
 import { deleteNewsService } from "../services";
 
 export const News = ({ news, removeNews }) => {
-
   // console.log(news);
   // Me faltaría traer los datos del usuario
   const { loggedUser, token } = useContext(AuthContext);
@@ -22,10 +21,7 @@ export const News = ({ news, removeNews }) => {
       setError(error.message);
     }
   };
-  const photoName = news.photos.map(e => e.name);
-  // console.log(photoName);
-  
-    
+
   return (
     <>
       <figure>
@@ -41,16 +37,19 @@ export const News = ({ news, removeNews }) => {
         </p>
         <p className="title">{news.title}</p>
         {news.summary ? <p className="summary">{news.summary}</p> : null}
-        {photoName ? (
-          <a
-            href={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${photoName}`}
-          >
-            <img
-              src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${photoName}`}
-              alt={news.photos.name}
-            />
-          </a>
-        ) : null}
+        {news.photos.map((photo) => {
+          return (
+            <a
+              href={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${photo.name}`} 
+              key={photo.id}
+            >
+              <img
+                src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${photo.name}`}
+                alt={photo.name}
+              />
+            </a>
+          );
+        })}
         <p className="body">{news.body}</p>
         {loggedUser && loggedUser.id === news.idUser ? (
           <button

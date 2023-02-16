@@ -1,48 +1,70 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { NewsContainer } from "./NewsContainer";
-// import { NewsByCategory } from "./NewsByCategory";
-// import { LoadingContent } from "./LoadingContent";
+import { useState } from "react";
 import { News } from "./News";
-import { Aside } from "./Aside";
 
-export const NewsList = ({ news, removeNews }) => {
-  const { loggedUser } = useContext(AuthContext);
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(true);
-  useEffect(()=> {
-    const loadNewsBySearch = async ()=> {
-      try {
-        loading(true);
-        
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false)
-      }
+export const NewsList = ({ news, setNews }) => {
+  const [order, setOrder] = useState("createdAt");
+  const [direction, setDirection] = useState("ASC");
+
+  const filterNews = (e) => {
+    e.stopPropagation();
+
+    let filteredNews;
+
+    if (order === "votes" && direction === "ASC") {
+      filteredNews = news.sort((a, b) => a.totalVotes - b.totalVotes);
+    } else if (order === "votes" && direction === "DESC") {
+      filteredNews = news.sort((a, b) => b.totalVotes - a.totalVotes);
+    } else if (order === "createdAt" && direction === "ASC") {
+      filteredNews = news.sort(
+        (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+      );
+    } else {
+      filteredNews = news.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
     }
-    loadNewsBySearch();
-  }, [news, loading])
+    console.log(filteredNews);
+    setNews([...filteredNews]);
+  };
 
-  return news.length ? (
-    <>
-      <Aside />
-
-      <section className="breaking-news">
-        {loggedUser ? <NewsContainer /> : null}
-        <h2>Últimas noticias</h2>
+  return (
+    <section className="breaking-news">
+      {/* {loggedUser ? <NewsContainer /> : null} */}
+      <h2>Últimas noticias</h2>
+      <div>
+        <label htmlFor="order">Filtrar por:</label>
+        <select
+          id="order"
+          value={order}
+          onChange={(e) => setOrder(e.target.value)}
+        >
+          <option value="createdAt">Fecha</option>
+          <option value="votes">Valoración</option>
+        </select>
+        <label htmlFor="direction">Orden:</label>
+        <select
+          id="direction"
+          value={direction}
+          onChange={(e) => setDirection(e.target.value)}
+        >
+          <option value="ASC">Ascendente</option>
+          <option value="DESC">Descendente</option>
+        </select>
+      </div>
+      <button onClick={filterNews}>Filtrar</button>
+      {news ? (
         <ul className="news-list">
           {news.map((singleNews) => {
             return (
-                <li key={singleNews.id} className="single-news">
-                  <News news={singleNews} removeNews={removeNews} />
-                </li>              
+              <li key={singleNews.id} className="single-news">
+                <News news={singleNews} />
+              </li>
             );
           })}
         </ul>
-      </section>
-    </>
-  ) : (
-    <p>No hay noticias disponibles</p>
+      ) : (
+        <p>No hay noticias disponibles</p>
+      )}
+    </section>
   );
 };

@@ -10,14 +10,38 @@ import { NewsByFeedback } from "./pages/NewsByFeedback";
 import { ReadNews } from "./pages/ReadNews";
 import { CreateNews } from "./components/CreateNews";
 import { UserProfile } from "./pages/UserProfile";
+import { Aside } from "./components/Aside";
+import { useEffect, useState } from "react";
+import { loadNewsService } from "./services";
+import { NewsList } from "./components/NewsList";
+// import { NewsList } from "./components/NewsList";
+// import useNews from "./hooks/useNews";
+// import { useContext } from "react";
 
 function App() {
+  const [news, setNews] = useState();
+
+  useEffect(() => {
+    const loadNewsBySearch = async () => {
+      try {
+        const newsList = await loadNewsService();
+        if (newsList) {
+          setNews(newsList);
+        }
+      } catch (error) {
+        alert(error.message);
+      }
+    };
+    loadNewsBySearch();
+  }, []);
+
   return (
     <>
-      <Header />
+      <Header setNews={setNews}/>
       <main>
+        <Aside setNews={setNews} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<NewsList news={news} setNews={setNews} />} />
           {/* Login de usuario */}
           <Route path="/users/login" element={<Login />} />
           {/* Registro de nuevo usuario */}
@@ -35,7 +59,7 @@ function App() {
           <Route path="/news/:idNews" element={<ReadNews />} />
           {/* Editar una noticia creada por el usuario registrado método: put */}
 
-          {/* Noticias fitradas por categoría */}          
+          {/* Noticias fitradas por categoría */}
           {/* Lista de las últimas noticias vloradas por feedback, método: get */}
           <Route path="/news/ByFeedback" element={<NewsByFeedback />} />
           {/* Noticias filtradas con fecha inicio y fecha fin, método: get */}
@@ -43,6 +67,7 @@ function App() {
           <Route path="/news/:idNews/votes" element={<Home />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        {/* <NewsList /> */}
       </main>
       <Footer />
     </>
