@@ -34,6 +34,8 @@ export const Header = ({setNews})=> {
     }
   };
 
+  
+
   return (
     <header>
       <section className="brand">
@@ -41,6 +43,9 @@ export const Header = ({setNews})=> {
           resetNews();
         }}><img src="/logo.png" alt="logo-saawit"/></NavLink>
         <h2>sa<span style={{color:"rgb(255, 69, 0)"}}>a</span>wit</h2>
+      </section>
+      <section>
+        <img src='/home.svg' alt='home'/>
       </section>
       <form className='search-form' onSubmit={searchNews}>
         <input type="search" value={search} placeholder="Busca en Saawit" onChange={(e)=> {

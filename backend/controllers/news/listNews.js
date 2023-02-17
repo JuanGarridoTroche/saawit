@@ -17,7 +17,7 @@ const listNews = async (req, res, next) => {
     direction = direction === 'ASC' ? 'ASC' : 'DESC';
 
       const news = await selectAllNewsQuery({keyword, category, orderBy, direction});
-       console.log(news);
+      //  console.log(news);
 
 
       res.send({

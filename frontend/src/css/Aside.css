@@ -13,16 +13,19 @@ main>.categories {
 
 main>.categories>h2 {
   padding: 0 1rem;
+  text-transform: uppercase;
 }
 
-main>.categories>a {
+main>.categories> ul > li {
   text-decoration: none;
   color: black;
   font-family: var(--font-noto);
   padding: .5rem 0;
   padding: .5rem 2rem;
+  text-align: left;
+  cursor: pointer;
 }
 
-main>.categories>a:hover {
-  color: var(--color-logo);
+main>.categories>ul > li:hover {
+  color: var(--color-logo);  
 }

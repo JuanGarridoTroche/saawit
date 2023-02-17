@@ -7,7 +7,7 @@ const { generateError } = require("../../helpers");
 const newsByCategory = async (req, res, next) => {
   try {
     const { category } = req.params;
-    console.log(category);
+    // console.log(category);
 
     // Si category no corresponde a ninguna categoría válida, category = 'general'
     const listOfCategories = [
