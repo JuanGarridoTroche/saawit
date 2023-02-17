@@ -4,16 +4,19 @@ import { AuthContext } from "../context/AuthContext";
 
 export const Auth = () => {
   const { loggedUser, logout } = useContext(AuthContext);
+
+  console.log(loggedUser);
   return loggedUser ? (
-    <ul>
+    <ul className="logged-user">
       <li>
         <img
-          // src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/uploads/${loggedUser.name}`}
-          src="/logo192.png"
+          src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${loggedUser.photo}`}
+          // src="/logo192.png"
           alt="avatar"
           style={{ width: "25px" }}
+          className="avatar"
         />
-        <Link to={`users/profile/${loggedUser.id}`} loggedUser={loggedUser}>
+        <Link to={`users/profile/${loggedUser.id}`} loggedUser={loggedUser} className="username">
           {loggedUser.username}
         </Link>
       </li>
