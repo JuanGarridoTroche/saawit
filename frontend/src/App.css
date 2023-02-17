@@ -146,6 +146,10 @@ main>.breaking-news>.news-list>.single-news>figure .arrow-down:hover {
   stroke: blue;
 }
 
+main section.single-news-container  img.delete-news {
+  width: 25px;  
+}
+
 main>.breaking-news>.news-list>.single-news>section>p {
   padding: 0 1rem;
 }

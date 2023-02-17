@@ -29,7 +29,7 @@ export const News = ({ news, removeNews }) => {
         <p>{news.feedback}</p>
         <img src="/arrow-down.svg" alt="arrow down" className="arrow-down" />
       </figure>
-      <section key={news.id}>
+      <section key={news.id} className="single-news-container">
         <p>
           {news.category} · Publicado por{" "}
           <Link to={`/users/profile/${news.idUser}`}>{news.username}</Link> el{" "}
@@ -51,19 +51,19 @@ export const News = ({ news, removeNews }) => {
           );
         })}
         <p className="body">{news.body}</p>
-        {loggedUser && loggedUser.id === news.idUser ? (
-          <button
+        {loggedUser && loggedUser.id === news.idUser ? (         
+            <img 
+            src="/trash.svg" alt="delete news"
+            className="delete-news"
             onClick={() => {
-              if (
-                window.confirm(
-                  "¿Estás seguro que quieres eliminar esta noticia?"
-                )
-              )
-                deleteNews(news.id);
-            }}
-          >
-            Borrar noticia
-          </button>
+                  if (
+                    window.confirm(
+                      "¿Estás seguro que quieres eliminar esta noticia?"
+                    )
+                  )
+                    deleteNews(news.id);
+                }}
+            />
         ) : null}
       </section>
     </>

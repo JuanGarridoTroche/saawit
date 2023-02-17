@@ -63,11 +63,25 @@ header>nav>ul {
   align-items: center;
 }
 
-header>nav>ul li>a {
-  padding: .9rem;
-  text-decoration: none;
-  color: rgb(245, 245, 245);
-  font-weight: 600;
+header>nav>ul.logged-user li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+header>nav>ul.logged-user li> .avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+
+}
+
+header>nav>ul.logged-user li>a {
+  padding: 6px;
+  text-decoration: none;  
+  color: white;
+  font-weight: 500;
+  font-size: 1.1rem;
   background-color: var(--color-logo);
   border-radius: 20px;
   margin: 0 .5rem;

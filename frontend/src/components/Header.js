@@ -51,7 +51,7 @@ export const Header = ({setNews})=> {
         <input type="search" value={search} placeholder="Busca en Saawit" onChange={(e)=> {
           setSearch(e.target.value)                    
         }}/>  
-        <button>Buscar</button>
+        <button hidden>Buscar</button>
       </form>    
       <nav>  
         <Auth/>     
