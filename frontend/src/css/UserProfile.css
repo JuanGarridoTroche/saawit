@@ -1,12 +1,54 @@
 .user-profile {
   width: 70vw;
-  height: 90vh;
+  height: 85vh;
   background-color: white;
   border-radius: 4px;
+  text-align: left;
+  padding: 0 20px;
+  font-family: var(--font-ibm);
+  font-weight: 300;
+  color: #1C1C1C;
 }
 
 .user-profile > h2 {
   text-align: left;
-  border-bottom: 1px solid grey;
-  padding: 10px 10px 0 10px;
+  border-bottom: 1px solid rgb(150, 150, 150);
+  padding: 10px 10px 0 0;margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.user-profile > .user-profile-form >fieldset {
+  border: none;  
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 15px;
+}
+
+.user-profile > .user-profile-form >fieldset > label.summary {
+  font-size: 1rem;
+  color: grey;
+  padding-top: 0;
+}
+
+.user-profile > .user-profile-form >fieldset > input {
+  padding: 14px;
+  border: 1px  solid rgb(155, 155, 155);
+  border-radius: 4px;
+  
+  width: 100%;
+  max-width: 220px;
+}
+
+.user-profile > .user-profile-form >fieldset > textarea {
+  padding: 14px;
+  border: 1px  solid rgb(155, 155, 155);
+  border-radius: 4px;
+  margin: 5px 0;
+  width: 90%;
+}
+
+.user-profile > .user-profile-form >fieldset > img.avatar {
+  width: 50px;
+  height: 50%;
+  border-radius: 50%;
 }

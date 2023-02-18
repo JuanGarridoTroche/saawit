@@ -17,41 +17,46 @@ export const UserProfile = () => {
 
   if (loading) return <p>Cargando...</p>;
   if (error) return <ErrorMessage message={error} />;
-  console.log(user);
-  console.log(loggedUser);
+  // console.log(user);
+  // console.log(loggedUser);
   // console.log(token);
 
   return (
     <section className="user-profile">
       <h2>Perfil del usuario</h2>
       {token && loggedUser && loggedUser.id === user.id ? (
-        <form className="user-profile-form" onSubmit={handleSubmit}>
-          <h2>Usuario logueado: {loggedUser ? loggedUser.id : null}</h2>
+        <form className="user-profile-form" onSubmit={handleSubmit}>          
           {/* <h3>{loggedUser.id === user.id ? `viendo mi perfil de usuario ${loggedUser.id}` : `Viendo el perfil de otro usuario (${loggedUser.id} distinto de ${user.id})`}</h3> */}
-          <fieldset>
+          {/* <fieldset>
             <label>Id. de usuario: {<span>{user.id}</span>}</label>
-          </fieldset>
+          </fieldset> */}
           <fieldset>
             <h3>Nombre de usuario:</h3>
+            <label className='summary'>Escribe un nombre de usuario</label>
             <input placeholder={user.username}/>            
           </fieldset>
           <fieldset>
           <h3>Correo electrónico:</h3>
+          <label className='summary'>Escribe un correo electrónico válido</label>
           <input placeholder={user.email}/>            
           </fieldset>
           <fieldset>          
           <h3>Sobre mi:</h3>
-          <textarea>{user.bio}</textarea>
+          <label className='summary'>Una breve descripción sobre ti mismo para mostrar en tu perfil</label>
+          <textarea defaultValue={user.bio}></textarea>
             {/* <label>Biografía: {<span>{user.bio}</span>}</label> */}
           </fieldset>
           <fieldset>
             <h3>Avatar:</h3>
+            <label className='summary'>La imagen debe tener extensión jpg, jpeg, png, gif, bmp, raw o webp con un formato cuadrado</label>
+            {/* <input type="file" style={`backgroundImage='${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${user.photo}'`}/> */}
             <img
             src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${user.photo}`}            
             alt="avatar"
             style={{ width: "25px" }}
             className="avatar"
           />
+          
           {/* {user.photo ? (            
               <img
                 src={URL.createObjectURL(user.photo)}
