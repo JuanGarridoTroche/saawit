@@ -1,0 +1,12 @@
+.user-profile {
+  width: 70vw;
+  height: 90vh;
+  background-color: white;
+  border-radius: 4px;
+}
+
+.user-profile > h2 {
+  text-align: left;
+  border-bottom: 1px solid grey;
+  padding: 10px 10px 0 10px;
+}

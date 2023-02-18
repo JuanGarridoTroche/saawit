@@ -1,3 +1,4 @@
+import '../css/CreateNews.css';
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
@@ -19,8 +20,8 @@ export const CreateNews = () => {
       const data = new FormData(e.target);
       // console.log("datos del formulario: ", data);
       await createNewsService({ data, token });      
-      // e.target.reset();
-      // setImage(null);
+      e.target.reset();
+      setImage(null);
       navigate("/");
     } catch (error) {
       setError(error.message);
@@ -33,12 +34,12 @@ export const CreateNews = () => {
     <>
       <form className="create-news-form" onSubmit={handleSubmit}>
         <h2>Crear una nueva noticia</h2>
-        {error ? <label>{error}</label> : null}
-        <fieldset>
-          <label id="category">Categorías: </label>
+        {error ? <label className="error">{error}</label> : null}
+        <fieldset className='create-news-container'>
+          {/* <label id="category">Categoría: </label> */}
           <select name="category">
             <option value="general" defaultValue>
-              General
+              Elige una categoría
             </option>
             <option value="deportes">deportes</option>
             <option value="videojuegos">videojuegos</option>
@@ -50,15 +51,14 @@ export const CreateNews = () => {
             <option value="memes">memes</option>
             <option value="general">general</option>
           </select>
-          <br />
-          <input id="title" name="title" placeholder="Título" required />
+          <input id="title" name="title" placeholder="Título" className='title' required />
           <br />
           <input
             id="summary"
             name="summary"
             placeholder="clickbait (opcional)"
+            className='summary'
           />
-          <br />
           <textarea
             id="body"
             name="body"
