@@ -33,66 +33,11 @@ main {
   background-color: rgb(218, 224, 230);  
 }
 
-.user-post {
-  background-color: white;
-  height: 50px;
-  border-radius: 4px;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin: 1rem;
-  border: 1px solid rgb(150, 150, 150);
-  gap: 2rem;
-}
-
-
-/* Imagen del avatar */
-.user-post > a > img {
-  height: 48px;
-  margin: 0 20px 10px 20px;
-}
-
-
-.user-post > .insert-news {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-decoration: none;
-  gap: 1rem;
-}
-
-.user-post > .insert-news > input:first-child {
-  background-color: rgb(245, 245, 245);
-  padding: 10px;
-  width: 100%;
-  border: 1px solid rgb(150, 150, 150);
-  border-radius: 4px;
-}
-
-.user-post > .insert-news > input:first-child:hover {
-  background-color: white;
-}
-
-.user-post > .insert-news > input:last-child {
-  width: 300px;
-  padding: 8px;
-  display: none;  
-}
-
-.user-post > .insert-news img {
-  cursor: pointer;  
-}
-
-.user-post > .insert-news img:hover {
-  background-color: rgb(245, 245, 245);
-}
 
 main {
   padding: 70px 0;
   min-height: 100vh;
 }
-
-
 
 main>.breaking-news>h2 {
   padding: 2rem;

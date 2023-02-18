@@ -5,7 +5,7 @@ import { AuthContext } from "../context/AuthContext";
 export const Auth = () => {
   const { loggedUser, logout } = useContext(AuthContext);
 
-  console.log(loggedUser);
+  // console.log(loggedUser);
   return loggedUser ? (
     <ul className="logged-user">
       <li>

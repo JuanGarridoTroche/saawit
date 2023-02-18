@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 import { News } from "./News";
+import {NewsContainer} from "./NewsContainer";
+
 
 export const NewsList = ({ news, setNews }) => {
   const [order, setOrder] = useState("createdAt");
   const [direction, setDirection] = useState("ASC");
+  const { loggedUser } = useContext(AuthContext);
 
   const filterNews = (e) => {
     e.stopPropagation();
@@ -23,13 +27,13 @@ export const NewsList = ({ news, setNews }) => {
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
     }
-    console.log(filteredNews);
+    // console.log(filteredNews);
     setNews([...filteredNews]);
   };
 
   return (
     <section className="breaking-news">
-      {/* {loggedUser ? <NewsContainer /> : null} */}
+      {loggedUser ? <NewsContainer /> : null}
       <h2>Últimas noticias</h2>
       <div>
         <label htmlFor="order">Filtrar por:</label>
