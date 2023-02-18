@@ -4,12 +4,8 @@ import { AuthContext } from "../context/AuthContext";
 import { deleteNewsService } from "../services";
 
 export const News = ({ news, removeNews }) => {
-  // console.log(news);
-  // Me faltaría traer los datos del usuario
   const { loggedUser, token } = useContext(AuthContext);
   const [error, setError] = useState("");
-  // console.log(news.photos[0].name);
-  // console.log(loggedUser);
 
   const deleteNews = async (id) => {
     // alert(`Tweet ${id} borrado!`)

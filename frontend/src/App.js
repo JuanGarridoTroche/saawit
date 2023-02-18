@@ -14,9 +14,6 @@ import { Aside } from "./components/Aside";
 import { useEffect, useState } from "react";
 import { loadNewsService } from "./services";
 import { NewsList } from "./components/NewsList";
-// import { NewsList } from "./components/NewsList";
-// import useNews from "./hooks/useNews";
-// import { useContext } from "react";
 
 function App() {
   const [news, setNews] = useState();
