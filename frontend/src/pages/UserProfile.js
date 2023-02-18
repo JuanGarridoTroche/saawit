@@ -50,12 +50,12 @@ export const UserProfile = () => {
             <h3>Avatar:</h3>
             <label className='summary'>La imagen debe tener extensión jpg, jpeg, png, gif, bmp, raw o webp con un formato cuadrado</label>
             {/* <input type="file" style={`backgroundImage='${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${user.photo}'`}/> */}
-            <img
+            {user.photo ? <img
             src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${user.photo}`}            
             alt="avatar"
             style={{ width: "25px" }}
             className="avatar"
-          />
+          /> : <input type="file" />}
           
           {/* {user.photo ? (            
               <img
@@ -90,9 +90,7 @@ export const UserProfile = () => {
           <button>Actualizar</button>
         </form>
       ) : (
-        <form className="user-profile-form">
-          <h2>Perfil de usuario sin estar logueado</h2>
-          <h3>Viendo el perfil de un usuario sin loguearme</h3>
+        <form className="user-profile-form">          
           <fieldset>
           <h3>Id. de usuario:</h3>
             <label>{<span>{user.id}</span>}</label>
@@ -111,7 +109,12 @@ export const UserProfile = () => {
           </fieldset>
           <fieldset>
           <h3>Avatar:</h3>
-            <label>{<span>{user.photo}</span>}</label>
+          {user.photo ? <img
+            src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${user.photo}`}            
+            alt="avatar"
+            style={{ width: "25px" }}
+            className="avatar"
+          /> : 'Sin avatar'}
           </fieldset>
           <fieldset>
           <h3>Rol:</h3>
@@ -119,14 +122,14 @@ export const UserProfile = () => {
           </fieldset>
           <fieldset>
             <label>
-            <h3>Cuenta creada::</h3>              
+            <h3>Cuenta creada:</h3>              
               {<span>{new Date(user.createdAt).toLocaleDateString()}</span>}
             </label>
           </fieldset>
           <fieldset>
-          <h3>Cuenta activa:</h3>
+          <h3>Cuenta:</h3>
             <label>
-              Cuenta: <span>{user.active ? "Activa" : "Desactivada"}</span>
+             <span>{user.active ? "Activa" : "Desactivada"}</span>
             </label>
           </fieldset>
         </form>
