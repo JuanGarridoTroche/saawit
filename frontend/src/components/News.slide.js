@@ -3,8 +3,8 @@ import '../css/Slide.css'
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import { deleteNewsService } from "../services";
 import { Slide } from 'react-slideshow-image';
+import { newsService } from '../services';
 
 export const News = ({ news, removeNews }) => {
   // console.log(news);
@@ -17,8 +17,9 @@ export const News = ({ news, removeNews }) => {
   const deleteNews = async (id) => {
     // alert(`Tweet ${id} borrado!`)
     try {
+      const method = 'DELETE';
       // Desde aquí controlamos los errores que pueden ocurrir al borrar una news
-      await deleteNewsService({ id, token });
+      await newsService({ id, token, method });
       removeNews(id);
     } catch (error) {
       setError(error.message);

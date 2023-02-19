@@ -1,0 +1,99 @@
+
+.read-news-form {
+  width: 70vw;
+  height: 70vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.read-news-form > h2 {
+  text-align: left;
+  padding: 20px 0 0;
+  margin-bottom: 30px;
+  border-bottom: 1px solid grey;
+  width: 100%;
+}
+
+.read-news-form > .read-news-container {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.read-news-form > .read-news-container > select {
+  padding: 10px;
+  border: 1px  solid rgb(155, 155, 155);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 220px;
+}
+
+
+.read-news-form > .read-news-container > input.title {
+  padding: 14px;
+  border: 1px  solid rgb(155, 155, 155);
+  border-radius: 4px;
+  width: 100%;
+  font-size: 1.8rem;
+}
+
+.read-news-form > .read-news-container > input.summary {
+  padding: 14px;
+  border: 1px  solid rgb(155, 155, 155);
+  margin-bottom: 20px;
+  border-radius: 4px;
+  width: 100%;
+  font-size: 1.8rem;
+}
+
+.read-news-form > .read-news-container > textarea {
+  padding: 14px;
+  border: 1px  solid rgb(155, 155, 155);
+  border-radius: 4px;
+  margin: 5px 0;
+  width: 100%;
+}
+
+.read-news-form > .read-news-container > label {
+  display: flex;
+  margin: 10px 0 0 10px;
+}
+
+.read-news-form > .read-news-container > label > .photos {
+  width: 35px;
+}
+
+.read-news-form > .read-news-container > label > .photos:hover {
+  opacity: .7;
+}
+
+.read-news-form > button {
+  border: none;
+  background-color: var(--color-logo);
+  color: white;
+  padding: 10px;
+  width: 100%;
+  max-width: 220px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.read-news-form > button:hover {
+  opacity: .7;
+}
+
+.error {
+  color: red;
+  font-family: var(--font-noto);
+  font-weight: 700;
+}

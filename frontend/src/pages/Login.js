@@ -54,10 +54,8 @@ export const Login = () => {
       <section className="dont-forget">
         <p>¿Has olvidado tu nombre de usuario o contraseña ?</p>
         <p>
-          ¿Es tu primera vez en Reddit?{" "}
-          <Link to="/register">
-            REGISTRARSE
-          </Link>
+          ¿Es tu primera vez en saawit? 
+          <Link to="/register"> REGISTRARSE</Link>
         </p>
       </section>
     </section>

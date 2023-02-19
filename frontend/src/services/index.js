@@ -18,7 +18,7 @@ export const loadNewsService = async (queryString) => {
   }
 
   // console.log(json.data);
-  // console.log(json.data.rankedNews);
+  console.log(json.data.rankedNews);
   return json.data.news;
 };
 
@@ -164,11 +164,28 @@ export const loadNewsByFeedbackService = async () => {
   return json.data.byFeedback;
 };
 
-export const deleteNewsService = async ({ id, token }) => {
+// export const deleteNewsService = async ({ id, token, method }) => {
+//   const response = await fetch(
+//     `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/${id}`,
+//     {
+//       method: method,
+//       headers: {
+//         Authorization: token,
+//       },
+//     }
+//   );
+//   const json = await response.json();
+
+//   if (!response.ok) {
+//     throw new Error(json.message);
+//   }
+// };
+
+export const newsService = async ( {id, token, method} ) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/${id}`,
     {
-      method: "DELETE",
+      method: method,
       headers: {
         Authorization: token,
       },

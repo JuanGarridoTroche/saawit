@@ -1,8 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { News } from "./News";
-import {NewsContainer} from "./NewsContainer";
-
+import { NewsContainer } from "./NewsContainer";
 
 export const NewsList = ({ news, setNews }) => {
   const [order, setOrder] = useState("createdAt");
@@ -31,11 +30,31 @@ export const NewsList = ({ news, setNews }) => {
     setNews([...filteredNews]);
   };
 
+  const filterNewsBestVote = (e) => {
+    const todayNews = news.filter((e) => {
+      const day = new Date().toISOString().slice(0, 10);
+      return e.createdAt >= day;
+    });
+
+    todayNews.sort((a, b) => b.totalVotes - a.totalVotes);
+
+    setNews([...todayNews]);
+  };
+
   return (
     <section className="breaking-news" id="up">
       {loggedUser ? <NewsContainer /> : null}
       <h2>Últimas noticias</h2>
-      <div>
+      <div className="filter-container">
+        <label
+          className="best-vote"
+          onClick={() => {
+            filterNewsBestVote();
+          }}
+        >
+          <img src="/rocket-best-vote.svg" alt="noticias más votadas hoy" />
+          <p>TOP</p>
+        </label>
         <label htmlFor="order">Filtrar por:</label>
         <select
           id="order"
@@ -55,14 +74,21 @@ export const NewsList = ({ news, setNews }) => {
           <option value="DESC">Descendente</option>
         </select>
       </div>
-      <button onClick={filterNews} className="filter">Filtrar</button>
-      <button id="up" onClick={()=>{
-        // Para Chrome, Firefox, IE y Opera
-        document.documentElement.scrollTop = 0;
+      <button onClick={filterNews} className="filter">
+        Filtrar
+      </button>
+      <button
+        id="up"
+        onClick={() => {
+          // Para Chrome, Firefox, IE y Opera
+          document.documentElement.scrollTop = 0;
 
-        // Para Safari
-        document.body.scrollTop = 0;
-      }}>Volver arriba</button>
+          // Para Safari
+          document.body.scrollTop = 0;
+        }}
+      >
+        Volver arriba
+      </button>
       {news ? (
         <ul className="news-list filter">
           {news.map((singleNews) => {
@@ -72,7 +98,7 @@ export const NewsList = ({ news, setNews }) => {
               </li>
             );
           })}
-        </ul>        
+        </ul>
       ) : (
         <p>No hay noticias disponibles</p>
       )}

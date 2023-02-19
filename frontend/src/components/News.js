@@ -1,22 +1,41 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import { deleteNewsService } from "../services";
+import { newsService } from "../services";
+
 
 export const News = ({ news, removeNews }) => {
   const { loggedUser, token } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const deleteNews = async (id) => {
     // alert(`Tweet ${id} borrado!`)
     try {
       // Desde aquí controlamos los errores que pueden ocurrir al borrar una news
-      await deleteNewsService({ id, token });
-      removeNews(id);
+      const method = 'DELETE';
+      await newsService({ id, token, method });
+      removeNews(id); 
+      // loadNewsService();     
+      navigate("/");
     } catch (error) {
       setError(error.message);
     }
   };
+
+  const readNews = async (id) => {
+    // alert(`Tweet ${id} borrado!`)
+    try {
+      // Desde aquí controlamos los errores que pueden ocurrir al borrar una news
+      const method = 'GET';
+      await newsService({ id, token, method });
+      removeNews(id);
+      navigate("/");
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
 
   return (
     <>
@@ -62,6 +81,18 @@ export const News = ({ news, removeNews }) => {
                 }}
             />
         ) : null}
+        {loggedUser && loggedUser.id === news.idUser ? (         
+            <img 
+            src="/pencil.svg" alt="edit news"
+            className="edit-news"
+            onClick={() => {             
+              // navigate(`/news/${news.id}`)
+              // <ReadNews id={news}/>
+              readNews(news.id);
+                }}
+            />
+        ) : null}
+        
       </section>
     </>
   );
