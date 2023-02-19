@@ -1,3 +1,4 @@
+import '../css/Register.css';
 import { useState } from "react"
 import {useNavigate} from "react-router-dom";
 import { registerUserService } from "../services";
@@ -30,34 +31,38 @@ export const Register = ()=> {
 
   return (
     <section className="register">
-      <h1>Página de registro de nuevo usuario</h1>
+      <h2>Registro de nuevo usuario</h2>
       <p>{error}</p>
       <form onSubmit={handleForm}>
         <fieldset>
-          <label htmlFor="username">Nombre de usuario<span className="required"> *</span></label>
+          <h3>Nombre de usuario<span className="required"> *</span></h3>
+          <label htmlFor="username" className='summary-field'>Escribe un nombre de usuario</label>
           <input type="text" id="username" name="username" placeholder="nombre de usuario..." onChange={(e) => {
             setUsername(e.target.value)
           }} required />
         </fieldset>
         <fieldset>
-          <label htmlFor="email">Email<span className="required"> *</span></label>
+          <h3>Email<span className="required"> *</span></h3>
+          <label htmlFor="email" className='summary-field'>Escribe un correo electrónico válido</label>
           <input type="email" id="email" name="email" placeholder="escribe tu correo..." onChange={(e) => {
             setEmail(e.target.value)
           }} required />
         </fieldset>
         <fieldset>
+          <h3>Contraseña<span className="required"> *</span></h3>
           <label htmlFor="password">Contraseña<span className="required"> *</span></label>
           <input type="password" id="password" name="password" required onChange={(e) => {
             setPwd(e.target.value);
           }}/>
         </fieldset>
         <fieldset>
-          <label htmlFor="bio">Acerca de ti</label>
+          <h3>Sobre ti<span className="required"> *</span></h3>
+          <label htmlFor="bio" className='summary-field'>Una breve descripción sobre ti mismo para mostrar en tu perfil</label>
           <textarea type="text" id="bio" name="bio" rows="4" cols="50" onChange={(e)=> {
             setBio(e.target.value);
           }} />
         </fieldset>
-        <button>Enviar</button>
+        <button>Registrarse</button>
       </form>
       
     </section>

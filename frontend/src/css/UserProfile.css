@@ -39,8 +39,7 @@
 .user-profile > .user-profile-form >fieldset > input {
   padding: 14px;
   border: 1px  solid rgb(155, 155, 155);
-  border-radius: 4px;
-  
+  border-radius: 4px;  
   width: 100%;
   max-width: 220px;
 }
