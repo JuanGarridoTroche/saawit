@@ -50,7 +50,7 @@ export const Register = ()=> {
         </fieldset>
         <fieldset>
           <h3>Contraseña<span className="required"> *</span></h3>
-          <label htmlFor="password">Contraseña<span className="required"> *</span></label>
+          <label htmlFor="password" className='summary-field'>Escribe tu contraseña con al menos 8 caracteres<span className="required"> *</span></label>
           <input type="password" id="password" name="password" required onChange={(e) => {
             setPwd(e.target.value);
           }}/>

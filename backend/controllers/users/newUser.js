@@ -44,7 +44,7 @@ const newUser = async (req, res, next) => {
       .min(8)
       .max(100)
       .required()
-      .error(new Error("La contraseña debe tener al menos 4 caracteres", 403));
+      .error(new Error("La contraseña debe tener al menos 8 caracteres", 403));
     const validationPwd = schemaPwd.validate(password);
 
     if (validationPwd.error || validationPwd === null) {
