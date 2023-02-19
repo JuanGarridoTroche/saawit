@@ -15,10 +15,10 @@ export const CreateNews = () => {
     e.preventDefault();
     setError("");
     try {
-      setSending(true);
+      setSending(true);    
+      const data = new FormData(e.target);  
 
-      const data = new FormData(e.target);
-      // console.log("datos del formulario: ", data);
+      console.log("datos del formulario: ", data);
       await createNewsService({ data, token });      
       e.target.reset();
       setImage(null);
@@ -37,7 +37,7 @@ export const CreateNews = () => {
         {error ? <label className="error">{error}</label> : null}
         <fieldset className='create-news-container'>
           {/* <label id="category">Categoría: </label> */}
-          <select name="category">
+          <select name="category" id="category">
             <option value="general" defaultValue>
               Elige una categoría
             </option>

@@ -7,6 +7,7 @@ import  useNews  from "../hooks/useNews";
 
 
 export const Home = () => {
+  
   const { news, loading, error, addNews, removeNews } = useNews();  
   const {user} = useContext(AuthContext);
   

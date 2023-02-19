@@ -119,8 +119,10 @@ export const createNewsService = async ({ data, token }) => {
     }
   );
 
+  console.log(data);
+
   const json = await response.json();
-  // console.log(json.data);
+  console.log(json.data);
 
   if (!response.ok) {
     throw new Error(json.message);
