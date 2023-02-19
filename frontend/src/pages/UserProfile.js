@@ -24,13 +24,9 @@ export const UserProfile = () => {
 
   return (
     <section className="user-profile">
-      <h2>Perfil del usuario</h2>
+      <h2 className="profile">Perfil de usuario {user.active ? "activo" : <span>suspendido</span>}</h2>
       {token && loggedUser && loggedUser.id === user.id ? (
-        <form className="user-profile-form" onSubmit={handleSubmit}>
-          {/* <h3>{loggedUser.id === user.id ? `viendo mi perfil de usuario ${loggedUser.id}` : `Viendo el perfil de otro usuario (${loggedUser.id} distinto de ${user.id})`}</h3> */}
-          {/* <fieldset>
-            <label>Id. de usuario: {<span>{user.id}</span>}</label>
-          </fieldset> */}
+        <form className="user-profile-form" onSubmit={handleSubmit}>          
           <fieldset>
             <h3>Nombre de usuario:</h3>
             <label className="summary">Escribe un nombre de usuario</label>
@@ -49,7 +45,6 @@ export const UserProfile = () => {
               Una breve descripción sobre ti mismo para mostrar en tu perfil
             </label>
             <textarea defaultValue={user.bio}></textarea>
-            {/* <label>Biografía: {<span>{user.bio}</span>}</label> */}
           </fieldset>
           <fieldset>
             <h3>Avatar:</h3>
@@ -57,13 +52,6 @@ export const UserProfile = () => {
               La imagen debe tener extensión jpg, jpeg, png, gif, bmp, raw o
               webp con un formato cuadrado
             </label>
-            {/* <input type="file" style={`backgroundImage='${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${user.photo}'`}/> */}
-            {/* {user.photo ? <img
-            src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${user.photo}`}            
-            alt="avatar"
-            style={{ width: "25px" }}
-            className="avatar"
-          /> : <input type="file" />} */}
             {user.photo ? (
               <label htmlFor="avatar">
                 <img
@@ -84,18 +72,6 @@ export const UserProfile = () => {
             ) : (
               <input type="file" />
             )}
-            
-           
-
-            {/* {user.photo ? (            
-              <img
-                src={URL.createObjectURL(user.photo)}
-                alt="preview"
-                style={{ width: "100px" }}
-              />            
-          ) : null} */}
-            {/* <img src={`http://localhost:4000/${user.photo}`} alt={user.photo} ><input type='file' hidden/></img> */}
-            {/* <label>Avatar: {<span>{user.photo}</span>}</label> */}
           </fieldset>
           <fieldset>
             <h3>Rol:</h3>
@@ -107,25 +83,22 @@ export const UserProfile = () => {
               {<span>{new Date(user.createdAt).toLocaleDateString()}</span>}
             </label>
           </fieldset>
-          {/* {user.photo ? (
-            <fieldset>
-              <label>email: {<span>{user.email}</span>}</label>
-            </fieldset>
-          ) : null} */}
-          <fieldset>
-            <h3>Cuenta activa:</h3>
+          {/* <fieldset>
+            <h3>Cuenta:</h3>
+            { user.active ? null :
+              <label className="summary">Solicita la activación de tu cuenta a través del envío de una solicitud a tu correo electrónico</label>}
             <label>
-              <span>{user.active ? "Activa" : "suspendida"}</span>
+              <span>{user.active ? "Activa" : <button>Activar</button>}</span>
             </label>
-          </fieldset>
+          </fieldset> */}
           <button>Actualizar</button>
         </form>
       ) : (
         <form className="user-profile-form">
-          <fieldset>
+          {/* <fieldset>
             <h3>Id. de usuario:</h3>
             <label>{<span>{user.id}</span>}</label>
-          </fieldset>
+          </fieldset> */}
           <fieldset>
             <h3>Nombre de usuario:</h3>
             <label>{<span>{user.username}</span>}</label>
@@ -161,12 +134,14 @@ export const UserProfile = () => {
               {<span>{new Date(user.createdAt).toLocaleDateString()}</span>}
             </label>
           </fieldset>
-          <fieldset>
+          {/* <fieldset>
             <h3>Cuenta:</h3>
-            <label>
-              <span>{user.active ? "Activa" : "Desactivada"}</span>
+            { user.active ? null :
+              <label className="summary">Solicita la activación de tu cuenta a través del envío de una solicitud a tu correo electrónico</label>}            
+            <label>              
+              <span>{user.active ? "Activa" : "suspendida"}</span>
             </label>
-          </fieldset>
+          </fieldset> */}
         </form>
       )}
     </section>

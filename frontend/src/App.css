@@ -29,14 +29,27 @@ main {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  /* position: relative; */
   background-color: rgb(218, 224, 230);  
-}
-
-
-main {
   padding: 70px 0;
   min-height: 100vh;
+}
+
+/* Botón para volver al comienzo de la página */
+main >.breaking-news > #up {
+  background-color: var(--color-logo);
+  border: none;
+  border-radius: 25px;
+  padding: .5rem;
+  margin: .5rem;
+  width: 100px;
+  cursor: pointer;
+  color: rgb(245, 245, 245);
+  font-weight: 600 ;
+  position: fixed;
+  bottom: 50px;
+  right: 150px;
+  z-index: 10;
+  outline: none;
 }
 
 main>.breaking-news>h2 {

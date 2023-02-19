@@ -32,7 +32,7 @@ export const NewsList = ({ news, setNews }) => {
   };
 
   return (
-    <section className="breaking-news">
+    <section className="breaking-news" id="up">
       {loggedUser ? <NewsContainer /> : null}
       <h2>Últimas noticias</h2>
       <div>
@@ -55,9 +55,16 @@ export const NewsList = ({ news, setNews }) => {
           <option value="DESC">Descendente</option>
         </select>
       </div>
-      <button onClick={filterNews}>Filtrar</button>
+      <button onClick={filterNews} className="filter">Filtrar</button>
+      <button id="up" onClick={()=>{
+        // Para Chrome, Firefox, IE y Opera
+        document.documentElement.scrollTop = 0;
+
+        // Para Safari
+        document.body.scrollTop = 0;
+      }}>Volver arriba</button>
       {news ? (
-        <ul className="news-list">
+        <ul className="news-list filter">
           {news.map((singleNews) => {
             return (
               <li key={singleNews.id} className="single-news">
@@ -65,7 +72,7 @@ export const NewsList = ({ news, setNews }) => {
               </li>
             );
           })}
-        </ul>
+        </ul>        
       ) : (
         <p>No hay noticias disponibles</p>
       )}

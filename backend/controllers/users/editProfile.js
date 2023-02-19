@@ -21,9 +21,10 @@ const editProfile = async (req, res, next) => {
     // Comprobamos que el email no esté ya registrado en la BBDD
     await selectMailByEmailQuery(email);
     if(!email) email = user.email;
-    // console.log(email);
 
+    //Si se le envía un dato distinto de verdadero o falso a active, cogerá el valor que tenía anteriormente
     if(active !== true || active !== false) active =user.active;
+    
     //Actualizamos los datos
     await updateProfileQuery(username, email, bio, active, req.user.id);
 
