@@ -56,7 +56,7 @@ export const CreateNews = () => {
           <input
             id="summary"
             name="summary"
-            placeholder="clickbait (opcional)"
+            placeholder="Entradilla (opcional)"
             className='summary'
           />
           <textarea
@@ -67,12 +67,20 @@ export const CreateNews = () => {
             placeholder="Texto de la noticia..."
             required
           />
+           <label htmlFor="photos">
+            <img
+              src="/upload.svg"
+              alt="subir imágenes de la noticia"
+              className="photos"
+            />
+            </label>
           <input
             type="file"
             id="photos"
             name="photos"
             accept="image/*"
             onChange={(e) => setImage(e.target.files[0])}
+            hidden
           />
           {image ? (
             <figure>
@@ -83,6 +91,7 @@ export const CreateNews = () => {
               />
             </figure>
           ) : null}
+            
         </fieldset>
         <button>Enviar</button>
       </form>

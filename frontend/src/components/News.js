@@ -21,9 +21,9 @@ export const News = ({ news, removeNews }) => {
   return (
     <>
       <figure>
-        <img src="/arrow-up.svg" alt="arrow up" className="arrow-up" />
+        <img src="/arrow-up.svg" alt="arrow up" className="arrow arrow-up" />
         <p>{news.feedback}</p>
-        <img src="/arrow-down.svg" alt="arrow down" className="arrow-down" />
+        <img src="/arrow-down.svg" alt="arrow down" className="arrow arrow-down" />
       </figure>
       <section key={news.id} className="single-news-container">
         <p>
@@ -42,6 +42,7 @@ export const News = ({ news, removeNews }) => {
               <img
                 src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${photo.name}`}
                 alt={photo.name}
+                className="photos"
               />
             </a>
           );

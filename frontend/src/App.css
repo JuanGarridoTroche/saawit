@@ -66,12 +66,13 @@ main>.breaking-news>.news-list {
   align-items: center;
   gap: 1rem;
   padding: 0 2rem;
-  margin: 0 1rem;
+  margin: 0 auto;
 }
 
 main>.breaking-news>.news-list>.single-news {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
   gap: .5rem;
   background-color: white;
@@ -80,9 +81,10 @@ main>.breaking-news>.news-list>.single-news {
   border-radius: 4px;
   box-shadow: 1px 2px 10px rgb(10, 10, 10);
   cursor: pointer;
+  /* margin: 0 auto; */
 }
 
-main>.breaking-news>.news-list>.single-news>figure img {
+main>.breaking-news>.news-list>.single-news>figure img.arrow {
   width: 25px;
 }
 
@@ -102,6 +104,19 @@ main>.breaking-news>.news-list>.single-news>figure .arrow-down:hover {
   /* filter: invert(100%); */
   border: 1px solid blue;
   stroke: blue;
+}
+
+main>.breaking-news>.news-list>.single-news  a .photos {
+  width: 100%;
+  max-height: 400px;
+  max-width: 400px;
+  /* padding: 20px 10px 10px 20px; */
+}
+
+main>.breaking-news>.news-list>.single-news-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 main section.single-news-container  img.delete-news {
