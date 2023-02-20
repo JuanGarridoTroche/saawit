@@ -39,7 +39,7 @@ export const NewsList = ({ news, setNews }) => {
       let mySQLFormattedDate = new Date(e.createdAt).toLocaleString().slice(0, 10);      
       // console.log(mySQLFormattedDate.toLocaleDateString);      
       // console.log("Fecha formateada: ", mySQLFormattedDate);      
-      console.log("Día actual: ", day);
+      // console.log("Día actual: ", day);
       return (mySQLFormattedDate) === day;
     });
     // console.log(todayNews);

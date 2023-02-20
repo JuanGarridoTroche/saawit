@@ -40,15 +40,15 @@ export const News = ({ news, removeNews }) => {
 
     try {
       const method = 'POST';
-      // const body = JSON.stringify({"like": vote});
-      const body = {"like": vote};
-     
+      const body = JSON.stringify({"like": vote});
+      // const body = {"like": vote};     
 
-      console.log(body);
-      
+         
 
       console.log("ID: ", id, "Like: ", body);
       await voteNewsService({token, body, id, method})
+
+      
       alert(body.like ? 'voto positivo' : 'voto negativo')
       
     } catch (error) {

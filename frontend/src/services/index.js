@@ -234,13 +234,14 @@ export const getUserNewsService = async ({ id, token }) => {
 
 export const voteNewsService = async ({ id, token, method, body }) => {
 
-  console.log("Body antes del fetch: ", body);
+  console.log("Body antes del fetch: ", body, id, method);
   const response = await fetch(
     `
     ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/${id}/votes`,
     {
       method: method,
-      body: JSON.stringify(body),
+      // body: JSON.stringify(body),
+      body: body,
       headers: {
         Authorization: token,
       },
