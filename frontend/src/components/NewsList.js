@@ -3,6 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import { News } from "./News";
 import { NewsContainer } from "./NewsContainer";
 
+
 export const NewsList = ({ news, setNews }) => {
   const [order, setOrder] = useState("createdAt");
   const [direction, setDirection] = useState("ASC");
@@ -30,16 +31,19 @@ export const NewsList = ({ news, setNews }) => {
     setNews([...filteredNews]);
   };
 
+
+  // Filtro de las noticias mejor valoradas del día de hoy
   const filterNewsBestVote = (e) => {
     const todayNews = news.filter((e) => {
-      const day = new Date().toISOString().slice(0, 10);
-      return e.createdAt >= day;
+      const day = new Date().toLocaleString().slice(0, 10);
+      let mySQLFormattedDate = new Date(e.createdAt).toLocaleString().slice(0, 10);      
+      // console.log(mySQLFormattedDate.toLocaleDateString);      
+      // console.log("Fecha formateada: ", mySQLFormattedDate);      
+      console.log("Día actual: ", day);
+      return (mySQLFormattedDate) === day;
     });
-
-    console.log(todayNews);
-
+    // console.log(todayNews);
     todayNews.sort((a, b) => b.totalVotes - a.totalVotes);
-
 
     setNews([...todayNews]);
   };
