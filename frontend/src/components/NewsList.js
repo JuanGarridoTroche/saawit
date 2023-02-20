@@ -36,7 +36,10 @@ export const NewsList = ({ news, setNews }) => {
       return e.createdAt >= day;
     });
 
+    console.log(todayNews);
+
     todayNews.sort((a, b) => b.totalVotes - a.totalVotes);
+
 
     setNews([...todayNews]);
   };

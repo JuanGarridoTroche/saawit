@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 export const Auth = () => {

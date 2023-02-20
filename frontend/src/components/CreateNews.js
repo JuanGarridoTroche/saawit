@@ -18,7 +18,6 @@ export const CreateNews = () => {
       setSending(true);    
       const data = new FormData(e.target);  
 
-      console.log("datos del formulario: ", data);
       await createNewsService({ data, token });      
       e.target.reset();
       setImage(null);
