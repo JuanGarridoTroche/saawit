@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import { newsService } from "../services";
+import { newsService, voteNewsService } from "../services";
 
 
 export const News = ({ news, removeNews }) => {
@@ -36,12 +36,36 @@ export const News = ({ news, removeNews }) => {
     }
   };
 
+  const addVote = async (id, vote)=> {   
+
+    try {
+      const method = 'POST';
+      // const body = JSON.stringify({"like": vote});
+      const body = {"like": vote};
+     
+
+      console.log(body);
+      
+
+      console.log("ID: ", id, "Like: ", body);
+      await voteNewsService({token, body, id, method})
+      alert(body.like ? 'voto positivo' : 'voto negativo')
+      
+    } catch (error) {
+      setError(error.message);
+    }
+  }
+
   return (
     <>
       <figure>
-        <img src="/arrow-up.svg" alt="arrow up" className="arrow arrow-up" />
+        <img src="/arrow-up.svg" alt="arrow up" className="arrow arrow-up" onClick={()=>{
+          addVote(news.id, true);
+        }}/>
         <p>{news.feedback}</p>
-        <img src="/arrow-down.svg" alt="arrow down" className="arrow arrow-down" />
+        <img src="/arrow-down.svg" alt="arrow down" className="arrow arrow-down" onClick={()=> {
+          addVote(news.id, false);
+        }}/>
       </figure>
       <section key={news.id} className="single-news-container">
         <p>

@@ -3,8 +3,8 @@ export const loadNewsService = async (queryString) => {
   // URL Base
   let url = `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news`;
 
-  if(queryString) {
-    url+= queryString;
+  if (queryString) {
+    url += queryString;
   }
 
   //Extraemos (fetch) desde nuestro Backend la info con el endpoint que necesitemos
@@ -89,10 +89,8 @@ export const getloggedUserDataService = async ({ token }) => {
   return json.data;
 };
 
-
 // Conseguir los datos de usuario a través del id
-export const getUserDataService = async ({idUser}) => {  
- 
+export const getUserDataService = async ({ idUser }) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/profile/${idUser}`
   );
@@ -122,7 +120,7 @@ export const createNewsService = async ({ data, token }) => {
   console.log(data);
 
   const json = await response.json();
-  console.log(json.data);
+  // console.log(json.data);
 
   if (!response.ok) {
     throw new Error(json.message);
@@ -183,7 +181,7 @@ export const loadNewsByFeedbackService = async () => {
 //   }
 // };
 
-export const newsService = async ( {id, token, method} ) => {
+export const newsService = async ({ id, token, method }) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/${id}`,
     {
@@ -200,34 +198,59 @@ export const newsService = async ( {id, token, method} ) => {
   }
 };
 
-export const searchingNewsService = async ({search}) => {
+export const searchingNewsService = async ({ search }) => {
   console.log(search);
-  const response = await fetch(`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/search/${search}`)
-  const json =await response.json();
+  const response = await fetch(
+    `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/search/${search}`
+  );
+  const json = await response.json();
 
-  console.log(json.data);
+  // console.log(json.data);
 
-  if(!response.ok) {
-    throw new Error(json.message)
+  if (!response.ok) {
+    throw new Error(json.message);
   }
   // console.log(json.data);
   return json.data;
-}
+};
 
-export const getUserNewsService = async ({id, token}) => {
+export const getUserNewsService = async ({ id, token }) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/users`,
     {
       headers: {
         Authorization: token,
-      }
+      },
     }
-    );
+  );
 
-    const json = response.json();
-    if(!response.ok) {
-      throw new Error(json.message)
+  const json = response.json();
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
+export const voteNewsService = async ({ id, token, method, body }) => {
+
+  console.log("Body antes del fetch: ", body);
+  const response = await fetch(
+    `
+    ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/${id}/votes`,
+    {
+      method: method,
+      body: JSON.stringify(body),
+      headers: {
+        Authorization: token,
+      },
     }
+  );
 
-    return json.data;
-}
+  const json = response.json();
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  console.log("json.data: ", json.data);
+  return json.data;
+};
