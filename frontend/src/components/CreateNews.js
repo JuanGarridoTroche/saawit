@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { createNewsService } from "../services";
 
-export const CreateNews = () => {
+export const CreateNews = ({control, setControl}) => {
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
   const { token } = useContext(AuthContext);
@@ -21,6 +21,7 @@ export const CreateNews = () => {
       await createNewsService({ data, token });      
       e.target.reset();
       setImage(null);
+      setControl(!control);
       navigate("/");
     } catch (error) {
       setError(error.message);

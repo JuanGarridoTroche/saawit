@@ -4,7 +4,7 @@ import { News } from "./News";
 import { NewsContainer } from "./NewsContainer";
 
 
-export const NewsList = ({ news, setNews }) => {
+export const NewsList = ({ news, setNews, control, setControl }) => {
   const [order, setOrder] = useState("createdAt");
   const [direction, setDirection] = useState("ASC");
   const { loggedUser } = useContext(AuthContext);
@@ -101,7 +101,7 @@ export const NewsList = ({ news, setNews }) => {
           {news.map((singleNews) => {
             return (
               <li key={singleNews.id} className="single-news">
-                <News news={singleNews} />
+                <News news={singleNews} control={control} setControl={setControl}/>
               </li>
             );
           })}

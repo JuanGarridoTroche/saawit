@@ -4,25 +4,29 @@ import { AuthContext } from "../context/AuthContext";
 import { newsService, voteNewsService } from "../services";
 
 
-export const News = ({ news, removeNews }) => {
+export const News = ({ news, removeNews, control, setControl }) => {
   const { loggedUser, token } = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+
+  // Eliminamos una noticia
   const deleteNews = async (id) => {
     // alert(`Tweet ${id} borrado!`)
     try {
       // Desde aquí controlamos los errores que pueden ocurrir al borrar una news
       const method = 'DELETE';
       await newsService({ id, token, method });
-      removeNews(id); 
-      console.log(error);    
+      setControl(!control);
+      // removeNews(id); 
+      // console.log(error);    
       navigate("/");
     } catch (error) {
       setError(error.message);
     }
   };
 
+  // Seleccionamos una noticia
   const readNews = async (id) => {
     // alert(`Tweet ${id} borrado!`)
     try {
@@ -36,20 +40,18 @@ export const News = ({ news, removeNews }) => {
     }
   };
 
-  const addVote = async (id, vote)=> {   
 
+// Añadir voto a noticias de otros usuarios
+  const addVote = async (id, vote)=> {   
     try {
       const method = 'POST';
-      const body = JSON.stringify({"like": vote});
-      // const body = {"like": vote};     
+      // const body = JSON.stringify({"like": vote});
+      const body = {"like": vote};        
 
-         
-
-      console.log("ID: ", id, "Like: ", body);
-      await voteNewsService({token, body, id, method})
-
-      
-      alert(body.like ? 'voto positivo' : 'voto negativo')
+      // console.log("ID: ", id, "like: ", body);
+      await voteNewsService({token, body, id, method});
+      setControl(!control)     
+      // alert(body.like ? 'voto positivo' : 'voto negativo')
       
     } catch (error) {
       setError(error.message);

@@ -3,8 +3,10 @@ export const loadNewsService = async (queryString) => {
   // URL Base
   let url = `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news`;
 
+  console.log(queryString);
   if (queryString) {
     url += queryString;
+    console.log(url);
   }
 
   //Extraemos (fetch) desde nuestro Backend la info con el endpoint que necesitemos
@@ -18,7 +20,7 @@ export const loadNewsService = async (queryString) => {
   }
 
   // console.log(json.data);
-  console.log(json.data.rankedNews);
+  // console.log(json.data.rankedNews);
   return json.data.news;
 };
 
@@ -239,12 +241,13 @@ export const voteNewsService = async ({ id, token, method, body }) => {
     `
     ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/${id}/votes`,
     {
-      method: method,
-      // body: JSON.stringify(body),
-      body: body,
+      method: "POST",
       headers: {
         Authorization: token,
+        "Content-Type": "application/json",
       },
+      body: JSON.stringify(body),
+      // body: body,
     }
   );
 
@@ -252,6 +255,6 @@ export const voteNewsService = async ({ id, token, method, body }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
-  console.log("json.data: ", json.data);
+  console.log("json.data: ", json.data.body);
   return json.data;
 };
