@@ -7,6 +7,7 @@ import { newsService, voteNewsService } from "../services";
 export const News = ({ news, removeNews, control, setControl }) => {
   const { loggedUser, token } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const [loadNews, setLoadNews] = useState([]);
   const navigate = useNavigate();
 
 
@@ -52,6 +53,8 @@ export const News = ({ news, removeNews, control, setControl }) => {
       await voteNewsService({token, body, id, method});
       setControl(!control)     
       // alert(body.like ? 'voto positivo' : 'voto negativo')
+      setLoadNews(body.data.news)
+      console.log(loadNews);
       
     } catch (error) {
       setError(error.message);
