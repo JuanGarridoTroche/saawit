@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { ErrorMessage } from "../components/ErrorMessage";
 import useUserProfile from "../hooks/useUserProfile";
 import { AuthContext } from "../context/AuthContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useRef } from "react";
 import { editUserProfile } from "../services";
 
@@ -12,17 +12,30 @@ export const UserProfile = () => {
   const { user, loading, error } = useUserProfile(idUser);
   const { loggedUser, token } = useContext(AuthContext);
   const avatarInputRef = useRef();
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [bio, setBio] = useState('');
+  const [active, setActive] = useState('');  
+  const [avatar, setAvatar] = useState('');
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData =new FormData();    
 
-  const handleSubmit = () => {
-    const {username, email, bio, active} = user;
-    const body = {
-      username: username,
-      email: email,
-      bio: bio,
-      active: active,
-    };
+    formData.set("username", username);
+    formData.set("email", email);
+    formData.set("bio", bio);
+    formData.set("active", active);
+
+    setActive(user.active);
+
+    const body = 
+    {
+      username, email, bio, active
+    }
+
+
     editUserProfile({token, body});
-
   };
 
   if (loading) return <p>Cargando...</p>;
@@ -38,22 +51,22 @@ export const UserProfile = () => {
         <form className="user-profile-form" onSubmit={handleSubmit}>          
           <fieldset>
             <h3>Nombre de usuario:</h3>
-            <label className="summary">Escribe un nombre de usuario</label>
-            <input placeholder={user.username} />
+            <label htmlFor="username" className="summary">Escribe un nombre de usuario</label>
+            <input id="username" value={username} placeholder={user.username} onChange={(e)=> setUsername(e.target.value)}/>
           </fieldset>
           <fieldset>
             <h3>Correo electrónico:</h3>
-            <label className="summary">
+            <label htmlFor="email" className="summary">
               Escribe un correo electrónico válido
             </label>
-            <input placeholder={user.email} />
+            <input id="email" value={email} placeholder={user.email} onChange={(e)=> setEmail(e.target.value)}/>
           </fieldset>
           <fieldset>
             <h3>Sobre mi:</h3>
-            <label className="summary">
+            <label htmlFor="bio" className="summary">
               Una breve descripción sobre ti mismo para mostrar en tu perfil
             </label>
-            <textarea defaultValue={user.bio}></textarea>
+            <textarea id="bio" defaultValue={user.bio} onChange={(e)=> setBio(e.target.value)}></textarea>
           </fieldset>
           <fieldset>
             <h3>Avatar:</h3>
