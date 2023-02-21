@@ -257,10 +257,10 @@ export const voteNewsService = async ({ id, token, method, body }) => {
 };
 
 
-export const editUserProfile = async ({id, token, body}) => {
+export const editUserProfile = async ({token, body}) => {
   const response = await fetch(
     `
-    ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/profile${id}`,
+    ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/profile`,
     {
       method: "PUT",
       headers: {
@@ -271,18 +271,21 @@ export const editUserProfile = async ({id, token, body}) => {
     }
   )
   const json = response.json();
+  console.log("json: ", json);
   
   if(!response.ok) {
     throw new Error(json.message)
   }
 
+  console.log(json.data);
+
   return json.data;
 }
 
-export const editAvatarProfile = async ({id, token, body}) => {
+export const editAvatarProfile = async ({token, body}) => {
   const response = await fetch(
     `
-    ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/profile${id}`,
+    ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/profile`,
     {
       method: "PUT",
       headers: {

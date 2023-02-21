@@ -14,13 +14,14 @@ export const UserProfile = () => {
   const avatarInputRef = useRef();
 
   const handleSubmit = () => {
-    const {id, username, email, bio} = user;
+    const {username, email, bio, active} = user;
     const body = {
       username: username,
       email: email,
       bio: bio,
+      active: active,
     };
-    editUserProfile({id, token, body});
+    editUserProfile({token, body});
 
   };
 
