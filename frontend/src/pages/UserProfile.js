@@ -5,6 +5,7 @@ import useUserProfile from "../hooks/useUserProfile";
 import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
 import { useRef } from "react";
+import { editUserProfile } from "../services";
 
 export const UserProfile = () => {
   const { idUser } = useParams();
@@ -13,7 +14,14 @@ export const UserProfile = () => {
   const avatarInputRef = useRef();
 
   const handleSubmit = () => {
-    alert("Actualizando el perfil de usuario");
+    const {id, username, email, bio} = user;
+    const body = {
+      username: username,
+      email: email,
+      bio: bio,
+    };
+    editUserProfile({id, token, body});
+
   };
 
   if (loading) return <p>Cargando...</p>;

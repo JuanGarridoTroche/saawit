@@ -235,8 +235,6 @@ export const getUserNewsService = async ({ id, token }) => {
 };
 
 export const voteNewsService = async ({ id, token, method, body }) => {
-
-  console.log("Body antes del fetch: ", body, id, method);
   const response = await fetch(
     `
     ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/${id}/votes`,
@@ -255,6 +253,50 @@ export const voteNewsService = async ({ id, token, method, body }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
-  console.log("json.data: ", json.data.body);
   return json.data;
 };
+
+
+export const editUserProfile = async ({id, token, body}) => {
+  const response = await fetch(
+    `
+    ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/profile${id}`,
+    {
+      method: "PUT",
+      headers: {
+        Authorization: token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    }
+  )
+  const json = response.json();
+  
+  if(!response.ok) {
+    throw new Error(json.message)
+  }
+
+  return json.data;
+}
+
+export const editAvatarProfile = async ({id, token, body}) => {
+  const response = await fetch(
+    `
+    ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/profile${id}`,
+    {
+      method: "PUT",
+      headers: {
+        Authorization: token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    }
+  )
+  const json = response.json();
+  
+  if(!response.ok) {
+    throw new Error(json.message)
+  }
+
+  return json.data;
+}
