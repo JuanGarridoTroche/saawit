@@ -62,28 +62,30 @@ export const NewsList = ({ news, setNews, control, setControl }) => {
           <img src="/rocket-best-vote.svg" alt="noticias más votadas hoy" />
           <p>TOP</p>
         </label>
-        <label htmlFor="order">Filtrar por:</label>
+        <label htmlFor="order"></label>
         <select
           id="order"
           value={order}
           onChange={(e) => setOrder(e.target.value)}
+          className="order"
         >
           <option value="createdAt">Fecha</option>
           <option value="votes">Valoración</option>
         </select>
-        <label htmlFor="direction">Orden:</label>
+        <label htmlFor="direction"></label>
         <select
           id="direction"
           value={direction}
           onChange={(e) => setDirection(e.target.value)}
+          className="direction"
         >
           <option value="ASC">Ascendente</option>
           <option value="DESC">Descendente</option>
         </select>
-      </div>
       <button onClick={filterNews} className="filter">
         Filtrar
       </button>
+      </div>
       <button
         id="up"
         onClick={() => {

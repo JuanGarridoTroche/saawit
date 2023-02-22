@@ -1,58 +1,58 @@
 .user-profile {
-  width: 70vw;
-  height: 80vh;
+  width: 100vw;
+  height: 100vh;
   background-color: white;
-  border-radius: 4px;
   text-align: left;
   padding: 0 20px;
   font-family: var(--font-ibm);
   font-weight: 300;
   color: #1C1C1C;
-  margin-top: 10px;
 }
 
-.user-profile > h2.profile {
+.user-profile>h2.profile {
   text-align: left;
   border-bottom: 1px solid rgb(150, 150, 150);
-  padding: 10px 10px 0 0;margin-bottom: 20px;
+  padding: 10px 10px 0 0;
+  margin-bottom: 20px;
   font-size: 2rem;
 }
 
-.user-profile > h2.profile > span {
+.user-profile>h2.profile>span {
   color: red;
   font-style: italic;
 }
 
-.user-profile > .user-profile-form >fieldset {
-  border: none;  
+.user-profile>.user-profile-form>fieldset {
+  border: none;
   display: flex;
   flex-direction: column;
   padding-bottom: 15px;
 }
 
-.user-profile > .user-profile-form >fieldset > label.summary {
+.user-profile>.user-profile-form>fieldset>label.summary {
   font-size: 1rem;
   color: grey;
   padding-top: 0;
 }
 
-.user-profile > .user-profile-form >fieldset > input {
-  padding: 14px;
-  border: 1px  solid rgb(155, 155, 155);
-  border-radius: 4px;  
-  width: 100%;
+.user-profile>.user-profile-form>fieldset>input {
+  padding: 5px;
+  border: 1px solid rgb(155, 155, 155);
+  border-radius: 4px;
+  width: 98%;
   max-width: 220px;
 }
 
-.user-profile > .user-profile-form >fieldset > textarea {
-  padding: 14px;
-  border: 1px  solid rgb(155, 155, 155);
+.user-profile>.user-profile-form>fieldset>textarea {
+  border: 1px solid rgb(155, 155, 155);
   border-radius: 4px;
   margin: 5px 0;
-  width: 90%;
+  width: 100%;
+  text-align: justify;
+  height: 70px;
 }
 
-.user-profile > .user-profile-form >fieldset  img.avatar {
+.user-profile>.user-profile-form>fieldset img.avatar {
   width: 50px;
   height: 50%;
   border-radius: 50%;
@@ -60,13 +60,13 @@
   overflow: hidden;
 }
 
-.user-profile > .user-profile-form >fieldset  img.avatar:hover {
+.user-profile>.user-profile-form>fieldset img.avatar:hover {
   opacity: .8;
   transform: scale(1.3);
   transition: transform 1s ease-out;
 }
 
-.user-profile > .user-profile-form > button {
+.user-profile>.user-profile-form>button {
   border: none;
   background-color: var(--color-logo);
   color: white;
@@ -77,6 +77,33 @@
   cursor: pointer;
 }
 
-.user-profile > .user-profile-form > button:hover {
+.user-profile>.user-profile-form>button:hover {
   opacity: .7;
+}
+
+@media(min-width: 600px) {
+  .user-profile {
+    width: 70vw;
+    height: 80vh;
+    border-radius: 4px;
+    padding: 0 20px;
+    margin-top: 10px;
+  }
+
+  .user-profile>.user-profile-form>fieldset>input {
+    padding: 14px;
+    border: 1px solid rgb(155, 155, 155);
+    border-radius: 4px;
+    width: 100%;
+    max-width: 220px;
+  }
+
+  .user-profile>.user-profile-form>fieldset>textarea {
+    width: 50%;
+    text-align: justify;
+    padding: 5px;
+    height: 70px;
+  }
+
+ 
 }
