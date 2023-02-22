@@ -96,13 +96,13 @@ export const getUserDataService = async ({ idUser }) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/profile/${idUser}`
   );
-
+   
   const json = await response.json();
 
   if (!response.ok) {
     throw new Error(json.message);
   }
-  // console.log(json.data);
+  
   return json.data;
 };
 
@@ -256,8 +256,8 @@ export const voteNewsService = async ({ id, token, method, body }) => {
   return json.data;
 };
 
-
-export const editUserProfile = async ({token, body}) => {
+// Edita los campos de username, email y bio de un usuario logueado
+export const editUserProfile = async ({ token, body }) => {
   const response = await fetch(
     `
     ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/profile`,
@@ -269,37 +269,33 @@ export const editUserProfile = async ({token, body}) => {
       },
       body: JSON.stringify(body),
     }
-  )
+  );
   const json = response.json();
-  console.log("json: ", json);
-  
-  if(!response.ok) {
-    throw new Error(json.message)
+
+  if (!response.ok) {
+    throw new Error(json.message);
   }
 
-  console.log(json.data);
-
   return json.data;
-}
+};
 
-export const editAvatarProfile = async ({token, body}) => {
+export const editUserAvatar = async ({ token, avatar }) => {
   const response = await fetch(
     `
-    ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/profile`,
+    ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/photo`,
     {
       method: "PUT",
       headers: {
         Authorization: token,
-        "Content-Type": "application/json",
       },
-      body: JSON.stringify(body),
+      photo: avatar,
     }
-  )
+  );
   const json = response.json();
-  
-  if(!response.ok) {
-    throw new Error(json.message)
+
+  if (!response.ok) {
+    throw new Error(json.message);
   }
 
   return json.data;
-}
+};

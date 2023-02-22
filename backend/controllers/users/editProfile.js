@@ -9,7 +9,7 @@ const editProfile = async (req, res, next) => {
   try {
     let { username, email, bio, active } = req.body;
 
-    console.log(username, email, bio, active);
+    // console.log(username, email, bio, active);
 
     // Seleccionamos los datos actuales del usuario
     const user = await selectUserByIdQuery(req.user.id);

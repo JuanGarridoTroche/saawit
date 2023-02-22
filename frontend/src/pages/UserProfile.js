@@ -3,9 +3,8 @@ import { useParams } from "react-router-dom";
 import { ErrorMessage } from "../components/ErrorMessage";
 import useUserProfile from "../hooks/useUserProfile";
 import { AuthContext } from "../context/AuthContext";
-import { useContext, useState } from "react";
-import { useRef } from "react";
-import { editUserProfile } from "../services";
+import { useContext, useState, useRef} from "react";
+import { editUserAvatar, editUserProfile } from "../services";
 
 export const UserProfile = () => {
   const { idUser } = useParams();
@@ -15,11 +14,13 @@ export const UserProfile = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [bio, setBio] = useState('');
-  const [active, setActive] = useState('');  
-  const [avatar, setAvatar] = useState('');
+  const [active, setActive] = useState(''); 
   
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const avatar = avatarInputRef.current.files;
+
     const formData =new FormData();    
 
     formData.set("username", username);
@@ -34,8 +35,8 @@ export const UserProfile = () => {
       username, email, bio, active
     }
 
-
     editUserProfile({token, body});
+    editUserAvatar({token, avatar});
   };
 
   if (loading) return <p>Cargando...</p>;
