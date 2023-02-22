@@ -76,7 +76,7 @@ main>.breaking-news>.filter-container {
   border-radius: 4px;
   border: 1px solid rgb(150, 150, 150);
   width: 98%;  
-  margin: 0 auto;
+  margin: 0 auto .5rem;
 }
 
 main>.breaking-news>.filter-container>.best-vote {
@@ -90,8 +90,7 @@ main>.breaking-news>.filter-container>.best-vote {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  gap: .5rem;
-  margin: .5rem;
+  margin-left: .5rem;
 }
 
 main>.breaking-news>.filter-container>.best-vote:hover {
@@ -104,15 +103,13 @@ main>.breaking-news>.filter-container> .order {
   background-color: rgba(4, 136, 213, 0.123);
   color: var(--color-filter);
   border-radius: 50px;
-  font-weight: 800;
-  letter-spacing: 1px;
+  font-weight: 700;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  /* gap: .5rem; */
-  /* margin: .5rem; */
-  width: 130px;
+  font-size: 1.1rem;
+  width: 100px;
 }
 
 main>.breaking-news>.filter-container> .direction {
@@ -121,15 +118,13 @@ main>.breaking-news>.filter-container> .direction {
   background-color: rgba(4, 136, 213, 0.123);
   color: var(--color-filter);
   border-radius: 50px;
-  font-weight: 800;
-  letter-spacing: 1px;
+  font-weight: 700;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  /* gap: .5rem; */
-  /* margin: .5rem; */
-  width: 150px;
+  font-size: 1.1rem;
+  width: 105px;
 }
 
 main>.breaking-news> .filter-container > .filter {
@@ -138,15 +133,13 @@ main>.breaking-news> .filter-container > .filter {
   background-color: rgba(4, 136, 213, 0.123);
   color: var(--color-filter);
   border-radius: 50px;
-  font-weight: 800;
-  letter-spacing: 1px;
+  font-weight: 700;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  /* gap: .5rem; */
-  /* margin: .5rem; */
-  width: 150px;
+  margin: .5rem;
+  width: 65px;
 }
 
 main>.breaking-news>.news-list {
@@ -260,7 +253,7 @@ main>.breaking-news>.news-list>.single-news>section>.body {
   main>.breaking-news>h2 {
     font-size: 2.4rem;
   }
-
+  
   main>.breaking-news>.news-list {
     max-width: 50vw;
     gap: 1rem;
@@ -297,6 +290,8 @@ main>.breaking-news>.news-list>.single-news>section>.body {
 
   main>.breaking-news>.filter-container {    
     justify-content: space-around;
+    width: 100%;
+    max-width: 920px;
   }
 
   main>.breaking-news>.filter-container>.best-vote {
