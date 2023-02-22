@@ -12,10 +12,14 @@ export const ReadNews = async ()=> {
   const { token } = useContext(AuthContext);
   const [image, setImage] = useState(null);
   // const navigate = useNavigate();
-  const id = useParams();  
+  const id = useParams(); 
+
+  const idNews = id.idNews;
+  
+  console.log("ReadNews", idNews);
   const method = 'GET';  
  
-  await newsService(id.idNews, token, method);
+  await newsService({idNews, token, method});
 
   
 

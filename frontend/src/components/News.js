@@ -75,11 +75,14 @@ export const News = ({ news, removeNews, control, setControl }) => {
           }}
         />
       </figure>
-      <section key={news.id} className="single-news-container">
-        <p>
+      <section key={news.id} className="single-news-container" onClick={()=>{
+        console.log(`click sobre la noticia ${news.id}`);
+        <Link to={`/news/${news.id}`}/>
+      }}>
+        <p className="publish-news">
           {news.category} · Publicado por{" "}
-          <Link to={`/users/profile/${news.idUser}`}>{news.username}</Link> el{" "}
-          {new Date(news.createdAt).toLocaleString()}{" "}
+          <Link to={`/users/profile/${news.idUser}`}>{news.username}</Link> el 
+          {new Date(news.createdAt).toLocaleString()}
         </p>
         <p className="title">{news.title}</p>
         {news.summary ? <p className="summary">{news.summary}</p> : null}

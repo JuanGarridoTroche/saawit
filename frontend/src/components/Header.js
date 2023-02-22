@@ -44,9 +44,9 @@ export const Header = ({setNews})=> {
         }}><img src="/logo.png" alt="logo-saawit"/></NavLink>
         <h2>sa<span style={{color:"rgb(255, 69, 0)"}}>a</span>wit</h2>
       </section>
-      <section>
+      {/* <section>
         <img src='/home.svg' alt='home'/>
-      </section>
+      </section> */}
       <form className='search-form' onSubmit={searchNews}>
         <input type="search" value={search} placeholder="Busca en Saawit" onChange={(e)=> {
           setSearch(e.target.value)                    
