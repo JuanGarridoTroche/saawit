@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { ErrorMessage } from "../components/ErrorMessage";
 import useUserProfile from "../hooks/useUserProfile";
 import { AuthContext } from "../context/AuthContext";
-import { useContext, useState, useRef} from "react";
+import { useContext, useState, useRef } from "react";
 import { editUserAvatar, editUserProfile } from "../services";
 
 export const UserProfile = () => {
@@ -11,31 +11,39 @@ export const UserProfile = () => {
   const { user, loading, error } = useUserProfile(idUser);
   const { loggedUser, token } = useContext(AuthContext);
   const avatarInputRef = useRef();
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [bio, setBio] = useState('');
-  const [active, setActive] = useState(''); 
-  
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [bio, setBio] = useState("");
+  const [active, setActive] = useState("");
+  const [avatar, setAvatar] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const avatar = avatarInputRef.current.files;
+    // const avatar = avatarInputRef.current.files;
 
-    const formData =new FormData();    
+    const formData = new FormData();
 
     formData.set("username", username);
     formData.set("email", email);
     formData.set("bio", bio);
     formData.set("active", active);
+    // formData.set("avatar", avatarInputRef.current.files);
+
 
     setActive(user.active);
+    console.log("FormData: ", username, email, bio, active, avatar);
 
-    const body = 
-    {
-      username, email, bio, active
-    }
+    const body = {
+      username,
+      email,
+      bio,
+      active,
+    };
 
-    editUserProfile({token, body});
+    console.log("body: ", body);
+
+    editUserProfile({ token, body });
     editUserAvatar({token, avatar});
   };
 
@@ -47,27 +55,45 @@ export const UserProfile = () => {
 
   return (
     <section className="user-profile">
-      <h2 className="profile">Perfil de usuario {user.active ? "activo" : <span>suspendido</span>}</h2>
+      <h2 className="profile">
+        Perfil de usuario {user.active ? "activo" : <span>suspendido</span>}
+      </h2>
       {token && loggedUser && loggedUser.id === user.id ? (
-        <form className="user-profile-form" onSubmit={handleSubmit}>          
+        <form className="user-profile-form" onSubmit={handleSubmit}>
           <fieldset>
             <h3>Nombre de usuario:</h3>
-            <label htmlFor="username" className="summary">Escribe un nombre de usuario</label>
-            <input id="username" value={username} placeholder={user.username} onChange={(e)=> setUsername(e.target.value)}/>
+            <label htmlFor="username" className="summary">
+              Escribe un nombre de usuario
+            </label>
+            <input
+              id="username"
+              value={username}
+              placeholder={user.username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
           </fieldset>
           <fieldset>
             <h3>Correo electrónico:</h3>
             <label htmlFor="email" className="summary">
               Escribe un correo electrónico válido
             </label>
-            <input id="email" value={email} placeholder={user.email} onChange={(e)=> setEmail(e.target.value)}/>
+            <input
+              id="email"
+              value={email}
+              placeholder={user.email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </fieldset>
           <fieldset>
             <h3>Sobre mi:</h3>
             <label htmlFor="bio" className="summary">
               Una breve descripción sobre ti mismo para mostrar en tu perfil
             </label>
-            <textarea id="bio" defaultValue={user.bio} onChange={(e)=> setBio(e.target.value)}></textarea>
+            <textarea
+              id="bio"
+              defaultValue={user.bio}
+              onChange={(e) => setBio(e.target.value)}
+            ></textarea>
           </fieldset>
           <fieldset>
             <h3>Avatar:</h3>
@@ -88,9 +114,11 @@ export const UserProfile = () => {
               <input
                 hidden
                 id="avatar"
+                name="avatar"
                 type="file"
                 accept="image/*"
                 ref={avatarInputRef}
+                onChange={(e) => setAvatar(e.target.files[0])}
               />
             ) : (
               <input type="file" />

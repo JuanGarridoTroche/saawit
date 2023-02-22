@@ -293,8 +293,10 @@ export const editUserAvatar = async ({ token, avatar }) => {
   );
   const json = response.json();
 
+  console.log(response);
+
   if (!response.ok) {
-    throw new Error(json.message);
+    throw await new Error(json.ok);
   }
 
   return json.data;

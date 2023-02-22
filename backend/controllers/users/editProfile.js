@@ -9,7 +9,7 @@ const editProfile = async (req, res, next) => {
   try {
     let { username, email, bio, active } = req.body;
 
-    // console.log(username, email, bio, active);
+    console.log(username, email, bio, active);
 
     // Seleccionamos los datos actuales del usuario
     const user = await selectUserByIdQuery(req.user.id);
@@ -18,6 +18,10 @@ const editProfile = async (req, res, next) => {
     await selectUserByUsernameQuery(username);
     if(!username || username ==="") {
       username = user.username;
+    }
+
+    if(!bio || bio === "") {
+      bio = user.bio;
     }
 
     // Comprobamos que el email no esté ya registrado en la BBDD
