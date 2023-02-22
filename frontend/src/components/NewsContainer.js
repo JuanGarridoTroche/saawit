@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 export const NewsContainer = () => {
-  const { loggedUser } = useContext(AuthContext);
+  const { loggeduser } = useContext(AuthContext);
   return (
     <form className="user-post">
-      <Link to={`/users/profile/${loggedUser.id}`}>
-        {loggedUser.photo ? (
+      <Link to={`/users/profile/${loggeduser.id}`}>
+        {loggeduser.photo ? (
           <img            
-            src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${loggedUser.photo}`}
+            src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${loggeduser.photo}`}
             alt="foto2"
             className="avatar-user"
           />

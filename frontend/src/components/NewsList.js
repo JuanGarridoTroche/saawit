@@ -7,7 +7,7 @@ import { NewsContainer } from "./NewsContainer";
 export const NewsList = ({ news, setNews, control, setControl }) => {
   const [order, setOrder] = useState("createdAt");
   const [direction, setDirection] = useState("ASC");
-  const { loggedUser } = useContext(AuthContext);
+  const { loggeduser } = useContext(AuthContext);
 
   const filterNews = (e) => {
     e.stopPropagation();
@@ -50,7 +50,7 @@ export const NewsList = ({ news, setNews, control, setControl }) => {
 
   return (
     <section className="breaking-news" id="up">
-      {loggedUser ? <NewsContainer /> : null}
+      {loggeduser ? <NewsContainer /> : null}
       <h2>Últimas noticias</h2>
       <div className="filter-container">
         <label

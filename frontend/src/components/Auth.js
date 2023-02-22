@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 export const Auth = () => {
-  const { loggedUser, logout } = useContext(AuthContext);
-  // console.log(loggedUser);
-  return loggedUser ? (
+  const { loggeduser, logout } = useContext(AuthContext);
+  // console.log(loggeduser);
+  return loggeduser ? (
     <ul className="logged-user">
       <li>
-        {loggedUser.photo ? (
+        {loggeduser.photo ? (
           <img
-            src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${loggedUser.photo}`}
+            src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${loggeduser.photo}`}
             // src="/logo192.png"
             alt="avatar"
             style={{ width: "25px" }}
@@ -18,11 +18,11 @@ export const Auth = () => {
           />
         ) : null}
         <Link
-          to={`users/profile/${loggedUser.id}`}
-          loggedUser={loggedUser}
+          to={`users/profile/${loggeduser.id}`}
+          loggeduser={loggeduser}
           className="username"
         >
-          {loggedUser.username}
+          {loggeduser.username}
         </Link>
       </li>
       <li>

@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 // Esta lógica de contexto nos permite envolver children (<App/>). Este contexto es una forma de mandar datos, funciones y valores entre componentes sin tener que pasar por todo el árbol de componentes.
 export const AuthProviderComponent = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
-  const [loggedUser, setloggedUser] = useState(null);
+  const [loggeduser, setloggedUser] = useState(null);
 
   // Con este hook, useEffect, almacenamos el token en cuanto te logueas en la aplicación y queda guardado en localstorage aunque cierres la aplicación y la abras minutos más tarde (según tengas definido el tiempo de caducidad del token en nuestro backend). Siempre que se modifique el token, se cargará de nuevo el useEffect, almacenando nuevamente el token.
   useEffect(() => {
@@ -36,7 +36,7 @@ export const AuthProviderComponent = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ token, loggedUser, login, logout }}>
+    <AuthContext.Provider value={{ token, loggeduser, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

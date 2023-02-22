@@ -9,7 +9,7 @@ import { editUserAvatar, editUserProfile } from "../services";
 export const UserProfile = () => {
   const { idUser } = useParams();
   const { user, loading, error } = useUserProfile(idUser);
-  const { loggedUser, token } = useContext(AuthContext);
+  const { loggeduser, token } = useContext(AuthContext);
   const avatarInputRef = useRef();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -50,7 +50,7 @@ export const UserProfile = () => {
   if (loading) return <p>Cargando...</p>;
   if (error) return <ErrorMessage message={error} />;
   // console.log(user);
-  // console.log(loggedUser);
+  // console.log(loggeduser);
   // console.log(token);
 
   return (
@@ -58,7 +58,7 @@ export const UserProfile = () => {
       <h2 className="profile">
         Perfil de usuario {user.active ? "activo" : <span>suspendido</span>}
       </h2>
-      {token && loggedUser && loggedUser.id === user.id ? (
+      {token && loggeduser && loggeduser.id === user.id ? (
         <form className="user-profile-form" onSubmit={handleSubmit}>
           <fieldset>
             <h3>Nombre de usuario:</h3>

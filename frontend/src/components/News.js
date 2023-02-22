@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 import { newsService, voteNewsService } from "../services";
 
 export const News = ({ news, removeNews, control, setControl }) => {
-  const { loggedUser, token } = useContext(AuthContext);
+  const { loggeduser, token } = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -98,7 +98,7 @@ export const News = ({ news, removeNews, control, setControl }) => {
           );
         })}
         <p className="body">{news.body}</p>
-        {loggedUser && loggedUser.id === news.idUser ? (
+        {loggeduser && loggeduser.id === news.idUser ? (
           <img
             src="/trash.svg"
             alt="delete news"
@@ -113,7 +113,7 @@ export const News = ({ news, removeNews, control, setControl }) => {
             }}
           />
         ) : null}
-        {loggedUser && loggedUser.id === news.idUser ? (
+        {loggeduser && loggeduser.id === news.idUser ? (
           <img
             src="/pencil.svg"
             alt="edit news"

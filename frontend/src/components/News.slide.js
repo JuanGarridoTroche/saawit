@@ -9,10 +9,10 @@ import { newsService } from '../services';
 export const News = ({ news, removeNews }) => {
   // console.log(news);
   // Me faltaría traer los datos del usuario
-  const { loggedUser, token } = useContext(AuthContext);
+  const { loggeduser, token } = useContext(AuthContext);
   const [error, setError] = useState("");
   // console.log(news.photos[0].name);
-  // console.log(loggedUser);
+  // console.log(loggeduser);
 
   const deleteNews = async (id) => {
     // alert(`Tweet ${id} borrado!`)
@@ -54,7 +54,7 @@ export const News = ({ news, removeNews }) => {
           );
         })}
         <p className="body">{news.body}</p>
-        {loggedUser && loggedUser.id === news.idUser ? (
+        {loggeduser && loggeduser.id === news.idUser ? (
           <button
             onClick={() => {
               if (
