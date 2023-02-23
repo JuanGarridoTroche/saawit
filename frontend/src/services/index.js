@@ -182,13 +182,13 @@ export const loadNewsByFeedbackService = async () => {
 
 export const newsService = async ({ idNews, token, method }) => {
 
-  console.log("newsService: ", idNews);
+  // console.log("newsService: ", idNews);
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/${idNews}`,
     {
       method: method,
       headers: {
-        Authorization: token ? token : null,
+        Authorization: token,
       },
     }
   );
@@ -197,6 +197,8 @@ export const newsService = async ({ idNews, token, method }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
+  // console.log(json.data);
+  return json.data;
 };
 
 export const searchingNewsService = async ({ search }) => {

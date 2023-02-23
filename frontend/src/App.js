@@ -7,7 +7,7 @@ import { Login } from "./pages/Login";
 import { NotFoundPage } from "./components/NotFoundPage";
 import { Register } from "./pages/Register";
 import { NewsByFeedback } from "./pages/NewsByFeedback";
-import { ReadNews } from "./pages/ReadNews";
+import { ReadNews } from "./components/ReadNews";
 import { CreateNews } from "./components/CreateNews";
 import { UserProfile } from "./pages/UserProfile";
 import { Aside } from "./components/Aside";
@@ -18,7 +18,7 @@ import Modal from "./components/Modal";
 
 function App() {
   const [news, setNews] = useState();
-  const [control, setControl] = useState(false)
+  const [control, setControl] = useState(false);
 
   useEffect(() => {
     const loadNewsBySearch = async () => {
@@ -36,11 +36,21 @@ function App() {
 
   return (
     <>
-      <Header setNews={setNews}/>
+      <Header setNews={setNews} />
       <main>
         <Aside setNews={setNews} />
         <Routes>
-          <Route path="/" element={<NewsList news={news} setNews={setNews} control={control} setControl={setControl}/>} />
+          <Route
+            path="/"
+            element={
+              <NewsList
+                news={news}
+                setNews={setNews}
+                control={control}
+                setControl={setControl}
+              />
+            }
+          />
           {/* Login de usuario */}
           <Route path="/users/login" element={<Login />} />
           {/* Registro de nuevo usuario */}
@@ -53,7 +63,10 @@ function App() {
           {/* Solicitud para que nos envíen a nuestro correo el PassCode para cambiar la contraseña */}
           {/* Recuperación de contraseña (es necesario el Passcode) */}
           {/* Crear una noticia, método: post */}
-          <Route path="/news" element={<CreateNews control={control} setControl={setControl} />} />
+          <Route
+            path="/news"
+            element={<CreateNews control={control} setControl={setControl} />}
+          />
           {/* Leer una noticia, método: get */}
           <Route path="/news/:idNews" element={<ReadNews />} />
           {/* Editar una noticia creada por el usuario registrado método: put */}
@@ -64,7 +77,15 @@ function App() {
           {/* Noticias filtradas con fecha inicio y fecha fin, método: get */}
           {/* Votar una noticia publicada que no sea de tu propiedad, método: post */}
           <Route path="/news/:idNews/votes" element={<Home />} />
-          <Route path="*" element={<Modal > <NotFoundPage/> </Modal> } />
+          <Route
+            path="*"
+            element={
+              <Modal>
+                {" "}
+                <NotFoundPage />{" "}
+              </Modal>
+            }
+          />
         </Routes>
         {/* <NewsList /> */}
       </main>

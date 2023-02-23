@@ -17,10 +17,10 @@ const readNews = async (req, res, next) => {
     // Mostramos los datos
 
     res.send({
-      status: "Ok",
-      id,
-      category, idUser, title, summary, body, createdAt,
-      photoNews,
+      status: "Ok",      
+      data: {
+        id, category, idUser, title, summary, body, createdAt,photoNews,
+      }
     });
   } catch (err) {
     next(err);

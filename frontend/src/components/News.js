@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { ReadNews } from "../pages/ReadNews.ori";
 import { newsService, voteNewsService } from "../services";
 
 export const News = ({ news, removeNews, control, setControl }) => {
@@ -26,13 +27,15 @@ export const News = ({ news, removeNews, control, setControl }) => {
 
   // Seleccionamos una noticia
   const readNews = async (id) => {
+    console.log(id);
     // alert(`Tweet ${id} borrado!`)
     try {
       // Desde aquí controlamos los errores que pueden ocurrir al borrar una news
       const method = "GET";
       await newsService({ id, token, method });
-      removeNews(id);
-      navigate("/");
+      // setControl(!control);
+      // removeNews(id);
+      // navigate(`/news/${id}`);
     } catch (error) {
       setError(error.message);
     }
@@ -75,13 +78,10 @@ export const News = ({ news, removeNews, control, setControl }) => {
           }}
         />
       </figure>
-      <section key={news.id} className="single-news-container" onClick={()=>{
-        console.log(`click sobre la noticia ${news.id}`);
-        <Link to={`/news/${news.id}`}/>
-      }}>
+      <section key={news.id} className="single-news-container">
         <p className="publish-news">
           {news.category} · Publicado por{" "}
-          <Link to={`/users/profile/${news.idUser}`}>{news.username}</Link> el 
+          <Link to={`/users/profile/${news.idUser}`}>{news.username}</Link> el
           {new Date(news.createdAt).toLocaleString()}
         </p>
         <p className="title">{news.title}</p>
@@ -117,16 +117,9 @@ export const News = ({ news, removeNews, control, setControl }) => {
           />
         ) : null}
         {loggeduser && loggeduser.id === news.idUser ? (
-          <img
-            src="/pencil.svg"
-            alt="edit news"
-            className="edit-news"
-            onClick={() => {
-              // navigate(`/news/${news.id}`)
-              // <ReadNews id={news}/>
-              readNews(news.id);
-            }}
-          />
+          <img src="/pencil.svg" alt="edit news" className="edit-news" onClick={()=>{
+            navigate(`/news/${news.id}`)
+          }}/>
         ) : null}
       </section>
     </>
