@@ -6,8 +6,6 @@ const readNews = async (req, res, next) => {
   try {
     const { idNews } = req.params;
 
-    console.log("readNews", idNews);
-
     //Obtenemos la noticia
     const news = await selectNewsByIdQuery(idNews);
     const {id, category, idUser, title, summary, body, createdAt} = news;
