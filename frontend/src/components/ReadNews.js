@@ -42,9 +42,8 @@ export const ReadNews = (e) => {
         ) : (
           <h2>Ver noticia</h2>
         )}
-        <fieldset className="create-container">
-          <select name="category" id="category" defaultValue={category}>
-            <option value={category}>{category}</option>
+        <fieldset className="create-news-container">
+          <select name="category" id="category" defaultValue={category}>            
             <option value="deportes">deportes</option>
             <option value="videojuegos">videojuegos</option>
             <option value="noticias">noticias</option>
