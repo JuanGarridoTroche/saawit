@@ -201,8 +201,7 @@ main>.breaking-news>.news-list>.single-news>figure .arrow-down:hover {
 
 main>.breaking-news>.news-list>.single-news a .photos {
   width: 100%;
-  max-height: 300px;
-  max-width: 300px;
+  /* max-height: 300px; */
   /* padding: 20px 10px 10px 20px; */
 }
 
@@ -265,8 +264,8 @@ main>.breaking-news>.news-list>.single-news>section>.body {
   }
 
   main>.breaking-news>.news-list>.single-news a .photos {
-    max-height: 400px;
-    max-width: 600px;
+    /* max-height: 400px; */
+    max-width: 100%;
   }
 
   main>.breaking-news>.news-list>.single-news>section>.title {

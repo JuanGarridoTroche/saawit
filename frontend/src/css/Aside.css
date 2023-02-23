@@ -4,7 +4,7 @@ main>.categories {
 
 
 
-@media(min-width: 600px) {
+@media(min-width: 800px) {
   main>.categories {
     position: fixed;
     left: 0;
@@ -14,14 +14,14 @@ main>.categories {
     justify-content: flex-start;
     align-items: flex-start;
     background-color: white;
-    width: 10vw;
+    width: 14vw;
     height: 100vh;
   }
 
   main>.categories>h2 {
     padding: 1rem 0 1rem .4rem;
     text-transform: uppercase;
-    font-size: 1.8rem;
+    font-size: 1.7rem;
   }
   
   main>.categories> ul > li {
@@ -31,7 +31,7 @@ main>.categories {
     padding: .4rem 1rem;
     text-align: left;
     cursor: pointer;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
   
   main>.categories>ul > li:hover {
