@@ -30,7 +30,7 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background-color: rgb(218, 224, 230);
   padding: 70px 0;
   min-height: 100vh;
