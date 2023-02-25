@@ -15,6 +15,7 @@
 .image-about {
   height: auto;
   width: 100%;
+  border: 1px solid var(--color-logo);
 }
 
 .container-text-about {  
@@ -59,6 +60,7 @@
     height: 100%;
     width: auto;
     border-radius: 10px 0 0 10px;
+    border: none;
   }
 
   .container-text-about {  

@@ -3,7 +3,6 @@ export const loadNewsService = async (queryString) => {
   // URL Base
   let url = `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news`;
 
-  console.log(queryString);
   if (queryString) {
     url += queryString;
     console.log(url);
