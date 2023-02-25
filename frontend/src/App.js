@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import { loadNewsService } from "./services";
 import { NewsList } from "./components/NewsList";
 import Modal from "./components/Modal";
+import { About } from "./components/About";
 
 function App() {
   const [news, setNews] = useState();
@@ -58,6 +59,7 @@ function App() {
           {/* Añadir foto de perfil (avatar) del usuario */}
           {/* Ver el perfil de un usuario */}
           <Route path="/users/profile/:idUser" element={<UserProfile />} />
+          <Route path="/about" element={<About/>}/>
           {/* Modificar el perfil del usuario */}
           {/* Modificar la contraseña */}
           {/* Solicitud para que nos envíen a nuestro correo el PassCode para cambiar la contraseña */}
