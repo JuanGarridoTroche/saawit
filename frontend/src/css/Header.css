@@ -12,6 +12,7 @@ header {
   background-color: white;
   margin: 0;
   padding: 10px;
+  z-index: 20;
 }
 
 header > .brand {
