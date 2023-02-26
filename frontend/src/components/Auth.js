@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { Aside } from "./Aside";
+import { NewsContainer } from "./NewsContainer";
 
 export const Auth = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,8 +16,7 @@ export const Auth = () => {
         <li>
           {loggeduser.photo ? (
             <img
-              src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${loggeduser.photo}`}
-              // src="/logo192.png"
+              src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${loggeduser.photo}`}              
               alt="avatar"
               style={{ width: "25px" }}
               className="avatar"
@@ -41,7 +41,16 @@ export const Auth = () => {
             Salir
           </button>
         </li>
-        <li  className="menu" onClick={()=>{setIsOpen(!isOpen)}}><Aside setNews={setNews}/></li>
+
+        {loggeduser ? 
+        <li className="subtitle">Crear noticia</li>
+        : null}
+        <li onClick={()=>{setIsOpen(!isOpen)}} className="menu" >{loggeduser ? <NewsContainer /> : null}</li>
+        <li className="subtitle">Categorías</li>
+        <li onClick={()=>{setIsOpen(!isOpen)}} className="menu"><Aside setNews={setNews}/></li>
+        <li className="subtitle">Filtros</li>
+        <li className="menu"></li>
+        <li className="subtitle">Sobre nosotros</li>
         <li><Link to="/about" onClick={()=>{
           setIsOpen(!isOpen);
         }}>sobre nosotros</Link></li>
@@ -67,7 +76,7 @@ export const Auth = () => {
       <li>
         <Link to="/users/login" onClick={()=>{setIsOpen(!isOpen)}}>Iniciar sesión</Link>
       </li>  
-      <li  className="menu" onClick={()=>{setIsOpen(!isOpen)}} ><Aside setNews={setNews}/></li>
+      <li className="menu"><Aside setNews={setNews} onClick={()=>{setIsOpen(!isOpen)}}/></li>
       <li className="subtitle">Filtro:</li>
       <li className="subtitle">Sobre nosotros:</li>
       <li className="menu"><Link to="/about" onClick={()=>{

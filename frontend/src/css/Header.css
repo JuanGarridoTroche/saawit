@@ -119,6 +119,10 @@ header>nav>ul.logged-user.open .subtitle {
   font-weight: 400;
 }
 
+.categories > h2 {
+  display: none;
+}
+
 header>nav>ul.logged-user.open li>img {
   display: none;
 }

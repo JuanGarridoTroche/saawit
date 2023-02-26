@@ -18,7 +18,7 @@ export const Aside = ({ setNews }) => {
 
   return (
     <section className="categories">
-      <h2 className="subtitle">Categorías</h2>
+      <h2>Categorías</h2>
       {/* <NewsByCategory category="deportes">deportes</NewsByCategory> */}
       <ul
         onClick={(e) => {
