@@ -225,6 +225,7 @@ header>nav>ul.logged-user.open>li>button {
   /* ################################################# */
   /* ##  Menú cabecera, Brand: Logo + Name - Start  ## */
   /* ################################################# */
+  
   header>.brand>h2 {
     display: unset;
   }
@@ -233,6 +234,7 @@ header>nav>ul.logged-user.open>li>button {
   /* ##   Menú cabecera, Brand: Logo + Name - End   ## */
   /* ################################################# */
 
+  
   /* ############################################################## */
   /* ##  Menú cabecera: Registro/usuario y Login/Logout - Start  ## */
   /* ############################################################## */
@@ -250,12 +252,32 @@ header>nav>ul.logged-user.open>li>button {
     align-items: center;
     transform: translateX(0);
   }
+  header>nav>ul.logged-user.open {
+    position: unset;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    transform: translateX(0);
+    min-height: unset;
+  }
 
   header>nav>ul.logged-user.open li>img {
     display: unset;
   }
 
-  header>nav>ul li>button {
+  header>nav>ul.logged-user.open > li>a {
+    padding: 6px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-transform: none;
+    background-color: var(--color-logo);
+    border-radius: 20px;
+    margin: 0 .5rem 0 1rem;
+  }
+
+  header>nav>ul li>button, header>nav>ul.logged-user.open li>button {
     display: unset;
     background-color: var(--color-logo);
     border: none;
@@ -265,7 +287,7 @@ header>nav>ul.logged-user.open>li>button {
     width: 70px;
     cursor: pointer;
     color: rgb(245, 245, 245);
-    font-weight: 600;
+    font-size: 1.1rem;
   }
 
 
