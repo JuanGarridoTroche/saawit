@@ -6,6 +6,10 @@ section.login {
   align-items: center;
 }
 
+section.login > .error {
+  color: red;
+}
+
 .login > form {
   display: flex;
   flex-direction: column;

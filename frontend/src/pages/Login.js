@@ -27,7 +27,7 @@ export const Login = () => {
   return (
     <section className="login">
       <h2>Iniciar sesión</h2>
-      {error ? <p>{error}</p> : null}
+      {error ? <p className="error">{error}</p> : null}
       <form onSubmit={handleSubmit}>
         <input
           id="email"
