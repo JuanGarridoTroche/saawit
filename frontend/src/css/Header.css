@@ -7,7 +7,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem; 
+  margin: 1rem;
   position: fixed;
   left: 0;
   top: 0;
@@ -22,13 +22,13 @@ header {
 /* ################################################# */
 /* ##  Menú cabecera, Brand: Logo + Name - Start  ## */
 /* ################################################# */
-header > .brand {
+header>.brand {
   display: flex;
   gap: 1rem;
   flex-grow: 1;
 }
 
-header > .brand > h2 {
+header>.brand>h2 {
   display: none;
 }
 
@@ -38,6 +38,7 @@ header>.brand>a>img {
   border-radius: 50%;
   margin-right: 10px;
 }
+
 /* ############################################### */
 /* ##  Menú cabecera, Brand: Logo + Name - End  ## */
 /* ############################################### */
@@ -46,12 +47,12 @@ header>.brand>a>img {
 /* ####################################### */
 /* ##  Menú cabecera: Búsqueda - Start  ## */
 /* ####################################### */
-header > .search-form { 
+header>.search-form {
   display: flex;
   flex-grow: 5;
 }
 
-header > .search-form > input {
+header>.search-form>input {
   padding: 10px;
   border-radius: 40px;
   border: 1px solid rgb(235, 235, 235);
@@ -59,13 +60,14 @@ header > .search-form > input {
   flex-grow: 9;
 }
 
-header > .search-form > button {
+header>.search-form>button {
   flex-grow: 1;
 }
 
-header> .search-form > input:hover {
+header>.search-form>input:hover {
   background-color: rgb(255, 255, 255);
-} 
+}
+
 /* ##################################### */
 /* ##  Menú cabecera: Búsqueda - End  ## */
 /* ##################################### */
@@ -92,7 +94,7 @@ header>nav>ul.logged-user {
   display: flex;
   flex-direction: column;
   width: 100%;
-  transform: translateX(-100%);  
+  transform: translateX(-100%);
   transition: .9s ease all;
 }
 
@@ -107,31 +109,44 @@ header>nav>ul.logged-user.open {
   min-height: 100vh;
 }
 
-header>nav>ul.logged-user.open li > img {
+header>nav>ul.logged-user.open .subtitle {
+  border-bottom: 1px solid rgb(10, 10, 10);
+  width: 100%;
+  padding: 5px 10px;
+  margin-top: 10px;
+  background-color: antiquewhite;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+header>nav>ul.logged-user.open li>img {
   display: none;
 }
 
-header>nav>ul.logged-user.open li > a, header>nav>ul.logged-user.open li > button {
+header>nav>ul.logged-user.open li>a,
+header>nav>ul.logged-user.open li>button {
   background-color: white;
   color: rgb(10, 10, 10);
   border: none;
   font-size: 1.6rem;
-  padding: 10px;
+  padding: 0 10px;
+  text-transform: capitalize;
 }
 
 header>nav>ul.logged-user li {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  padding: 10px 0 0 10px;
 }
 
 /* header>nav>ul.logged-user li> .avatar {
   display: none;
 } */
 
-header>nav>ul.logged-user >li >a {
+header>nav>ul.logged-user>li>a {
   padding: 6px;
-  text-decoration: none;  
+  text-decoration: none;
   color: white;
   font-weight: 500;
   font-size: 1.1rem;
@@ -140,7 +155,7 @@ header>nav>ul.logged-user >li >a {
   margin: 0 .5rem 0 1rem;
 }
 
-header>nav>ul.logged-user.open > li > button {
+header>nav>ul.logged-user.open>li>button {
   margin: 0 10px;
 }
 
@@ -168,17 +183,18 @@ header>nav>ul.logged-user.open > li > button {
   transition: all .2s linear;
 }
 
-.nav-toggle.open > span {
+.nav-toggle.open>span {
   transform: rotate(45deg) translate(0, 0);
 }
 
-.nav-toggle.open > span:nth-child(2) {
+.nav-toggle.open>span:nth-child(2) {
   display: none;
 }
 
-.nav-toggle.open > span:nth-child(3) {
+.nav-toggle.open>span:nth-child(3) {
   transform: rotate(-45deg) translate(-5px, 1px);
 }
+
 /* ##################################################### */
 /* ##  Menú Cabecera: hamburguesa (nav-toggle) - End  ## */
 /* ##################################################### */
@@ -190,13 +206,14 @@ header>nav>ul.logged-user.open > li > button {
 /*! DESKTOP CSS */
 
 @media(min-width: 600px) {
-  
+
   /* ##################################### */
   /* ##  Menú cabecera: header - Start  ## */
   /* ##################################### */
   header {
     padding: 12px;
   }
+
   /* ##################################### */
   /* ##   Menú cabecera: header - End   ## */
   /* ##################################### */
@@ -204,9 +221,10 @@ header>nav>ul.logged-user.open > li > button {
   /* ################################################# */
   /* ##  Menú cabecera, Brand: Logo + Name - Start  ## */
   /* ################################################# */
-  header > .brand > h2 {
+  header>.brand>h2 {
     display: unset;
   }
+
   /* ################################################# */
   /* ##   Menú cabecera, Brand: Logo + Name - End   ## */
   /* ################################################# */
@@ -219,21 +237,21 @@ header>nav>ul.logged-user.open > li > button {
     justify-content: flex-end;
     flex-grow: 2;
     gap: 1rem;
-  } 
-  
+  }
+
   header>nav>ul.logged-user {
     position: unset;
     flex-direction: row;
     justify-content: flex-end;
-    align-items: center;    
+    align-items: center;
     transform: translateX(0);
   }
 
-  header>nav>ul.logged-user.open li > img {
+  header>nav>ul.logged-user.open li>img {
     display: unset;
   }
 
-  header>nav>ul li > button {
+  header>nav>ul li>button {
     display: unset;
     background-color: var(--color-logo);
     border: none;
@@ -243,24 +261,33 @@ header>nav>ul.logged-user.open > li > button {
     width: 70px;
     cursor: pointer;
     color: rgb(245, 245, 245);
-    font-weight: 600 ;
+    font-weight: 600;
   }
 
-  
-  header>nav>ul.logged-user li> .avatar {
+
+  header>nav>ul.logged-user li>.avatar {
     display: unset;
     width: 35px;
     height: 35px;
     border-radius: 50%;
-  }  
-  
+  }
+
   header>nav>ul.logged-user li a:hover {
     opacity: .7;
   }
 
-  header > nav > ul.logged-user li > button:hover{
+  header>nav>ul.logged-user li>button:hover {
     opacity: .7;
   }
+
+  .logged-user > li.subtitle {
+    display: none;
+  }
+
+  .logged-user > li.menu {
+    display: none;
+  }
+
   /* ############################################################## */
   /* ##   Menú cabecera: Registro/usuario y Login/Logout - End   ## */
   /* ############################################################## */
@@ -272,9 +299,9 @@ header>nav>ul.logged-user.open > li > button {
   .nav-toggle {
     display: none;
   }
+
   /* ##################################################### */
   /* ##  Menú Cabecera: hamburguesa (nav-toggle) - End  ## */
   /* ##################################################### */
-  
-}
 
+}
