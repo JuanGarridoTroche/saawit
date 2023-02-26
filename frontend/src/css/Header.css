@@ -284,11 +284,11 @@ header>nav>ul.logged-user.open>li>button {
     opacity: .7;
   }
 
-  .logged-user > li.subtitle {
+  .logged-user > .subtitle {
     display: none;
   }
 
-  .logged-user > li.menu {
+  .logged-user > .menu {
     display: none;
   }
 

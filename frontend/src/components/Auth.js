@@ -51,7 +51,7 @@ export const Auth = () => {
         <li className="subtitle">Filtros</li>
         <li className="menu"></li>
         <li className="subtitle">Sobre nosotros</li>
-        <li><Link to="/about" onClick={()=>{
+        <li className="menu"><Link to="/about" onClick={()=>{
           setIsOpen(!isOpen);
         }}>sobre nosotros</Link></li>
       </ul>
