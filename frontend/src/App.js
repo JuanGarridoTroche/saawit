@@ -1,5 +1,5 @@
-import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Home } from "./pages/Home";
@@ -14,12 +14,13 @@ import { Aside } from "./components/Aside";
 import { useEffect, useState } from "react";
 import { loadNewsService } from "./services";
 import { NewsList } from "./components/NewsList";
-import Modal from "./components/Modal";
 import { About } from "./components/About";
+import Modal from "./components/Modal";
 
 function App() {
   const [news, setNews] = useState();
   const [control, setControl] = useState(false);
+  const [voteByLoggedUser, setVoteByLoggedUser] = useState()
 
   useEffect(() => {
     const loadNewsBySearch = async () => {
