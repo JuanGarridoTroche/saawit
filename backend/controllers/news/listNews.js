@@ -8,8 +8,8 @@ const listNews = async (req, res, next) => {
     // Filtro por feedback
     // Filtro por keyword dentro del cuerpo del mensaje
     let {keyword, category, orderBy, direction} =req.query; 
-    const idUser = 3;
-    console.log(idUser);
+    // const idUser = 3;
+    // console.log(idUser);
 
     
     const validCategories = ['deportes', 'videojuegos', 'noticias', 'programación', 'viajes', 'tecnología', 'música', 'memes', 'general'];

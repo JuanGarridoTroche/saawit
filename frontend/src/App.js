@@ -20,7 +20,6 @@ import Modal from "./components/Modal";
 function App() {
   const [news, setNews] = useState();
   const [control, setControl] = useState(false);
-  const [voteByLoggedUser, setVoteByLoggedUser] = useState()
 
   useEffect(() => {
     const loadNewsBySearch = async () => {

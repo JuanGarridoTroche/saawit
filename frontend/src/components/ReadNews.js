@@ -25,9 +25,11 @@ export const ReadNews = (e) => {
     };
 
     loadSingleNews({ idNews, token, method });
-  }, [idNews, news, token]);
+  }, [news, idNews, token, method]);
 
   const { id, body, category, idUser, photoNews, summary, title } = news;
+
+
 
   const handleSubmit = ()=> {
     
@@ -93,9 +95,12 @@ export const ReadNews = (e) => {
           />
           {image ? (
             <figure>
-              <img src="/news" alt="preview" style={{ width: "100px" }} />
+              <img src={`/${image.name}.jpg`} alt={image.name} style={{ width: "100px" }} />
             </figure>
-          ) : null}
+          ) : null}          
+        </fieldset>
+        <fieldset>
+          {photoNews ? "" : <p>No hay fotos subidas</p>}
         </fieldset>
         <button>Enviar</button>
       </form>
