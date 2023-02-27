@@ -15,7 +15,8 @@
   text-align: center;
   font-size: 3rem;
   background-color: transparent;
-  color: rgb(50, 50, 50);  
+  /* color: rgb(50, 50, 50); */
+  color: rgb(158, 4, 4);  
   backdrop-filter: blur(10px);
   box-shadow: 0 3px 13px 1px rgba(255, 255, 255, .9);
   border-radius: 10px;

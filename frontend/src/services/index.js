@@ -23,8 +23,6 @@ export const loadNewsService = async (queryString) => {
   return json.data.news;
 };
 
-
-
 //  Servicio de registro de nuevo usuario
 export const registerUserService = async ({
   username,
@@ -50,8 +48,6 @@ export const registerUserService = async ({
   }
 };
 
-
-
 // Servicio de login de usuario
 export const loginUserService = async ({ email, password }) => {
   const response = await fetch(
@@ -74,8 +70,6 @@ export const loginUserService = async ({ email, password }) => {
   return json.data;
 };
 
-
-
 // Servicio que nos facilita los datos del usuario logueado a partir de su token
 export const getloggedUserDataService = async ({ token }) => {
   const response = await fetch(
@@ -96,24 +90,20 @@ export const getloggedUserDataService = async ({ token }) => {
   return json.data;
 };
 
-
-
 // Conseguir los datos de usuario a través del id
 export const getUserDataService = async ({ idUser }) => {
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/profile/${idUser}`
   );
-   
+
   const json = await response.json();
 
   if (!response.ok) {
     throw new Error(json.message);
   }
-  
+
   return json.data;
 };
-
-
 
 // Servicio que envía los datos de una nueva noticia
 export const createNewsService = async ({ data, token }) => {
@@ -158,8 +148,6 @@ export const loadNewsByCategoryService = async (category) => {
   return json.data;
 };
 
-
-
 // Servicio que carga las 10 noticias  mejor valoradas (feedback)
 export const loadNewsByFeedbackService = async () => {
   //Extraemos (fetch) desde nuestro Backend la info con el endpoint que necesitemos
@@ -177,10 +165,7 @@ export const loadNewsByFeedbackService = async () => {
   return json.data.byFeedback;
 };
 
-
-
 export const newsService = async ({ idNews, token, method }) => {
-
   // console.log("newsService: ", idNews);
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/${idNews}`,
@@ -257,7 +242,7 @@ export const voteNewsService = async ({ id, token, method, body }) => {
 };
 
 // Edita los campos de username, email y bio de un usuario logueado
-export const editUserProfile = async ({ token, body }) => {
+export const editUserProfile = async ({ token, formData }) => {
   const response = await fetch(
     `
     ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/profile`,
@@ -265,12 +250,11 @@ export const editUserProfile = async ({ token, body }) => {
       method: "PUT",
       headers: {
         Authorization: token,
-        "Content-Type": "application/json",
       },
-      body: JSON.stringify(body),
+      body: formData,
     }
   );
-  const json = response.json();
+  const json = await response.json();
 
   if (!response.ok) {
     throw new Error(json.message);
@@ -297,6 +281,29 @@ export const editUserAvatar = async ({ token, avatar }) => {
 
   if (!response.ok) {
     throw await new Error(json.ok);
+  }
+
+  return json.data;
+};
+
+export const editNewsService = async (formData, idNews, token) => {
+  console.log(typeof category);
+  const response = await fetch(
+    `
+    ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/${idNews}`,
+    {
+      method: "PUT",
+      headers: {
+        Authorization: token,
+      },
+      body: formData,
+    }
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
   }
 
   return json.data;

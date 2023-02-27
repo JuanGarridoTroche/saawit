@@ -54,7 +54,7 @@ export const Header = ({setNews})=> {
         <button hidden>Buscar</button>
       </form>    
       <nav>  
-        <Auth/>     
+        <Auth setNews={setNews}/>     
       </nav>
     </header>
   )

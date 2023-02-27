@@ -1,6 +1,6 @@
 // "use strict";
 
-const {generateError} = require("../helpers");
+const { generateError } = require("../helpers");
 const jwt = require("jsonwebtoken");
 
 const isAuth = async (req, res, next) => {
@@ -14,6 +14,7 @@ const isAuth = async (req, res, next) => {
 
     // Almacenamos la info del token
     let tokenInfo;
+
     try {
       tokenInfo = jwt.verify(authorization, process.env.SECRET);
     } catch {

@@ -39,7 +39,7 @@ function App() {
     <>
       <Header setNews={setNews} />
       <main>
-        <Aside setNews={setNews} />
+        <Aside setNews={setNews}/>
         <Routes>
           <Route
             path="/"
@@ -83,8 +83,7 @@ function App() {
             path="*"
             element={
               <Modal>
-                {" "}
-                <NotFoundPage />{" "}
+                <NotFoundPage />
               </Modal>
             }
           />

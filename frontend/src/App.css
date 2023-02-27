@@ -231,7 +231,7 @@ main>.breaking-news>.news-list>.single-news>section>.body {
 
   main>.breaking-news>.news-list>.single-news a .photos {
     /* max-height: 400px; */
-    max-width: 100%;
+    width: 100%;
   }
 
   main>.breaking-news>.news-list>.single-news>section>.title {

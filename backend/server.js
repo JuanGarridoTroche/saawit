@@ -10,7 +10,7 @@ const cors = require("cors");
 const { PORT, UPLOADS_DIR } = process.env;
 const app = express();
 
-app.use(express.static(UPLOADS_DIR))
+app.use(express.static(UPLOADS_DIR));
 
 // Deserializa el body con formato JSON
 app.use(express.json());
@@ -47,17 +47,17 @@ app.post("/users/login", loginUser);
 // Nuevo usuario
 app.post("/users", newUser);
 
-//Editar mi Foto del usuario
-app.put("/users/photo", isAuth, isImg, editPhoto);
+//Editar mi Foto del usuario (ELIMINAR)
+app.put("/users/photo", isAuth, editPhoto);
 
 //Editar datos de usuario
-app.put('/users/profile', isAuth, editProfile);
+app.put("/users/profile", isAuth, editProfile);
 
 // Ver perfil de usuario
-app.get('/users/profile/:idUser', readProfile);
+app.get("/users/profile/:idUser", readProfile);
 
 // Ver el perfil del usuario loggeado
-app.get('/users', isAuth, readLoggedProfile);
+app.get("/users", isAuth, readLoggedProfile);
 
 //Editar password del usuario
 app.put("/users/password", isAuth, editPassword);
@@ -66,10 +66,10 @@ app.put("/users/password", isAuth, editPassword);
 app.put("/users/password/solicitude", sendRecoverPassword);
 
 // Recuperación de contraseña
-app.put('/users/password/recover', recoverPassword)
+app.put("/users/password/recover", recoverPassword);
 
 // Ver todas las noticias de un usuario
-app.get("/users/news", isAuth, getNews)
+app.get("/users/news", isAuth, getNews);
 
 /*
  * ##########################
@@ -100,10 +100,10 @@ app.post("/news", isAuth, createNews);
 app.get("/news/ByFeedback", NewsOrderedByFeedback);
 
 //Lista de noticias según la categoría
-app.get("/news/categoria/:category", newsByCategory)
+app.get("/news/categoria/:category", newsByCategory);
 
 // Leer una noticia
-app.get("/news/:idNews", readNews)
+app.get("/news/:idNews", readNews);
 
 // Editar una noticia ya creada
 app.put("/news/:idNews", isAuth, editNews);
@@ -111,18 +111,14 @@ app.put("/news/:idNews", isAuth, editNews);
 // Eliminar una noticia
 app.delete("/news/:idNews", isAuth, newsExists, deleteNews);
 
-
 // Buscar noticias con las letras/palabras indicadas
-app.get("/news/search/:characters", searchingNews)
-
+app.get("/news/search/:characters", searchingNews);
 
 // Vota una noticia publicada (de otro usuario registrado)
 app.post("/news/:idNews/votes", isAuth, newsExists, voteNews);
 
 // Ver imágenes de una noticia
 app.get("/uploads/:name", newsShowImages);
-
-
 
 /*
  * ##########################################
@@ -132,6 +128,8 @@ app.get("/uploads/:name", newsShowImages);
 
 // Middleware de Error:
 app.use((err, req, res, next) => {
+  console.error(err);
+
   res.status(err.statusCode || 500).send({
     status: "error",
     message: err.message,

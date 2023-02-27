@@ -159,6 +159,9 @@ header>nav>ul.logged-user>li>a {
   margin: 0 .5rem 0 1rem;
 }
 
+header>nav>ul.logged-user > li > a.username {
+  font-weight: bold;
+}
 header>nav>ul.logged-user.open>li>button {
   margin: 0 10px;
 }

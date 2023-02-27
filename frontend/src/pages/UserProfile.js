@@ -9,49 +9,36 @@ import { editUserAvatar, editUserProfile } from "../services";
 export const UserProfile = () => {
   const { idUser } = useParams();
   const { user, loading, error } = useUserProfile(idUser);
-  const { loggeduser, token } = useContext(AuthContext);
-  const avatarInputRef = useRef();
+  const { loggeduser, setLoggedUser, token } = useContext(AuthContext);
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [bio, setBio] = useState("");
-  const [active, setActive] = useState("");
-  const [avatar, setAvatar] = useState('');
+  const [avatar, setAvatar] = useState();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // const avatar = avatarInputRef.current.files;
 
     const formData = new FormData();
 
     formData.set("username", username);
     formData.set("email", email);
     formData.set("bio", bio);
-    formData.set("active", active);
-    // formData.set("avatar", avatarInputRef.current.files);
+    formData.set("photo", avatar);
 
+    const editedValues = await editUserProfile({ formData, token });
 
-    setActive(user.active);
-    console.log("FormData: ", username, email, bio, active, avatar);
-
-    const body = {
-      username,
-      email,
-      bio,
-      active,
-    };
-
-    console.log("body: ", body);
-
-    editUserProfile({ token, body });
-    editUserAvatar({token, avatar});
+    setLoggedUser({
+      ...loggeduser,
+      username: editedValues.username,
+      email: editedValues.email,
+      bio: editedValues.bio,
+      photo: editedValues.photo,
+    });
   };
 
   if (loading) return <p>Cargando...</p>;
   if (error) return <ErrorMessage message={error} />;
-  // console.log(user);
-  // console.log(loggeduser);
-  // console.log(token);
 
   return (
     <section className="user-profile">
@@ -101,28 +88,30 @@ export const UserProfile = () => {
               La imagen debe tener extensión jpg, jpeg, png, gif, bmp, raw o
               webp con un formato cuadrado
             </label>
-            {user.photo ? (
-              <label htmlFor="avatar">
+
+            <label htmlFor="avatar">
+              {user.photo ? (
                 <img
                   src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${user.photo}`}
                   alt="subir imágenes de la entrada"
                   className="avatar"
                 />
-              </label>
-            ) : null}
-            {user.photo ? (
-              <input
-                hidden
-                id="avatar"
-                name="avatar"
-                type="file"
-                accept="image/*"
-                ref={avatarInputRef}
-                onChange={(e) => setAvatar(e.target.files[0])}
-              />
-            ) : (
-              <input type="file" />
-            )}
+              ) : (
+                <img
+                  src="/upload.svg"
+                  alt="subir imágenes de la noticia"
+                  className="photos"
+                />
+              )}
+            </label>
+
+            <input
+              hidden
+              id="avatar"
+              name="avatar"
+              type="file"
+              onChange={(e) => setAvatar(e.target.files[0])}
+            />
           </fieldset>
           <fieldset>
             <h3>Rol:</h3>

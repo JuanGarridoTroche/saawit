@@ -4,39 +4,49 @@ const selectUserByUsernameQuery = require("../../bbdd/queries/users/selectUserBy
 const selectMailByEmailQuery = require("../../bbdd/queries/users/selectMailByEmailQuery");
 const updateProfileQuery = require("../../bbdd/queries/users/updateProfileQuery");
 const selectUserByIdQuery = require("../../bbdd/queries/users/selectUserByIdQuery");
+const { deletePhoto, savePhoto } = require("../../helpers");
 
 const editProfile = async (req, res, next) => {
   try {
-    let { username, email, bio, active } = req.body;
-
-    console.log(username, email, bio, active);
+    let { username, email, bio } = req.body;
 
     // Seleccionamos los datos actuales del usuario
     const user = await selectUserByIdQuery(req.user.id);
 
-    // Comprobamos que username no esté registrado en la BBDD
-    await selectUserByUsernameQuery(username);
-    if(!username || username ==="") {
-      username = user.username;
+    // Si existe un nombre de usuario comprobamos que este disponible.
+    if (username) await selectUserByUsernameQuery(username);
+
+    // Si existe un email comprobamos que este disponible.
+    if (email) await selectMailByEmailQuery(email);
+
+    if (!username) username = user.username;
+    if (!bio) bio = user.bio;
+    if (!email) email = user.email;
+
+    let photoName;
+
+    // Comprobamos si existe avatar.
+    if (req.files?.photo) {
+      // Eliminamos el avatar viejo de la carpeta de subida de archivos (si existe).
+      if (user.photo) await deletePhoto(user.photo);
+
+      // Guardamos el nuevo avatar en la carpeta de uploades y obtenemos su nombre.
+      photoName = await savePhoto(req.files.photo);
     }
 
-    if(!bio || bio === "") {
-      bio = user.bio;
-    }
+    if (!photoName) photoName = user.photo;
 
-    // Comprobamos que el email no esté ya registrado en la BBDD
-    await selectMailByEmailQuery(email);
-    if(!email) email = user.email;
-
-    //Si se le envía un dato distinto de verdadero o falso a active, cogerá el valor que tenía anteriormente
-    if(active !== true || active !== false) active =user.active;
-    
     //Actualizamos los datos
-    await updateProfileQuery(username, email, bio, active, req.user.id);
+    await updateProfileQuery(username, email, bio, photoName, req.user.id);
 
     res.send({
       status: "Ok",
-      message: "perfil actualizado",
+      data: {
+        username,
+        bio,
+        email,
+        photo: photoName,
+      },
     });
   } catch (err) {
     next(err);

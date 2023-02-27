@@ -4,9 +4,8 @@ import { AuthContext } from "../context/AuthContext";
 import { Aside } from "./Aside";
 import { NewsContainer } from "./NewsContainer";
 
-export const Auth = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [news, setNews] = useState();
+export const Auth = ({setNews}) => {
+  const [isOpen, setIsOpen] = useState(false);  
   const { loggeduser, logout } = useContext(AuthContext);
   // console.log(loggeduser);
   return loggeduser ? (
@@ -26,6 +25,7 @@ export const Auth = () => {
             to={`users/profile/${loggeduser.id}`}
             loggeduser={loggeduser}
             onClick={()=>{setIsOpen(!isOpen)}}
+            className="username"
           >
             {loggeduser.username}
           </Link>
@@ -47,9 +47,9 @@ export const Auth = () => {
         : null}
         <li onClick={()=>{setIsOpen(!isOpen)}} className="menu" >{loggeduser ? <NewsContainer /> : null}</li>
         <li className="subtitle">Categorías</li>
-        <li onClick={()=>{setIsOpen(!isOpen)}} className="menu"><Aside setNews={setNews}/></li>
-        <li className="subtitle">Filtros</li>
-        <li className="menu"></li>
+        <li onClick={()=>{setIsOpen(!isOpen)}} className="menu"><Aside setNews={setNews} setIsOpen={setIsOpen} isOpen={isOpen}/></li>
+        {/* <li className="subtitle">Filtros</li> */}
+        {/* <li className="menu"></li> */}
         <li className="subtitle">Sobre nosotros</li>
         <li className="menu"><Link to="/about" onClick={()=>{
           setIsOpen(!isOpen);
@@ -76,8 +76,10 @@ export const Auth = () => {
       <li>
         <Link to="/users/login" onClick={()=>{setIsOpen(!isOpen)}}>Iniciar sesión</Link>
       </li>  
-      <li className="menu"><Aside setNews={setNews} onClick={()=>{setIsOpen(!isOpen)}}/></li>
-      <li className="subtitle">Filtro:</li>
+      <li className="subtitle">Categorías</li>
+      <li className="menu" onClick={()=>{setIsOpen(!isOpen)}}><Aside setNews={setNews} setIsOpen={setIsOpen} isOpen={isOpen}/></li>
+      {/* <li className="subtitle">Filtros:</li> */}
+      
       <li className="subtitle">Sobre nosotros:</li>
       <li className="menu"><Link to="/about" onClick={()=>{
           setIsOpen(!isOpen);
