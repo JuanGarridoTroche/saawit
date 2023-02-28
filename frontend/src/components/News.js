@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import { ReadNews } from "../pages/ReadNews.ori";
 import { newsService, voteNewsService } from "../services";
 
 export const News = ({ news, removeNews, control, setControl }) => {
@@ -68,7 +67,7 @@ export const News = ({ news, removeNews, control, setControl }) => {
             addVote(news.id, true);
           }}
         />
-        <p>{news.feedback}</p>
+        <p className="votes">{news.feedback}</p>
         <img
           src="/arrow-down.svg"
           alt="arrow down"
@@ -80,8 +79,8 @@ export const News = ({ news, removeNews, control, setControl }) => {
       </figure>
       <section key={news.id} className="single-news-container">
         <p className="publish-news">
-          {news.category} · Publicado por{" "}
-          <Link to={`/users/profile/${news.idUser}`}>{news.username}</Link> el
+          {news.category} · Publicado por 
+          <Link to={`/users/profile/${news.idUser}`}> {news.username}</Link> el
           {new Date(news.createdAt).toLocaleString()}
         </p>
         <p className="title">{news.title}</p>

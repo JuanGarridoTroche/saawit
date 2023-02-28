@@ -165,10 +165,10 @@ export const loadNewsByFeedbackService = async () => {
   return json.data.byFeedback;
 };
 
-export const newsService = async ({ idNews, token, method }) => {
-  // console.log("newsService: ", idNews);
+export const newsService = async ({ id, token, method }) => {
+  // console.log("newsService: ", id);
   const response = await fetch(
-    `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/${idNews}`,
+    `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/${id}`,
     {
       method: method,
       headers: {

@@ -30,10 +30,12 @@ export const ReadNews = () => {
 
         setNews(currentNews);
 
+        
         setCategory(currentNews.category);
         setTitle(currentNews.title);
         setSummary(currentNews.summary);
         setBody(currentNews.body);
+        console.log(news);
       } catch (err) {
         setError(err.message);
       }
@@ -127,19 +129,23 @@ export const ReadNews = () => {
           onChange={(e) => setBody(e.target.value)}
           required
         />
-        <label htmlFor="photos">
+        { news.photoNews ?
+          <>
+          <label htmlFor="photos">
           <img
             src="/upload.svg"
             alt="subir imágenes de la noticia"
             className="photos"
           />
-        </label>
-        <input
-          type="file"
-          id="photos"
-          onChange={(e) => setImage_1(e.target.files[0])}
-          hidden
-        />
+          </label>
+          <input
+            type="file"
+            id="photos"
+            onChange={(e) => setImage_1(e.target.files[0])}
+            hidden
+          />
+        </>
+       : null }
         <label htmlFor="photo_1">
           <img
             src="/upload.svg"
@@ -150,7 +156,7 @@ export const ReadNews = () => {
         <input
           type="file"
           id="photo_1"
-          onChange={(e) => setImage_2(e.target.files[0])}
+          onChange={(e) => setImage_2(e.target.files[1])}
           hidden
         />
         <label htmlFor="photos">
@@ -163,7 +169,7 @@ export const ReadNews = () => {
         <input
           type="file"
           id="photos"
-          onChange={(e) => setImage_3(e.target.files[0])}
+          onChange={(e) => setImage_3(e.target.files[2])}
           hidden
         />
         {/* {news.images[0] ? (
