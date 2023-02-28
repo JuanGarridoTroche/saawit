@@ -20,6 +20,7 @@ import Modal from "./components/Modal";
 function App() {
   const [news, setNews] = useState();
   const [control, setControl] = useState(false);
+  
 
   useEffect(() => {
     const loadNewsBySearch = async () => {

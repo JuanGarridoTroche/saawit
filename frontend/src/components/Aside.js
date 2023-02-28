@@ -1,14 +1,14 @@
 import "../css/Aside.css";
 import { loadNewsService } from "../services";
 
-export const Aside = ({ setNews, isOpen, setIsOpen }) => {
+export const Aside = ({ setNews }) => {
   const handleCategory = async (e) => {
     try {
       const queryString = `?category=${e.target.textContent}`;
 
       const newsList = await loadNewsService(queryString);
 
-      setIsOpen(!isOpen);
+      // setIsOpen(!isOpen);
 
       if (newsList) {
         setNews(newsList);

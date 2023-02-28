@@ -47,7 +47,7 @@ export const Auth = ({setNews}) => {
         : null}
         <li onClick={()=>{setIsOpen(!isOpen)}} className="menu" >{loggeduser ? <NewsContainer /> : null}</li>
         <li className="subtitle">Categorías</li>
-        <li onClick={()=>{setIsOpen(!isOpen)}} className="menu"><Aside setNews={setNews} setIsOpen={setIsOpen} isOpen={isOpen}/></li>
+        <li onClick={()=>{setIsOpen(!isOpen)}} className="menu"><Aside setNews={setNews} /></li>
         {/* <li className="subtitle">Filtros</li> */}
         {/* <li className="menu"></li> */}
         <li className="subtitle">Sobre nosotros</li>
