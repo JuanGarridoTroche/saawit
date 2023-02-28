@@ -8,7 +8,7 @@ const editNews = async (req, res, next) => {
   try {
     const { idNews } = req.params;
     let { title, summary, body, category } = req.body;
-    console.log(category, title, summary, body);
+    // console.log(category, title, summary, body);
 
     // Comprobamos que han introducido un idNews válido
     if (!Number(idNews) || idNews < 1) {
@@ -45,7 +45,7 @@ const editNews = async (req, res, next) => {
     if (!summary) summary = news.summary;
     if (!body) body = news.body;
 
-    console.log(category, title, summary, body);
+    // console.log(category, title, summary, body);
 
     // Modificamos los datos
     await updateNewsQuery(category, title, summary, body, idNews);
