@@ -117,6 +117,7 @@ export const News = ({ news, removeNews, control, setControl }) => {
         ) : null}
         {loggeduser && loggeduser.id === news.idUser ? (
           <img src="/pencil.svg" alt="edit news" className="edit-news" onClick={()=>{
+            readNews(news.id);
             navigate(`/news/${news.id}`)
           }}/>
         ) : null}

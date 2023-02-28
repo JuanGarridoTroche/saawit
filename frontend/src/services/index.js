@@ -166,7 +166,7 @@ export const loadNewsByFeedbackService = async () => {
 };
 
 export const newsService = async ({ id, token, method }) => {
-  // console.log("newsService: ", id);
+  console.log("newsService: ", id);
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/${id}`,
     {
