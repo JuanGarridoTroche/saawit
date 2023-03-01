@@ -56,9 +56,9 @@
   margin: 10px;
 }
 
-@media(min-width: 700px) {
+@media(min-width: 800px) {
   .container-about{
-    width: 75%;
+    width: 70vw;
     margin: 10px 250px 50px;    
     flex-direction: row;
     border-radius: 10px;
