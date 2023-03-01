@@ -8,6 +8,7 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  let [count, setCount] = useState(0);
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -15,11 +16,16 @@ export const Login = () => {
     e.preventDefault();
     setError("");
 
-    try {
+    try {      
       const data = await loginUserService({ email, password });
       login(data.token);
       navigate("/");
     } catch (error) {
+      setCount(++count);
+      if(count > 2) {
+        setCount(2);
+      }
+      error.message =[...error.message,`. ${count} ${count === 1  ? 'fallo.' : 'fallos.'}` ];
       setError(error.message);
     }
   };

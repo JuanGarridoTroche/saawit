@@ -8,6 +8,7 @@ const editProfile = require("./editProfile");
 const readProfile = require("./readProfile");
 const readLoggedProfile = require("./readLoggedProfile");
 const getNews = require("./getNews")
+const deactivateAccount = require("./deactivateAccount");
 
 module.exports = {
   loginUser,
@@ -20,4 +21,5 @@ module.exports = {
   readProfile,
   readLoggedProfile,
   getNews,
+  deactivateAccount,
 };

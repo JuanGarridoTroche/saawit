@@ -39,6 +39,7 @@ const {
   readProfile,
   readLoggedProfile,
   getNews,
+  deactivateAccount,
 } = require("./controllers/users");
 // Login de usuario
 
@@ -70,6 +71,9 @@ app.put("/users/password/recover", recoverPassword);
 
 // Ver todas las noticias de un usuario
 app.get("/users/news", isAuth, getNews);
+
+//Desactivar cuenta
+app.put("/users/login", deactivateAccount)
 
 /*
  * ##########################

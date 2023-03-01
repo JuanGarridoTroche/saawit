@@ -25,6 +25,11 @@ const loginUser = async (req, res, next) => {
     const user = await selectUserByEmailQuery(email);
     
 
+    //Comprobamos que el usuario está activo
+    if (!user.active) {
+      throw generateError("El usuario no está activo", 401);
+    }
+
     //Comprobar que han introducido email y contraseña
     if (!email || !password) {
       throw generateError("Faltan campos", 400);
@@ -35,11 +40,6 @@ const loginUser = async (req, res, next) => {
 
     if (!validPassword) {
       throw generateError("Email y/o contraseña inválidos", 401);
-    }
-
-    //Comprobamos que el usuario está activo
-    if (!user.active) {
-      throw generateError("El usuario no está activo", 401);
     }
 
     // Creamos el objeto con los datos que queremos guardar dentro del token
