@@ -297,7 +297,7 @@ header>nav>ul.logged-user.open>li>button {
   header>nav>ul.logged-user li>.avatar {
     display: unset;
     width: 35px;
-    height: 35px;
+    height: auto;
     border-radius: 50%;
   }
 

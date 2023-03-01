@@ -35,7 +35,7 @@ export const ReadNews = () => {
         setTitle(currentNews.title);
         setSummary(currentNews.summary);
         setBody(currentNews.body);
-        console.log(news);
+        // console.log(news);
       } catch (err) {
         setError(err.message);
       }

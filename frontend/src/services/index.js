@@ -5,7 +5,7 @@ export const loadNewsService = async (queryString) => {
 
   if (queryString) {
     url += queryString;
-    console.log(url);
+    // console.log(url);
   }
 
   //Extraemos (fetch) desde nuestro Backend la info con el endpoint que necesitemos
@@ -277,8 +277,6 @@ export const editUserAvatar = async ({ token, avatar }) => {
   );
   const json = response.json();
 
-  console.log(response);
-
   if (!response.ok) {
     throw await new Error(json.ok);
   }
@@ -287,7 +285,7 @@ export const editUserAvatar = async ({ token, avatar }) => {
 };
 
 export const editNewsService = async (formData, idNews, token) => {
-  console.log(typeof category);
+  
   const response = await fetch(
     `
     ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/${idNews}`,

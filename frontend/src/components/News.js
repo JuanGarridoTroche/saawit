@@ -26,7 +26,7 @@ export const News = ({ news, removeNews, control, setControl }) => {
 
   // Seleccionamos una noticia
   const readNews = async (id) => {
-    console.log(id);
+    // console.log(id);
     // alert(`Tweet ${id} borrado!`)
     try {
       // Desde aquí controlamos los errores que pueden ocurrir al borrar una news
