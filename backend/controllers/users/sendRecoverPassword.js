@@ -11,7 +11,7 @@ const sendRecoverPassword = async (req, res, next) => {
   try {
     const {email} = req.body;
 
-    console.log("correo electrónico: ", email);
+    // console.log("correo electrónico: ", email);
     
 
     // Comprobamos que nos hayan enviado un correo electrónico válido
@@ -19,7 +19,7 @@ const sendRecoverPassword = async (req, res, next) => {
     const schema =  joi.string().email().required().error(new Error("Introduzca una cuenta de correo válida"));
     const validation = schema.validate(email);
 
-    console.log("validación: ", validation);
+    // console.log("validación: ", validation);
 
     if (validation.error || validation === null) {
       throw generateError(validation.error.message);
@@ -43,7 +43,7 @@ const sendRecoverPassword = async (req, res, next) => {
 
     const emailContent = `Hola ${verifyEmail.username},
     
-    Se ha solicitado la recuperación de la contraseña para este email en SAAWIT. Utiliza el siguiente código para crear una nueva contraseña: ${recoverPassCode}
+    Se ha solicitado la recuperación de la contraseña para este email en SAAWIT. Utiliza el siguiente código para crear una nueva contraseña: <a href="http://localhost:3000/users/password/recover" alt="recover">${recoverPassCode}</a>
 
     Si no has sido tú, ignora este correo.`;
 

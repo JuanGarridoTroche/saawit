@@ -7,7 +7,7 @@ import { Login } from "./pages/Login";
 import { NotFoundPage } from "./components/NotFoundPage";
 import { Register } from "./pages/Register";
 import { NewsByFeedback } from "./pages/NewsByFeedback";
-import { ReadNews } from "./components/ReadNews";
+import { ShowNews } from "./components/ShowNews";
 import { CreateNews } from "./components/CreateNews";
 import { UserProfile } from "./pages/UserProfile";
 import { Aside } from "./components/Aside";
@@ -80,7 +80,7 @@ function App() {
             element={<CreateNews control={control} setControl={setControl} />}
           />
           {/* Leer una noticia, método: get */}
-          <Route path="/news/:idNews" element={<ReadNews />} />
+          <Route path="/news/:idNews" element={<ShowNews />} />
           {/* Editar una noticia creada por el usuario registrado método: put */}
 
           {/* Noticias fitradas por categoría */}

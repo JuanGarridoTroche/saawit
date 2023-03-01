@@ -1,12 +1,12 @@
-import "../css/CreateNews.css";
+import "../css/ShowNews.css";
 import { useParams } from "react-router-dom";
 import { editNewsService, newsService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 import { useContext, useEffect, useState } from "react";
 
-export const ReadNews = () => {
+export const ShowNews = () => {
   // e.stopPropagation();
-  const { idNews } = useParams();
+  const { idNews:id } = useParams();
   const { loggeduser, token } = useContext(AuthContext);
 
   const [news, setNews] = useState({});
@@ -25,8 +25,10 @@ export const ReadNews = () => {
 
   useEffect(() => {
     const getNewsById = async () => {
-      try {
-        const currentNews = await newsService({ idNews, token, method });
+      try {        
+        const currentNews = await newsService({ id, token, method });
+
+        console.log(currentNews);
 
         setNews(currentNews);
 
@@ -35,6 +37,7 @@ export const ReadNews = () => {
         setTitle(currentNews.title);
         setSummary(currentNews.summary);
         setBody(currentNews.body);
+        setImage_1(currentNews.photoNews[0].name);
         // console.log(news);
       } catch (err) {
         setError(err.message);
@@ -42,7 +45,7 @@ export const ReadNews = () => {
     };
 
     getNewsById();
-  }, [idNews, token]);
+  }, [id, token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,7 +63,7 @@ export const ReadNews = () => {
       formData.append("image_2", image_2);
       formData.append("image_3", image_3);
 
-      const editedValues = await editNewsService(formData, idNews, token);
+      const editedValues = await editNewsService(formData, id, token);
 
       // Modificamos la noticia con la nueva info.
       setNews({
@@ -78,13 +81,13 @@ export const ReadNews = () => {
   };
 
   return (
-    <form className="create-news-form" key={news.id} onSubmit={handleSubmit}>
-      {token && news.idUser === loggeduser ? (
+    <form className="edit-news-form" key={news.id} onSubmit={handleSubmit}>      
+      {token && news.idUser === loggeduser.id ? (
         <h2>Editar noticia</h2>
       ) : (
         <h2>Ver noticia</h2>
       )}
-      <fieldset className="create-news-container">
+      <fieldset className="edit-news-container">
         <select
           name="category"
           id="category"
@@ -129,6 +132,10 @@ export const ReadNews = () => {
           onChange={(e) => setBody(e.target.value)}
           required
         />
+        <section className="show-photos">
+          <img src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${image_1}`} alt="foto"/>
+        </section>
+        <section className="photos-news">
         { news.photoNews ?
           <>
           <label htmlFor="photos">
@@ -156,10 +163,10 @@ export const ReadNews = () => {
         <input
           type="file"
           id="photo_1"
-          onChange={(e) => setImage_2(e.target.files[1])}
+          onChange={(e) => setImage_2(e.target.files[0])}
           hidden
         />
-        <label htmlFor="photos">
+        <label htmlFor="photo_2">
           <img
             src="/upload.svg"
             alt="subir imágenes de la noticia"
@@ -169,9 +176,10 @@ export const ReadNews = () => {
         <input
           type="file"
           id="photos"
-          onChange={(e) => setImage_3(e.target.files[2])}
+          onChange={(e) => setImage_3(e.target.files[0])}
           hidden
         />
+        </section>
         {/* {news.images[0] ? (
           <figure>
             <img
@@ -182,6 +190,7 @@ export const ReadNews = () => {
           </figure>
         ) : null} */}
       </fieldset>
+      
       {/* <fieldset>{news.photoNews ? "" : <p>No hay fotos subidas</p>}</fieldset> */}
       <button disabled={sending}>Enviar</button>
     </form>
