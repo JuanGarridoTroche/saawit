@@ -20,7 +20,7 @@
 
 .container-text-about {  
   text-align: justify;
-  padding: 7px 0px 30px 0px;
+  padding: 7px 7px 30px 7px;
   font-family: Lato, sans-serif;
   font-weight: 400;
   line-height: 2rem;
@@ -44,6 +44,7 @@
 .text-about {
   font-size: 1.5rem;
   text-align: justify;
+  padding: 0 7px;
 }
 
 .social-media {
@@ -52,9 +53,11 @@
 }
 
 .social-media a{
-  padding: 10px;
-  margin: 10px;
+  padding: 0 10px;
+  margin: 0 10px;
 }
+
+
 
 @media(min-width: 800px) {
   .container-about{
