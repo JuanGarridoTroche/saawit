@@ -15,7 +15,6 @@ export const RecoverPassword = () => {
     setError("");
 
     try {
-      console.log(recoverPassCode, newPassword, newPasswordRepeated);
       await recoverPasswordService({ recoverPassCode, newPassword, newPasswordRepeated });
       navigate("/users/login");
     } catch (error) {

@@ -329,10 +329,9 @@ export const passCodeSolicitudeService = async ({ email }) => {
   return json.data;
 };
 
-
+// Introduce el código que te llega al correo + cambio de contraseña
 export const recoverPasswordService = async ({ recoverPassCode, newPassword, newPasswordRepeated }) => {
 
-  console.log(recoverPassCode, newPassword, newPasswordRepeated );
   const response = await fetch(
     `
     ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/password/recover`,
@@ -350,6 +349,5 @@ export const recoverPasswordService = async ({ recoverPassCode, newPassword, new
   if (!response.ok) {
     throw new Error(json.message);
   }
-  console.log(json.data);
   return json.data;
 };
