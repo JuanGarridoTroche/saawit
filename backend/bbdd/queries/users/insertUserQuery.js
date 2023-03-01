@@ -18,7 +18,7 @@ const insertUserQuery = async (username, email, password, bio) => {
 
     if (users.length > 0) {
       throw generateError(
-        "El username ya existe en nuestra Base de datos. Por favor, introduce otro username", 403
+        "El nombre de usuario ya existe en nuestra Base de datos. Por favor, introduce otro nombre de usuario", 403
       );
     }
 

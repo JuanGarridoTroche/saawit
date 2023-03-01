@@ -43,7 +43,7 @@ export const UserProfile = () => {
   return (
     <section className="user-profile">
       <h2 className="profile">
-        Perfil de usuario {user.active ? "activo" : <span>suspendido</span>}
+        Perfil de usuario {user.active ? "activo" : <span>desactivado</span>}
       </h2>
       {token && loggeduser && loggeduser.id === user.id ? (
         <form className="user-profile-form" onSubmit={handleSubmit}>

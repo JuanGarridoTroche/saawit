@@ -16,11 +16,12 @@ import { loadNewsService } from "./services";
 import { NewsList } from "./components/NewsList";
 import { About } from "./components/About";
 import Modal from "./components/Modal";
+import { PassCodeSolicitude } from "./pages/PassCodeSolicitude";
+import { RecoverPassword } from "./pages/RecoverPassword";
 
 function App() {
   const [news, setNews] = useState();
   const [control, setControl] = useState(false);
-  
 
   useEffect(() => {
     const loadNewsBySearch = async () => {
@@ -40,7 +41,7 @@ function App() {
     <>
       <Header setNews={setNews} />
       <main>
-        <Aside setNews={setNews}/>
+        <Aside setNews={setNews} />
         <Routes>
           <Route
             path="/"
@@ -57,14 +58,22 @@ function App() {
           <Route path="/users/login" element={<Login />} />
           {/* Registro de nuevo usuario */}
           <Route path="/register" element={<Register />} />
-          {/* Añadir foto de perfil (avatar) del usuario */}
           {/* Ver el perfil de un usuario */}
           <Route path="/users/profile/:idUser" element={<UserProfile />} />
-          <Route path="/about" element={<About/>}/>
-          {/* Modificar el perfil del usuario */}
-          {/* Modificar la contraseña */}
+          {/* Sobre los autores de la aplicación Saawit */}
+          <Route path="/about" element={<About />} />
           {/* Solicitud para que nos envíen a nuestro correo el PassCode para cambiar la contraseña */}
+          <Route
+            path="/users/password/solicitude"
+            element={<PassCodeSolicitude />}
+          />
           {/* Recuperación de contraseña (es necesario el Passcode) */}
+          <Route
+            path="/users/password/recover"
+            element={<RecoverPassword/>}
+          />
+          
+
           {/* Crear una noticia, método: post */}
           <Route
             path="/news"

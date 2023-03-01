@@ -52,10 +52,10 @@ export const Login = () => {
         <button>Enviar</button>
       </form>
       <section className="dont-forget">
-        <p>¿Has olvidado tu nombre de usuario o contraseña ?</p>
-        <p>
+        <p className="link">¿Has olvidado tu nombre de <Link to="/users/password/solicitude">usuario o contraseña</Link>?</p>
+        <p className="link">
           ¿Es tu primera vez en saawit? 
-          <Link to="/register"> REGISTRARSE</Link>
+          <Link to="/register"> REGÍSTRATE</Link>
         </p>
       </section>
     </section>

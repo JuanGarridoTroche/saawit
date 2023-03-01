@@ -285,7 +285,6 @@ export const editUserAvatar = async ({ token, avatar }) => {
 };
 
 export const editNewsService = async (formData, idNews, token) => {
-  
   const response = await fetch(
     `
     ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/${idNews}`,
@@ -304,5 +303,53 @@ export const editNewsService = async (formData, idNews, token) => {
     throw new Error(json.message);
   }
 
+  return json.data;
+};
+
+// Solicitud de recuperación de contraseña con el envío de un código a tu cuenta de correo electrónico
+export const passCodeSolicitudeService = async ({ email }) => {
+  const response = await fetch(
+    `
+    ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/password/solicitude`,
+    {
+      method: "PUT",
+      body: JSON.stringify({ email }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  console.log(json.data);
+  return json.data;
+};
+
+
+export const recoverPasswordService = async ({ recoverPassCode, newPassword, newPasswordRepeated }) => {
+
+  console.log(recoverPassCode, newPassword, newPasswordRepeated );
+  const response = await fetch(
+    `
+    ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/users/password/recover`,
+    {
+      method: "PUT",
+      body: JSON.stringify({ recoverPassCode, newPassword, newPasswordRepeated }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+  console.log(json.data);
   return json.data;
 };

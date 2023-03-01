@@ -1,16 +1,16 @@
 
-section.login {
+section.passcode-solicitude {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 }
 
-section.login > .error {
+section.passcode-solicitude > .error {
   color: red;
 }
 
-.login > form {
+.passcode-solicitude > form {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -18,7 +18,11 @@ section.login > .error {
   width: 50vw;
 }
 
-.login > form input {
+.passcode-solicitude > form > label {
+  font-size: 1.1rem;
+}
+
+.passcode-solicitude > form input {
   padding: 14px;
   border: 1px  solid rgb(155, 155, 155);
   border-radius: 4px;
@@ -27,7 +31,7 @@ section.login > .error {
   max-width: 220px;
 }
 
-.login > form > button {
+.passcode-solicitude > form > button {
   border: none;
   background-color: var(--color-logo);
   color: white;
@@ -38,7 +42,7 @@ section.login > .error {
   cursor: pointer;
 }
 
-.login > form > button:hover {
+.passcode-solicitude > form > button:hover {
   opacity: .7;
 }
 
