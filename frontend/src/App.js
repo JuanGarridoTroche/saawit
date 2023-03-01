@@ -71,8 +71,7 @@ function App() {
           <Route
             path="/users/password/recover"
             element={<RecoverPassword/>}
-          />
-          
+          />          
 
           {/* Crear una noticia, método: post */}
           <Route

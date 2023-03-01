@@ -68,6 +68,7 @@
 
 .edit-news-form .show-photos > img {
   width :100px;
+  padding: 0 10px;
 }
 
 .edit-news-form > .edit-news-container .photos-news {

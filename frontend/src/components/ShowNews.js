@@ -28,7 +28,7 @@ export const ShowNews = () => {
       try {        
         const currentNews = await newsService({ id, token, method });
 
-        console.log(currentNews);
+        // console.log(currentNews);
 
         setNews(currentNews);
 
@@ -38,6 +38,8 @@ export const ShowNews = () => {
         setSummary(currentNews.summary);
         setBody(currentNews.body);
         setImage_1(currentNews.photoNews[0].name);
+        setImage_2(currentNews.photoNews[1].name);
+        setImage_3(currentNews.photoNews[2].name);
         // console.log(news);
       } catch (err) {
         setError(err.message);
@@ -133,7 +135,21 @@ export const ShowNews = () => {
           required
         />
         <section className="show-photos">
-          <img src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${image_1}`} alt="foto"/>
+          {
+            image_1 ?
+            <img src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${image_1}`} alt="foto"/> :            
+            <img src={`${process.env.REACT_APP_BACKEND_HOST}:3000/sin-imagen.webp`} alt="foto"/>
+          }
+          {
+            image_2 ?
+            <img src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${image_2}`} alt="foto"/> :            
+            <img src={`${process.env.REACT_APP_BACKEND_HOST}:3000/sin-imagen.webp`} alt="foto"/>
+          }
+          {
+            image_3 ?
+            <img src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${image_3}`} alt="foto"/> :            
+            <img src={`${process.env.REACT_APP_BACKEND_HOST}:3000/sin-imagen.webp`} alt="foto"/>
+          }
         </section>
         <section className="photos-news">
         { news.photoNews ?
@@ -180,15 +196,6 @@ export const ShowNews = () => {
           hidden
         />
         </section>
-        {/* {news.images[0] ? (
-          <figure>
-            <img
-              src={`/${image.name}.jpg`}
-              alt={image.name}
-              style={{ width: "100px" }}
-            />
-          </figure>
-        ) : null} */}
       </fieldset>
       
       {/* <fieldset>{news.photoNews ? "" : <p>No hay fotos subidas</p>}</fieldset> */}
