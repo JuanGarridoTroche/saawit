@@ -25,7 +25,7 @@ export const About = () => {
               <p className="job-about">{creator.job}</p>
               <p className="text-about">{creator.testimonial}</p>
               <figure className="social-media">
-                <a href={`mailto: ${creator.email}?subject=contratación&body=Contacta conmigo a través de este correo electrónico`} alt={creator.mail} rel="noopener noreferrer">
+                <a href={`mailto: ${creator.email}?subject=contratación&body=Contacta conmigo a través de este correo electrónico`} alt={creator.mail} target="_blank" rel="noopener noreferrer">
                   <img src="/email.svg" alt="email" />
                 </a>
                 <a href={creator.linkedin} alt={creator.linkedin} target="_blank" rel="noopener noreferrer" >
