@@ -25,13 +25,13 @@ export const About = () => {
               <p className="job-about">{creator.job}</p>
               <p className="text-about">{creator.testimonial}</p>
               <figure className="social-media">
-                <a href={`mailto: ${creator.email}`} alt={creator.mail} target="_blank" rel="noreferrer">
+                <a href={`mailto: ${creator.email}?subject="contratación&body="Contacta conmigo a través de este correo electrónico"`} alt={creator.mail} rel="noopener noreferrer">
                   <img src="/email.svg" alt="email" />
                 </a>
-                <a href={creator.linkedin} alt={creator.linkedin} target="_blank" rel="noreferrer" >
+                <a href={creator.linkedin} alt={creator.linkedin} target="_blank" rel="noopener noreferrer" >
                   <img src="/linkedin.svg" alt="linkedin" />
                 </a>
-                <a href={creator.twitter} alt={creator.twitter} target="_blank" rel="noreferrer">
+                <a href={creator.twitter} alt={creator.twitter} target="_blank" rel="noopener noreferrer">
                   <img src="/twitter.svg" alt="twitter" />
                 </a>
               </figure>
