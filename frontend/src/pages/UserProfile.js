@@ -1,5 +1,5 @@
 import "../css/UserProfile.css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { ErrorMessage } from "../components/ErrorMessage";
 import useUserProfile from "../hooks/useUserProfile";
 import { AuthContext } from "../context/AuthContext";
@@ -52,24 +52,28 @@ export const UserProfile = () => {
             <label htmlFor="username" className="summary">
               Escribe un nombre de usuario
             </label>
-            <input
-              id="username"
-              value={username}
-              placeholder={user.username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
+              <input
+                id="username"
+                value={username}
+                placeholder={user.username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              
           </fieldset>
           <fieldset>
             <h3>Correo electrónico:</h3>
             <label htmlFor="email" className="summary">
               Escribe un correo electrónico válido
             </label>
-            <input
-              id="email"
-              value={email}
-              placeholder={user.email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            <section>
+              <input
+                id="email"
+                value={email}
+                placeholder={user.email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Link to="/users/password/solicitude" className="change-password">Cambiar contraseña</Link>
+            </section>
           </fieldset>
           <fieldset>
             <h3>Sobre mi:</h3>
@@ -123,22 +127,10 @@ export const UserProfile = () => {
               {<span>{new Date(user.createdAt).toLocaleDateString()}</span>}
             </label>
           </fieldset>
-          {/* <fieldset>
-            <h3>Cuenta:</h3>
-            { user.active ? null :
-              <label className="summary">Solicita la activación de tu cuenta a través del envío de una solicitud a tu correo electrónico</label>}
-            <label>
-              <span>{user.active ? "Activa" : <button>Activar</button>}</span>
-            </label>
-          </fieldset> */}
           <button>Actualizar</button>
         </form>
       ) : (
         <form className="user-profile-form">
-          {/* <fieldset>
-            <h3>Id. de usuario:</h3>
-            <label>{<span>{user.id}</span>}</label>
-          </fieldset> */}
           <fieldset>
             <h3>Nombre de usuario:</h3>
             <label>{<span>{user.username}</span>}</label>
