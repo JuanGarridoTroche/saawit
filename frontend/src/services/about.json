@@ -7,7 +7,7 @@
     "province":"A Coruña",
     "country": "España",
     "job":"Software developer",
-    "testimonial":"FreeAgent es un software de contabilidad que tiene una página dedicada a las reseñas. No son testimonios de clientes, sino menciones de la prensa. Han copiado extractos de comentarios publicados en otros sitios con un enlace a la fuente. FreeAgent es un software de contabilidad que tiene una página dedicada a las reseñas. No son testimonios de clientes, sino menciones de la prensa. Han copiado extractos de comentarios publicados en otros sitios con un enlace a la fuente.",
+    "testimonial":"Esta aplicación salió a raiz del proyecto de fin de bootcamp en Hackaboss poniendo el foco sobre una aplicación tipo reddit donde podemos registrarnos y loguearnos para poder crear, editar y eliminar noticias, votar sobre aquellas otras no creadas por nuestro usuario y realizar filtros por categorías, valoraciones y fecha de creación de manera ascendente o descendente. Hemos realizado de manera conjunta la parte de HTML, CSS, Node.JS, la creación de la base de datos en MySQL en la parte de backend y por último hemos utilizado React para crear la parte de frontend. Espero que os guste y que os ayude a ver aquellas cualidades que hemos adquirido en el bootcamp de Hack a Boss.",
     "image":"juan",
     "email":"j.garridotroche@gmail.com"
   },
@@ -19,7 +19,7 @@
     "province":"A Coruña",
     "country": "España",
     "job":"Software developer",
-    "testimonial":"FreeAgent es un software de contabilidad que tiene una página dedicada a las reseñas. No son testimonios de clientes, sino menciones de la prensa. Han copiado extractos de comentarios publicados en otros sitios con un enlace a la fuente. FreeAgent es un software de contabilidad que tiene una página dedicada a las reseñas. No son testimonios de clientes, sino menciones de la prensa. Han copiado extractos de comentarios publicados en otros sitios con un enlace a la fuente.",
+    "testimonial":"Esta aplicación salió a raiz del proyecto de fin de bootcamp en Hackaboss poniendo el foco sobre una aplicación tipo reddit donde podemos registrarnos y loguearnos para poder crear, editar y eliminar noticias, votar sobre aquellas otras no creadas por nuestro usuario y realizar filtros por categorías, valoraciones y fecha de creación de manera ascendente o descendente. Hemos realizado de manera conjunta la parte de HTML, CSS, Node.JS, la creación de la base de datos en MySQL en la parte de backend y por último hemos utilizado React para crear la parte de frontend. Espero que os guste y que os ayude a ver aquellas cualidades que hemos adquirido en el bootcamp de Hack a Boss.",
     "image":"ana",
     "email":"ana.arevano@hotmail.com"
   },
@@ -31,7 +31,7 @@
     "province":"A Coruña",
     "country": "España",
     "job":"Software developer",
-    "testimonial":"FreeAgent es un software de contabilidad que tiene una página dedicada a las reseñas. No son testimonios de clientes, sino menciones de la prensa. Han copiado extractos de comentarios publicados en otros sitios con un enlace a la fuente. FreeAgent es un software de contabilidad que tiene una página dedicada a las reseñas. No son testimonios de clientes, sino menciones de la prensa. Han copiado extractos de comentarios publicados en otros sitios con un enlace a la fuente.",
+    "testimonial":"Esta aplicación salió a raiz del proyecto de fin de bootcamp en Hackaboss poniendo el foco sobre una aplicación tipo reddit donde podemos registrarnos y loguearnos para poder crear, editar y eliminar noticias, votar sobre aquellas otras no creadas por nuestro usuario y realizar filtros por categorías, valoraciones y fecha de creación de manera ascendente o descendente. Hemos realizado de manera conjunta la parte de HTML, CSS, Node.JS, la creación de la base de datos en MySQL en la parte de backend y por último hemos utilizado React para crear la parte de frontend. Espero que os guste y que os ayude a ver aquellas cualidades que hemos adquirido en el bootcamp de Hack a Boss.",
     "image":"niky",
     "email":"muchika.chettakul@gmail.com"
   }
