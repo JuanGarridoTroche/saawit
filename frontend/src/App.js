@@ -79,7 +79,7 @@ function App() {
             element={<CreateNews control={control} setControl={setControl} />}
           />
           {/* Leer una noticia, método: get */}
-          <Route path="/news/:idNews" element={<ShowNews />} />
+          <Route path="/news/:idNews" element={<ShowNews control={control} setControl={setControl}/>} />
           {/* Editar una noticia creada por el usuario registrado método: put */}
 
           {/* Noticias fitradas por categoría */}
