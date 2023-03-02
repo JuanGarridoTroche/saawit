@@ -1,5 +1,5 @@
 import "../css/ShowNews.css";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { editNewsService, newsService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 import { useContext, useEffect, useState } from "react";
@@ -69,6 +69,7 @@ export const ShowNews = () => {
         summary: editedValues.summary,
         body: editedValues.body,
       });
+      Navigate("/");
     } catch (error) {
       setError(error.message);
     } finally {
