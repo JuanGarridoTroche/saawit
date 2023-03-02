@@ -10,14 +10,11 @@ export const ShowNews = () => {
   const { loggeduser, token } = useContext(AuthContext);
 
   const [news, setNews] = useState({});
-
+  const [images, setImages] = useState([]);
   const [category, setCategory] = useState("");
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [body, setBody] = useState("");
-  const [image_1, setImage_1] = useState();
-  const [image_2, setImage_2] = useState();
-  const [image_3, setImage_3] = useState();
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
 
@@ -28,18 +25,12 @@ export const ShowNews = () => {
       try {        
         const currentNews = await newsService({ id, token, method });
 
-        // console.log(currentNews);
-
-        setNews(currentNews);
-
-        
+        console.log(currentNews);
+        setNews(currentNews);        
         setCategory(currentNews.category);
         setTitle(currentNews.title);
         setSummary(currentNews.summary);
         setBody(currentNews.body);
-        setImage_1(currentNews.photoNews[0].name);
-        setImage_2(currentNews.photoNews[1].name);
-        setImage_3(currentNews.photoNews[2].name);
         // console.log(news);
       } catch (err) {
         setError(err.message);
@@ -61,9 +52,12 @@ export const ShowNews = () => {
       formData.append("title", title);
       formData.append("summary", summary);
       formData.append("body", body);
-      formData.append("image_1", image_1);
-      formData.append("image_2", image_2);
-      formData.append("image_3", image_3);
+
+      if (images.length) {
+        Array.from(images).forEach((image, index) => {
+          formData.append(`photo[${index}]`, image);
+        });
+      }
 
       const editedValues = await editNewsService(formData, id, token);
 
@@ -83,8 +77,8 @@ export const ShowNews = () => {
   };
 
   return (
-    <form className="edit-news-form" key={news.id} onSubmit={handleSubmit}>      
-      {token && news.idUser === loggeduser.id ? (
+    <form className="edit-news-form" onSubmit={handleSubmit}>      
+      {token && news.idUser === loggeduser?.id ? (
         <h2>Editar noticia</h2>
       ) : (
         <h2>Ver noticia</h2>
@@ -135,24 +129,35 @@ export const ShowNews = () => {
           required
         />
         <section className="show-photos">
-          {
-            image_1 ?
-            <img src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${image_1}`} alt="foto"/> :            
-            <img src={`${process.env.REACT_APP_BACKEND_HOST}:3000/sin-imagen.webp`} alt="foto"/>
-          }
-          {
-            image_2 ?
-            <img src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${image_2}`} alt="foto"/> :            
-            <img src={`${process.env.REACT_APP_BACKEND_HOST}:3000/sin-imagen.webp`} alt="foto"/>
-          }
-          {
-            image_3 ?
-            <img src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${image_3}`} alt="foto"/> :            
-            <img src={`${process.env.REACT_APP_BACKEND_HOST}:3000/sin-imagen.webp`} alt="foto"/>
-          }
+        {news.photoNews?.length && !images.length
+            ? news.photoNews.map((photo) => {
+                return (
+                  <figure key={photo.id}>
+                    <img
+                      src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${photo.name}`}
+                      alt="preview"
+                      style={{ width: "100px" }}
+                    />
+                  </figure>
+                );
+              })
+            : null}
+          {images.length
+            ? Array.from(images).map((image, index) => {
+                return (
+                  <figure key={index}>
+                    <img
+                      src={URL.createObjectURL(image)}
+                      alt="preview"
+                      style={{ width: "100px" }}
+                    />
+                  </figure>
+                );
+              })
+            : null}
         </section>
         <section className="photos-news">
-        { news.photoNews ?
+        { news.photoNews?.length ?
           <>
           <label htmlFor="photos">
           <img
@@ -164,37 +169,12 @@ export const ShowNews = () => {
           <input
             type="file"
             id="photos"
-            onChange={(e) => setImage_1(e.target.files[0])}
+            onChange={(e) => setImages(e.target.files)}
             hidden
-          />
+            multiple
+          />          
         </>
-       : null }
-        <label htmlFor="photo_1">
-          <img
-            src="/upload.svg"
-            alt="subir imágenes de la noticia"
-            className="photos"
-          />
-        </label>
-        <input
-          type="file"
-          id="photo_1"
-          onChange={(e) => setImage_2(e.target.files[0])}
-          hidden
-        />
-        <label htmlFor="photo_2">
-          <img
-            src="/upload.svg"
-            alt="subir imágenes de la noticia"
-            className="photos"
-          />
-        </label>
-        <input
-          type="file"
-          id="photos"
-          onChange={(e) => setImage_3(e.target.files[0])}
-          hidden
-        />
+       : null }        
         </section>
       </fieldset>
       

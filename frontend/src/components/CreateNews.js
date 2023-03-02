@@ -1,26 +1,32 @@
-import '../css/CreateNews.css';
+import "../css/CreateNews.css";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { createNewsService } from "../services";
 
-export const CreateNews = ({control, setControl}) => {
+export const CreateNews = ({ control, setControl }) => {
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
   const { token } = useContext(AuthContext);
-  const [image, setImage] = useState(null);
+  const [images, setImages] = useState([]);
   const navigate = useNavigate();
+  console.log(images);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
-      setSending(true);    
-      const data = new FormData(e.target);  
+      setSending(true);
+      const data = new FormData(e.target);
+      if (images.length) {
+        Array.from(images).forEach((image, index) => {
+          data.append(`photo[${index}]`, image);
+        });
+      }
 
-      await createNewsService({ data, token });      
+      await createNewsService({ data, token });
       e.target.reset();
-      setImage(null);
+      setImages(null);
       setControl(!control);
       navigate("/");
     } catch (error) {
@@ -35,7 +41,7 @@ export const CreateNews = ({control, setControl}) => {
       <form className="create-news-form" onSubmit={handleSubmit}>
         <h2>Crear una nueva noticia</h2>
         {error ? <label className="error">{error}</label> : null}
-        <fieldset className='create-news-container'>
+        <fieldset className="create-news-container">
           {/* <label id="category">Categoría: </label> */}
           <select name="category" id="category">
             <option value="general" defaultValue>
@@ -51,13 +57,19 @@ export const CreateNews = ({control, setControl}) => {
             <option value="memes">memes</option>
             <option value="general">general</option>
           </select>
-          <input id="title" name="title" placeholder="Título" className='title' required />
+          <input
+            id="title"
+            name="title"
+            placeholder="Título"
+            className="title"
+            required
+          />
           <br />
           <input
             id="summary"
             name="summary"
             placeholder="Entradilla (opcional)"
-            className='summary'
+            className="summary"
           />
           <textarea
             id="body"
@@ -67,31 +79,40 @@ export const CreateNews = ({control, setControl}) => {
             placeholder="Texto de la noticia..."
             required
           />
-           <label htmlFor="photos">
+          <label htmlFor="photos">
             <img
               src="/upload.svg"
               alt="subir imágenes de la noticia"
               className="photos"
             />
-            </label>
+          </label>
           <input
             type="file"
             id="photos"
-            name="photos"
             accept="image/*"
-            onChange={(e) => setImage(e.target.files[0])}
+            onChange={(e) => {
+              if (e.target.files.length > 3) {
+                return setError("El número máximo de fotos son 3");
+              }
+              setError("");
+              setImages(e.target.files);
+            }}
             hidden
+            multiple
           />
-          {image ? (
-            <figure>
-              <img
-                src={URL.createObjectURL(image)}
-                alt="preview"
-                style={{ width: "100px" }}
-              />
-            </figure>
-          ) : null}
-            
+          {images.length
+            ? Array.from(images).map((image, index) => {
+                return (
+                  <figure key={index}>
+                    <img
+                      src={URL.createObjectURL(image)}
+                      alt="preview"
+                      style={{ width: "100px" }}
+                    />
+                  </figure>
+                );
+              })
+            : null}
         </fieldset>
         <button>Enviar</button>
       </form>

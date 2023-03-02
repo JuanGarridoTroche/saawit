@@ -107,6 +107,8 @@ export const getUserDataService = async ({ idUser }) => {
 
 // Servicio que envía los datos de una nueva noticia
 export const createNewsService = async ({ data, token }) => {
+
+  console.log(data);
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news`,
     {
@@ -166,7 +168,7 @@ export const loadNewsByFeedbackService = async () => {
 };
 
 export const newsService = async ({ id, token, method }) => {
-  
+  console.log(id);
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/${id}`,
     {
@@ -177,7 +179,7 @@ export const newsService = async ({ id, token, method }) => {
     }
   );
   const json = await response.json();
-
+    console.log(json);
   if (!response.ok) {
     throw new Error(json.message);
   }
