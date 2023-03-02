@@ -11,7 +11,7 @@ const selectPhotoNewsByIdQuery = async (idNews) => {
       `SELECT id, name FROM photoNews WHERE idNews = ?`,
       [idNews]
     )
-      // console.log(news);
+     
     return news;
   } finally {
     if(connection) connection.release();

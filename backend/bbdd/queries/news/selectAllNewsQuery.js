@@ -69,7 +69,6 @@ const selectAllNewsQuery = async ({
     } else {
       orderedNews = news.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
     }
-    // console.log(orderedNews);
     return orderedNews;
   } finally {
     if (connection) connection.release();

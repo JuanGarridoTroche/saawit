@@ -11,15 +11,10 @@ const sendRecoverPassword = async (req, res, next) => {
   try {
     const {email} = req.body;
 
-    // console.log("correo electrónico: ", email);
-    
-
     // Comprobamos que nos hayan enviado un correo electrónico válido
     // Para ello vamos a utilizar la dependecia de validadción de datos joi
     const schema =  joi.string().email().required().error(new Error("Introduzca una cuenta de correo válida"));
     const validation = schema.validate(email);
-
-    // console.log("validación: ", validation);
 
     if (validation.error || validation === null) {
       throw generateError(validation.error.message);

@@ -5,14 +5,9 @@ const selectNewsByIdUserQuery = require("../../bbdd/queries/news/selectNewsByIdU
 const getNews = async (req, res, next) => {
   try {
     const { id: idUser } = req.user;
-    // console.log("getNews: ", idUser);
-
-
 
     // Seleccionamos los datos actuales del usuario
     const news = await selectNewsByIdUserQuery(idUser);   
-    
-
 
     res.send({
       status: "Ok",

@@ -6,7 +6,6 @@ const { generateError } = require("../../helpers");
 const readProfile = async (req, res, next) => {
   try {
     const { idUser } = req.params;
-    // console.log(idUSer);
 
     // Seleccionamos los datos actuales del usuario
     const user = await selectUserByIdQuery(idUser);   

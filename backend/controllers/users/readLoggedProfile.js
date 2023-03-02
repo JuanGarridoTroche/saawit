@@ -3,7 +3,6 @@
 const selectUserByIdQuery = require("../../bbdd/queries/users/selectUserByIdQuery");
 
 const readProfile = async (req, res, next) => {
-  // console.log(req.user.id);
   try {
     if (!req.user?.id) {
       throw generateError("El usuario no existe", 400);
@@ -12,8 +11,7 @@ const readProfile = async (req, res, next) => {
     const user = await selectUserByIdQuery(req.user.id);
     
     const {id, username, email, photo, role, active, createdAt} = user;
-
-
+    
     res.send({
       status: "Ok",
       message: "perfil de usuario",

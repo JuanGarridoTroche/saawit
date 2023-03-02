@@ -49,7 +49,6 @@ const savePhoto = async (img, imgType = 0) => {
   }
   // Creamos un objeto sharp a partir de la imagen que quiere subir el usuario.
   const sharpImg = sharp(img.data);
-  console.log(sharpImg);
 
   // Comprobamos si es foto de perfil o de una noticia
   if (!imgType) {
@@ -62,8 +61,6 @@ const savePhoto = async (img, imgType = 0) => {
 
   // Generamos un nuevo nombre a la imagen
   const imgName = `${uuid()}.jpg`;
-
-  console.log(imgName);
 
   // Sacamos la ruta completa de la imagen
   const imgPath = path.join(uploadsPath, imgName);

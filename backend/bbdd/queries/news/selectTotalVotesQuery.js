@@ -18,8 +18,7 @@ const selectTotalVotesQuery = async (idNews) => {
     SELECT COUNT(id) AS negativos FROM votes WHERE idNews = ? AND value = 0`,
       [idNews]
     );
-    // console.log('Positivos - negativos', positiveVotes[0].positivos, " - ", negativeVotes[0].negativos, " = ", positiveVotes[0].positivos - negativeVotes[0].negativos);
-    
+        
     return (positiveVotes[0].positivos - negativeVotes[0].negativos);
   } finally {
     if (connection) connection.release();

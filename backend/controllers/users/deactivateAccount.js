@@ -7,13 +7,9 @@ const updateActiveUserQuery = require("../../bbdd/queries/users/updateActiveUser
 const deactivateAccount = async (req, res, next) => {
   try {
     const { id: idUser } = req.user;
-    // console.log("getNews: ", idUser);
-
-
 
     // Seleccionamos los datos actuales del usuario
-    const news = await updateActiveUserQuery(idUser);   
-    
+    const news = await updateActiveUserQuery(idUser);  
 
 
     res.send({

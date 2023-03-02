@@ -11,7 +11,6 @@ const editNews = async (req, res, next) => {
   try {
     const { idNews } = req.params;
     let { title, summary, body, category } = req.body;
-    // console.log("Datos recogidos para editar la noticia", idNews, category, title, summary, body);
 
     // Comprobamos que han introducido un idNews válido
     if (!Number(idNews) || idNews < 1) {
@@ -86,8 +85,7 @@ const editNews = async (req, res, next) => {
       await deletePhotoNewsQuery(idNews)     
       
       // Recorremos las fotos. Si existen más de 3 solo subirá las 3 primeras      
-      for (const photo of Object.values(req.files).slice(0, 3)) {
-        console.log(photo);
+      for (const photo of Object.values(req.files).slice(0, 3)) {        
 
         // Guardamos la foto en el disco
         const photoName = await savePhoto(photo, 1); 
