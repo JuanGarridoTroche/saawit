@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { newsService, voteNewsService } from "../services";
+import Slider from "./Slider";
 
 export const News = ({ news, removeNews, control, setControl }) => {
   const { loggeduser, token } = useContext(AuthContext);
@@ -85,20 +86,7 @@ export const News = ({ news, removeNews, control, setControl }) => {
         </p>
         <p className="title">{news.title}</p>
         {news.summary ? <p className="summary">{news.summary}</p> : null}
-        {news.photos.map((photo) => {
-          return (
-            <a
-              href={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${photo.name}`}
-              key={photo.id}
-            >
-              <img
-                src={`${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/${photo.name}`}
-                alt={photo.name}
-                className="photos"
-              />
-            </a>
-          );
-        })}
+        <Slider photos={news.photos}/>
         <p className="body">{news.body}</p>
         {loggeduser && loggeduser.id === news.idUser ? (
           <img
@@ -117,7 +105,7 @@ export const News = ({ news, removeNews, control, setControl }) => {
         ) : null}
         {loggeduser && loggeduser.id === news.idUser ? (
           <img src="/pencil.svg" alt="edit news" className="edit-news" onClick={()=>{
-            // readNews(news.id);
+            readNews(news.id);
             navigate(`/news/${news.id}`)
           }}/>
         ) : null}

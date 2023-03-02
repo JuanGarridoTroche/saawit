@@ -200,6 +200,12 @@ main>.breaking-news>.news-list>.single-news>.single-news-container .publish-news
 
 main section.single-news-container img.delete-news {
   width: 25px;
+  margin: 10px;
+}
+
+main section.single-news-container img.edit-news {
+  width: 25px;
+  margin: 10px;
 }
 
 main>.breaking-news>.news-list>.single-news>section>.title {
