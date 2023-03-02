@@ -11,8 +11,6 @@ const Slider = ({ photos }) => {
   }
   // Comprobamos cuantas fotos hay en el array. Si solo hay 1, no muestres las flechas
   const totalPhotos = photos?.length;
-  // console.log(photos);
-
  
   const nextPhoto = ()=> {
     setCurrentPhoto(currentPhoto === totalPhotos - 1 ? 0 : currentPhoto + 1);

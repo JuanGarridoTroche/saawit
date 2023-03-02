@@ -5,7 +5,6 @@ export const loadNewsService = async (queryString) => {
 
   if (queryString) {
     url += queryString;
-    // console.log(url);
   }
 
   //Extraemos (fetch) desde nuestro Backend la info con el endpoint que necesitemos
@@ -18,8 +17,6 @@ export const loadNewsService = async (queryString) => {
     throw new Error(json.message);
   }
 
-  // console.log(json.data);
-  // console.log(json.data.rankedNews);
   return json.data.news;
 };
 
@@ -107,8 +104,6 @@ export const getUserDataService = async ({ idUser }) => {
 
 // Servicio que envía los datos de una nueva noticia
 export const createNewsService = async ({ data, token }) => {
-
-  console.log(data);
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news`,
     {
@@ -120,10 +115,7 @@ export const createNewsService = async ({ data, token }) => {
     }
   );
 
-  console.log(data);
-
   const json = await response.json();
-  // console.log(json.data);
 
   if (!response.ok) {
     throw new Error(json.message);
@@ -146,7 +138,6 @@ export const loadNewsByCategoryService = async (category) => {
     throw new Error(json.message);
   }
 
-  console.log(json.data);
   return json.data;
 };
 
@@ -163,12 +154,11 @@ export const loadNewsByFeedbackService = async () => {
   if (!response.ok) {
     throw new Error(json.message);
   }
-  // console.log(json.data.rankedNews);
+
   return json.data.byFeedback;
 };
 
 export const newsService = async ({ id, token, method }) => {
-  console.log(id);
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/${id}`,
     {
@@ -179,27 +169,24 @@ export const newsService = async ({ id, token, method }) => {
     }
   );
   const json = await response.json();
-    console.log(json);
+
   if (!response.ok) {
     throw new Error(json.message);
   }
-  // console.log(json.data);
+ 
   return json.data;
 };
 
 export const searchingNewsService = async ({ search }) => {
-  console.log(search);
   const response = await fetch(
     `${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/search/${search}`
   );
   const json = await response.json();
 
-  // console.log(json.data);
-
   if (!response.ok) {
     throw new Error(json.message);
   }
-  // console.log(json.data);
+
   return json.data;
 };
 
@@ -327,7 +314,7 @@ export const passCodeSolicitudeService = async ({ email }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
-  console.log(json.data);
+
   return json.data;
 };
 

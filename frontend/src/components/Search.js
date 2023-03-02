@@ -10,8 +10,7 @@ export const Search = ({search})=> {
   useEffect(()=> {
   
     try {
-      const data = searchingNewsService({search});  
-      // console.log(data);    
+      const data = searchingNewsService({search});   
 
       if(data.length < 1) {
         setError(`No existe ninguna noticia con la búsqueda "${search}".`)

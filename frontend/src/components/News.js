@@ -11,14 +11,11 @@ export const News = ({ news, removeNews, control, setControl }) => {
 
   // Eliminamos una noticia
   const deleteNews = async (id) => {
-    // alert(`Tweet ${id} borrado!`)
     try {
       // Desde aquí controlamos los errores que pueden ocurrir al borrar una news
       const method = "DELETE";
       await newsService({ id, token, method });
       setControl(!control);
-      // removeNews(id);
-      // console.log(error);
       navigate("/");
     } catch (error) {
       setError(error.message);
@@ -27,15 +24,10 @@ export const News = ({ news, removeNews, control, setControl }) => {
 
   // Seleccionamos una noticia
   const readNews = async (id) => {
-    // console.log(id);
-    // alert(`Tweet ${id} borrado!`)
     try {
       // Desde aquí controlamos los errores que pueden ocurrir al borrar una news
       const method = "GET";
       await newsService({ id, token, method });
-      // setControl(!control);
-      // removeNews(id);
-      // navigate(`/news/${id}`);
     } catch (error) {
       setError(error.message);
     }
@@ -48,10 +40,8 @@ export const News = ({ news, removeNews, control, setControl }) => {
       // const body = JSON.stringify({"like": vote});
       const body = { like: vote };
 
-      // console.log("ID: ", id, "like: ", body);
       await voteNewsService({ token, body, id, method });
       setControl(!control);
-      // alert(body.like ? 'voto positivo' : 'voto negativo')
     } catch (error) {
       setError(error.message);
     }

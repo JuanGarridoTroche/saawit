@@ -24,14 +24,11 @@ export const ShowNews = () => {
     const getNewsById = async () => {
       try {        
         const currentNews = await newsService({ id, token, method });
-
-        console.log(currentNews);
         setNews(currentNews);        
         setCategory(currentNews.category);
         setTitle(currentNews.title);
         setSummary(currentNews.summary);
         setBody(currentNews.body);
-        // console.log(news);
       } catch (err) {
         setError(err.message);
       }

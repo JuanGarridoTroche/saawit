@@ -10,7 +10,6 @@ export const CreateNews = ({ control, setControl }) => {
   const { token } = useContext(AuthContext);
   const [images, setImages] = useState([]);
   const navigate = useNavigate();
-  console.log(images);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

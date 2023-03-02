@@ -27,7 +27,7 @@ export const NewsList = ({ news, setNews, control, setControl }) => {
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
     }
-    // console.log(filteredNews);
+    
     setNews([...filteredNews]);
   };
 
@@ -36,13 +36,9 @@ export const NewsList = ({ news, setNews, control, setControl }) => {
   const filterNewsBestVote = (e) => {
     const todayNews = news.filter((e) => {
       const day = new Date().toLocaleString().slice(0, 10);
-      let mySQLFormattedDate = new Date(e.createdAt).toLocaleString().slice(0, 10);      
-      // console.log(mySQLFormattedDate.toLocaleDateString);      
-      // console.log("Fecha formateada: ", mySQLFormattedDate);      
-      // console.log("Día actual: ", day);
+      let mySQLFormattedDate = new Date(e.createdAt).toLocaleString().slice(0, 10); 
       return (mySQLFormattedDate) === day;
     });
-    // console.log(todayNews);
     todayNews.sort((a, b) => b.totalVotes - a.totalVotes);
 
     setNews([...todayNews]);

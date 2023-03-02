@@ -7,7 +7,7 @@ import { NewsContainer } from "./NewsContainer";
 export const Auth = ({setNews}) => {
   const [isOpen, setIsOpen] = useState(false);  
   const { loggeduser, logout } = useContext(AuthContext);
-  // console.log(loggeduser);
+  
   return loggeduser ? (
     <>
       <ul className={`logged-user ${isOpen && "open"}`}>
