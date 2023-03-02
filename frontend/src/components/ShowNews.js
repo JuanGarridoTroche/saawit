@@ -4,9 +4,9 @@ import { editNewsService, newsService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 import { useContext, useEffect, useState } from "react";
 
-export const ShowNews = ({control, setControl}) => {
+export const ShowNews = ({ control, setControl }) => {
   // e.stopPropagation();
-  const { idNews:id } = useParams();
+  const { idNews: id } = useParams();
   const { loggeduser, token } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -23,9 +23,9 @@ export const ShowNews = ({control, setControl}) => {
 
   useEffect(() => {
     const getNewsById = async () => {
-      try {        
+      try {
         const currentNews = await newsService({ id, token, method });
-        setNews(currentNews);        
+        setNews(currentNews);
         setCategory(currentNews.category);
         setTitle(currentNews.title);
         setSummary(currentNews.summary);
@@ -77,7 +77,8 @@ export const ShowNews = ({control, setControl}) => {
   };
 
   return (
-    <form className="edit-news-form" onSubmit={handleSubmit}>      
+    <form className="edit-news-form" onSubmit={handleSubmit}>
+      {error ? <label className="error">{error}</label> : null}
       {token && news.idUser === loggeduser?.id ? (
         <h2>Editar noticia</h2>
       ) : (
@@ -129,7 +130,7 @@ export const ShowNews = ({control, setControl}) => {
           required
         />
         <section className="show-photos">
-        {news.photoNews?.length && !images.length
+          {news.photoNews?.length && !images.length
             ? news.photoNews.map((photo) => {
                 return (
                   <figure key={photo.id}>
@@ -156,30 +157,35 @@ export const ShowNews = ({control, setControl}) => {
               })
             : null}
         </section>
-        <section className="photos-news">
-        { news.photoNews?.length ?
-          <>
-          <label htmlFor="photos">
-          <img
-            src="/upload.svg"
-            alt="subir imágenes de la noticia"
-            className="photos"
-          />
-          </label>
-          <input
-            type="file"
-            id="photos"
-            onChange={(e) => setImages(e.target.files)}
-            hidden
-            multiple
-          />          
-        </>
-       : null }        
+        {token && news.idUser === loggeduser?.id ?
+          <section className="photos-news">
+          {news.photoNews?.length ? (
+            <>
+              <label htmlFor="photos">
+                <img
+                  src="/upload.svg"
+                  alt="subir imágenes de la noticia"
+                  className="photos"
+                />
+              </label>
+              <input
+                type="file"
+                id="photos"
+                onChange={(e) => setImages(e.target.files)}
+                hidden
+                multiple
+              />
+            </>
+          ) : null}
         </section>
+        : null}
       </fieldset>
-      
+
       {/* <fieldset>{news.photoNews ? "" : <p>No hay fotos subidas</p>}</fieldset> */}
-      <button disabled={sending}>Enviar</button>
+
+      {token && news.idUser === loggeduser?.id ? (
+        <button disabled={sending}>Enviar</button>
+      ) : null}
     </form>
   );
 };

@@ -27,6 +27,15 @@
   padding-top: 20px;
 }
 
+.create-news-form > .create-news-container > .upload-photos {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+}
+
 .create-news-form > .create-news-container > select {
   padding: 7px;
   border: 1px  solid rgb(155, 155, 155);
@@ -98,7 +107,7 @@
 @media(min-width: 600px) {
   .create-news-form {
     width: 70vw;
-    height: 70vh;
+    height: 87vh;
   }
 
   .create-news-form > h2 {

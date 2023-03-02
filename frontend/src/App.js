@@ -84,7 +84,7 @@ function App() {
 
           {/* Noticias fitradas por categoría */}
           {/* Lista de las últimas noticias vloradas por feedback, método: get */}
-          <Route path="/news/ByFeedback" element={<NewsByFeedback />} />
+          {/* <Route path="/news/ByFeedback" element={<NewsByFeedback />} /> */}
           {/* Noticias filtradas con fecha inicio y fecha fin, método: get */}
           {/* Votar una noticia publicada que no sea de tu propiedad, método: post */}
           <Route path="/news/:idNews/votes" element={<Home />} />

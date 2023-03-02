@@ -169,8 +169,9 @@ export const newsService = async ({ id, token, method }) => {
     }
   );
   const json = await response.json();
-
-  if (!response.ok) {
+  
+ 
+  if (!response.ok) {    
     throw new Error(json.message);
   }
  

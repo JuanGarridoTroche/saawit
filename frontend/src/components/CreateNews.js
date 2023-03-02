@@ -78,6 +78,37 @@ export const CreateNews = ({ control, setControl }) => {
             placeholder="Texto de la noticia..."
             required
           />
+
+          <section className="upload-photos">
+            <input
+              type="file"
+              id="photos"
+              accept="image/*"
+              onChange={(e) => {
+                if (e.target.files.length > 3) {
+                  return setError("El número máximo de fotos son 3");
+                }
+                setError("");
+                setImages(e.target.files);
+              }}
+              hidden
+              multiple
+            />
+            {images.length
+              ? Array.from(images).map((image, index) => {
+                  return (
+                    <figure key={index}>
+                      <img
+                        src={URL.createObjectURL(image)}
+                        alt="preview"
+                        style={{ width: "100px" }}
+                      />
+                    </figure>
+                  );
+                })
+              : null}
+          </section>
+
           <label htmlFor="photos">
             <img
               src="/upload.svg"
@@ -85,33 +116,6 @@ export const CreateNews = ({ control, setControl }) => {
               className="photos"
             />
           </label>
-          <input
-            type="file"
-            id="photos"
-            accept="image/*"
-            onChange={(e) => {
-              if (e.target.files.length > 3) {
-                return setError("El número máximo de fotos son 3");
-              }
-              setError("");
-              setImages(e.target.files);
-            }}
-            hidden
-            multiple
-          />
-          {images.length
-            ? Array.from(images).map((image, index) => {
-                return (
-                  <figure key={index}>
-                    <img
-                      src={URL.createObjectURL(image)}
-                      alt="preview"
-                      style={{ width: "100px" }}
-                    />
-                  </figure>
-                );
-              })
-            : null}
         </fieldset>
         <button>Enviar</button>
       </form>
