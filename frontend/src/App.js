@@ -17,7 +17,6 @@ import { About } from "./components/About";
 import Modal from "./components/Modal";
 import { PassCodeSolicitude } from "./pages/PassCodeSolicitude";
 import { RecoverPassword } from "./pages/RecoverPassword";
-import { ErrorMessage } from "./components/ErrorMessage";
 
 function App() {
   const [news, setNews] = useState();
@@ -68,10 +67,7 @@ function App() {
             element={<PassCodeSolicitude />}
           />
           {/* Recuperación de contraseña (es necesario el Passcode) */}
-          <Route
-            path="/users/password/recover"
-            element={<RecoverPassword/>}
-          />          
+          <Route path="/users/password/recover" element={<RecoverPassword />} />
 
           {/* Crear una noticia, método: post */}
           <Route
@@ -79,7 +75,10 @@ function App() {
             element={<CreateNews control={control} setControl={setControl} />}
           />
           {/* Leer/Editar una noticia, método: get */}
-          <Route path="/news/:idNews" element={<ShowNews control={control} setControl={setControl}/>} />
+          <Route
+            path="/news/:idNews"
+            element={<ShowNews control={control} setControl={setControl} />}
+          />
           {/* Votar una noticia publicada que no sea de tu propiedad, método: post */}
           <Route path="/news/:idNews/votes" element={<Home />} />
           <Route

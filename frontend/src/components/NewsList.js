@@ -7,7 +7,7 @@ import { NewsContainer } from "./NewsContainer";
 export const NewsList = ({ news, setNews, control, setControl }) => {
   const [order, setOrder] = useState("createdAt");
   const [direction, setDirection] = useState("ASC");
-  const { loggeduser, token } = useContext(AuthContext);  
+  const { loggeduser} = useContext(AuthContext);  
 
   const filterNews = (e) => {
     e.stopPropagation();
@@ -56,7 +56,7 @@ export const NewsList = ({ news, setNews, control, setControl }) => {
           }}
         >
           <img src="/rocket-best-vote.svg" alt="noticias más votadas hoy" />
-          <p>TOP</p>
+          <p>HOY</p>
         </label>
         <label htmlFor="order"></label>
         <select

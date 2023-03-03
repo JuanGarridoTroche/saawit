@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { loadNewsService } from "../services";
 
-const useNews = () => {
+const useNews_BORRAR = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -28,4 +28,4 @@ const useNews = () => {
   return {news, loading, error};
 };
 
-export default useNews;
+export default useNews_BORRAR;

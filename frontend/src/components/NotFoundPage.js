@@ -1,6 +1,5 @@
 import '../css/NotFoundPage.css'
 import { Link } from "react-router-dom"
-import { ErrorMessage } from './ErrorMessage'
 
 export const NotFoundPage = ()=> {
   return (

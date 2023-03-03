@@ -76,7 +76,7 @@ main>.breaking-news>.filter-container {
 }
 
 main>.breaking-news>.filter-container>.best-vote {
-  padding: 3px;
+  padding: 2px 6px;
   background-color: rgba(4, 136, 213, 0.123);
   color: var(--color-filter);
   border-radius: 50px;
