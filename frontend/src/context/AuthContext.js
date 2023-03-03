@@ -34,7 +34,7 @@ export const AuthProviderComponent = ({ children }) => {
       }      
    }
    if (token) getVotedNews();
-  }, [token, loggeduser])
+  })
 
   const login = (token) => {
     localStorage.setItem("token", token);

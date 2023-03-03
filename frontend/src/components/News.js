@@ -65,7 +65,7 @@ export const News = ({ news, control, setControl }) => {
         <img
           src="/arrow-up.svg"
           alt="arrow up"
-          className={voted.value ? "arrow arrow-up" : "arrow"}
+          className={voted.value ? "arrow arrow-up" : "arrow arrow-no-vote-up"}
           onClick={() => {
             addVote(news.id, true);
           }}
@@ -74,7 +74,7 @@ export const News = ({ news, control, setControl }) => {
         <img
           src="/arrow-down.svg"
           alt="arrow down"
-          className={voted.value === 0 ? "arrow  arrow-down" : "arrow"}
+          className={voted.value === 0 ? "arrow  arrow-down" : "arrow arrow-no-vote-down"}
           onClick={() => {
             addVote(news.id, false);
           }}
