@@ -183,6 +183,20 @@ main>.breaking-news>.news-list>.single-news>figure img.arrow {
   width: 25px;
 }
 
+main>.breaking-news>.news-list>.single-news>figure .arrow-up {
+  background-color: rgb(218, 224, 230);
+  color: var(--color-logo);
+  border: 1px solid var(--color-logo);
+  stroke: var(--color-logo);
+}
+
+main>.breaking-news>.news-list>.single-news>figure .arrow-down {
+  background-color: rgb(218, 224, 230);
+  color: blue;
+  border: 1px solid blue;
+  stroke: blue;
+}
+
 main>.breaking-news>.news-list>.single-news a .photos {
   width: 100%;  
   /* max-height: 300px; */
@@ -308,8 +322,6 @@ main>.breaking-news>.news-list>.single-news>section>.body {
   main>.breaking-news>.news-list>.single-news>figure .arrow-up:hover {
     background-color: rgb(218, 224, 230);
     color: var(--color-logo);
-    /* fill: red; */
-    /* filter: invert(100%); */
     border: 1px solid var(--color-logo);
     stroke: var(--color-logo);
   }
@@ -317,8 +329,6 @@ main>.breaking-news>.news-list>.single-news>section>.body {
   main>.breaking-news>.news-list>.single-news>figure .arrow-down:hover {
     background-color: rgb(218, 224, 230);
     color: blue;
-    /* fill: red; */
-    /* filter: invert(100%); */
     border: 1px solid blue;
     stroke: blue;
   }

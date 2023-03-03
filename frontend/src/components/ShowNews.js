@@ -1,11 +1,10 @@
 import "../css/ShowNews.css";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { editNewsService, newsService } from "../services";
 import { AuthContext } from "../context/AuthContext";
 import { useContext, useEffect, useState } from "react";
 
 export const ShowNews = ({ control, setControl }) => {
-  // e.stopPropagation();
   const { idNews: id } = useParams();
   const { loggeduser, token } = useContext(AuthContext);
   const navigate = useNavigate();

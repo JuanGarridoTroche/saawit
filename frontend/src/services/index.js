@@ -214,20 +214,21 @@ export const voteNewsService = async ({ id, token, method, body }) => {
     `
     ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/news/${id}/votes`,
     {
-      method: "POST",
+      method: method,
       headers: {
         Authorization: token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
-      // body: body,
     }
   );
 
   const json = response.json();
+
   if (!response.ok) {
     throw new Error(json.message);
   }
+
   return json.data;
 };
 
@@ -341,3 +342,24 @@ export const recoverPasswordService = async ({ recoverPassCode, newPassword, new
   }
   return json.data;
 };
+
+export const checkVotedNewsService =async ({token}) => { 
+  const response = await fetch(
+    `
+    ${process.env.REACT_APP_BACKEND_HOST}:${process.env.REACT_APP_BACKEND_PORT}/votes`,
+    {
+      method: 'GET',
+      headers: {
+        Authorization: token,
+      },
+    }    
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+} 

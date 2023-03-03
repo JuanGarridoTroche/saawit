@@ -2,12 +2,25 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { newsService, voteNewsService } from "../services";
+import Modal from "./Modal";
 import Slider from "./Slider";
 
-export const News = ({ news, removeNews, control, setControl }) => {
-  const { loggeduser, token } = useContext(AuthContext);
+export const News = ({ news, control, setControl }) => {
+  const { loggeduser, token, votedNews } = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  let voted = {};
+
+  if(votedNews){
+  votedNews.forEach(element => {
+    if(element.idNews === news.id) {
+      voted = element;
+    }
+  });  
+
+}
+
 
   // Eliminamos una noticia
   const deleteNews = async (id) => {
@@ -37,12 +50,11 @@ export const News = ({ news, removeNews, control, setControl }) => {
   const addVote = async (id, vote) => {
     try {
       const method = "POST";
-      // const body = JSON.stringify({"like": vote});
       const body = { like: vote };
 
       await voteNewsService({ token, body, id, method });
       setControl(!control);
-    } catch (error) {
+    } catch (error) {      
       setError(error.message);
     }
   };
@@ -53,7 +65,7 @@ export const News = ({ news, removeNews, control, setControl }) => {
         <img
           src="/arrow-up.svg"
           alt="arrow up"
-          className="arrow arrow-up"
+          className={voted.value ? "arrow arrow-up" : "arrow"}
           onClick={() => {
             addVote(news.id, true);
           }}
@@ -62,13 +74,14 @@ export const News = ({ news, removeNews, control, setControl }) => {
         <img
           src="/arrow-down.svg"
           alt="arrow down"
-          className="arrow arrow-down"
+          className={voted.value === 0 ? "arrow  arrow-down" : "arrow"}
           onClick={() => {
             addVote(news.id, false);
           }}
         />
       </figure>
-      <section key={news.id} className="single-news-container">
+      <section key={news.id} className="single-news-container">        
+        {error ? <Modal setShowModal="true">{error}</Modal> : null}
         <p className="publish-news">
           {news.category} · Publicado por 
           <Link to={`/users/profile/${news.idUser}`}> {news.username}</Link> el
@@ -76,6 +89,7 @@ export const News = ({ news, removeNews, control, setControl }) => {
         </p>
         <p className="title">{news.title}</p>
         {news.summary ? <p className="summary">{news.summary}</p> : null}
+        
         <Slider photos={news.photos}/>
         <p className="body">{news.body}</p>
         {loggeduser && loggeduser.id === news.idUser ? (

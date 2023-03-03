@@ -6,7 +6,6 @@ import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { NotFoundPage } from "./components/NotFoundPage";
 import { Register } from "./pages/Register";
-import { NewsByFeedback } from "./pages/NewsByFeedback";
 import { ShowNews } from "./components/ShowNews";
 import { CreateNews } from "./components/CreateNews";
 import { UserProfile } from "./pages/UserProfile";
@@ -18,6 +17,7 @@ import { About } from "./components/About";
 import Modal from "./components/Modal";
 import { PassCodeSolicitude } from "./pages/PassCodeSolicitude";
 import { RecoverPassword } from "./pages/RecoverPassword";
+import { ErrorMessage } from "./components/ErrorMessage";
 
 function App() {
   const [news, setNews] = useState();
@@ -78,14 +78,8 @@ function App() {
             path="/news"
             element={<CreateNews control={control} setControl={setControl} />}
           />
-          {/* Leer una noticia, método: get */}
+          {/* Leer/Editar una noticia, método: get */}
           <Route path="/news/:idNews" element={<ShowNews control={control} setControl={setControl}/>} />
-          {/* Editar una noticia creada por el usuario registrado método: put */}
-
-          {/* Noticias fitradas por categoría */}
-          {/* Lista de las últimas noticias vloradas por feedback, método: get */}
-          {/* <Route path="/news/ByFeedback" element={<NewsByFeedback />} /> */}
-          {/* Noticias filtradas con fecha inicio y fecha fin, método: get */}
           {/* Votar una noticia publicada que no sea de tu propiedad, método: post */}
           <Route path="/news/:idNews/votes" element={<Home />} />
           <Route

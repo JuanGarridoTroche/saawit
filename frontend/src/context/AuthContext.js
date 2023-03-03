@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { getloggedUserDataService } from "../services";
+import { checkVotedNewsService, getloggedUserDataService } from "../services";
 
 export const AuthContext = createContext();
 
@@ -7,6 +7,7 @@ export const AuthContext = createContext();
 export const AuthProviderComponent = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [loggeduser, setLoggedUser] = useState(null);
+  const [votedNews, setVotedNews] = useState(null);
 
   // Se ejecuta cuando carga el token y sacamos todos los datos del usuario que tiene dentro el token (id y role)
   useEffect(() => {
@@ -21,6 +22,20 @@ export const AuthProviderComponent = ({ children }) => {
     if (token) getUserData();
   }, [token]);
 
+
+  //Se ejecuta cuando carga el token y obtenemos todas las noticias votadas por nosotros
+  useEffect(() => {
+    const getVotedNews = async() => {   
+      try {
+        const votedNewsList = await checkVotedNewsService( {token});
+        setVotedNews(votedNewsList);      
+      } catch (error) {
+               
+      }      
+   }
+   if (token) getVotedNews();
+  }, [token, loggeduser])
+
   const login = (token) => {
     localStorage.setItem("token", token);
     setToken(token);
@@ -32,9 +47,10 @@ export const AuthProviderComponent = ({ children }) => {
     setLoggedUser(null);
   };
 
+
   return (
     <AuthContext.Provider
-      value={{ token, loggeduser, setLoggedUser, login, logout }}
+      value={{ token, loggeduser, setLoggedUser, login, logout, votedNews }}
     >
       {children}
     </AuthContext.Provider>

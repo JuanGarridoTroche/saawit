@@ -35,14 +35,14 @@ const voteNews = async (req, res, next) => {
     const feedback = await selectTotalVotesQuery(idNews);
 
     // Actualizamos la tabla news, la columna feedback
-    await updateFeedbackQuery(idNews, feedback);
+    await updateFeedbackQuery(idNews, feedback);    
 
     res.send({
       status: "Ok",
       message: "Voto enviado",
     });
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 };
 

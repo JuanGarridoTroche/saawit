@@ -91,6 +91,7 @@ const {
   listNews,
   newsShowImages,
   searchingNews,
+  checkVotedNews,
 } = require("./controllers/news");
 const selectWordInBodyQuery = require("./bbdd/queries/news/selectCharactersInBodyQuery");
 
@@ -117,6 +118,9 @@ app.delete("/news/:idNews", isAuth, newsExists, deleteNews);
 
 // Buscar noticias con las letras/palabras indicadas
 app.get("/news/search/:characters", searchingNews);
+
+// Comprobar tus votos de cada noticia
+app.get("/votes", isAuth, checkVotedNews)
 
 // Vota una noticia publicada (de otro usuario registrado)
 app.post("/news/:idNews/votes", isAuth, newsExists, voteNews);

@@ -7,7 +7,7 @@ import { NewsContainer } from "./NewsContainer";
 export const NewsList = ({ news, setNews, control, setControl }) => {
   const [order, setOrder] = useState("createdAt");
   const [direction, setDirection] = useState("ASC");
-  const { loggeduser } = useContext(AuthContext);
+  const { loggeduser, token } = useContext(AuthContext);  
 
   const filterNews = (e) => {
     e.stopPropagation();
@@ -95,17 +95,17 @@ export const NewsList = ({ news, setNews, control, setControl }) => {
         Volver arriba
       </button>
       {news ? (
-        <ul className="news-list filter">
+        <ul className="news-list filter">                    
           {news.map((singleNews) => {
             return (
               <li key={singleNews.id} className="single-news">
-                <News news={singleNews} control={control} setControl={setControl}/>
+                <News news={singleNews} control={control} setControl={setControl} />
               </li>
             );
           })}
         </ul>
       ) : (
-        <p>No hay noticias disponibles</p>
+        <h2>No hay noticias disponibles</h2>
       )}
     </section>
   );
