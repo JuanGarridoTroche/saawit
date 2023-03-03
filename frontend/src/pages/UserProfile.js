@@ -3,8 +3,8 @@ import { Link, useParams } from "react-router-dom";
 import { ErrorMessage } from "../components/ErrorMessage";
 import useUserProfile from "../hooks/useUserProfile";
 import { AuthContext } from "../context/AuthContext";
-import { useContext, useState, useRef } from "react";
-import { editUserAvatar, editUserProfile } from "../services";
+import { useContext, useState } from "react";
+import { editUserProfile } from "../services";
 
 export const UserProfile = () => {
   const { idUser } = useParams();

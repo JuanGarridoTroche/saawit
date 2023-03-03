@@ -108,8 +108,10 @@ export const CreateNews = ({ control, setControl }) => {
                 })
               : null}
           </section>
-
-          <label htmlFor="photos">
+          <label htmlFor="photos" className="up-to-3-photos">
+              Sube hasta 3 fotos en tu noticia
+            </label>
+          <label htmlFor="photos">            
             <img
               src="/upload.svg"
               alt="subir imágenes de la noticia"

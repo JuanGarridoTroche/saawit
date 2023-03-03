@@ -33,7 +33,12 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+}
 
+.create-news-form > .create-news-container > .up-to-3-photos {
+  font-size: 1rem;
+  color: grey;
+  padding-bottom: 0;
 }
 
 .create-news-form > .create-news-container > select {
