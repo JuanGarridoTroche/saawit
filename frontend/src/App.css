@@ -186,14 +186,14 @@ main>.breaking-news>.news-list>.single-news>figure img.arrow {
 main>.breaking-news>.news-list>.single-news>figure .arrow-up {
   background-color: rgb(218, 224, 230);
   color: var(--color-logo);
-  border: 2px solid var(--color-logo);
+  border: 1px solid var(--color-logo);
   
 }
 
 main>.breaking-news>.news-list>.single-news>figure .arrow-down {
   background-color: rgb(218, 224, 230);
   color: blue;
-  border: 2px solid blue;
+  border: 1px solid blue;
   stroke: blue;
 }
 
