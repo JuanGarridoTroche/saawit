@@ -186,7 +186,7 @@ main>.breaking-news>.news-list>.single-news>figure img.arrow {
 main>.breaking-news>.news-list>.single-news>figure .arrow-up {
   background-color: rgb(218, 224, 230);
   color: var(--color-logo);
-  border: 1px solid var(--color-logo);
+  border: 1px solid red;
   
 }
 
