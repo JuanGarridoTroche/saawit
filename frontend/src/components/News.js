@@ -116,12 +116,13 @@ export const News = ({ news, control, setControl }) => {
             alt="delete news"
             className="delete-news"
             onClick={() => {
-              if (
+               if (
                 window.confirm(
                   "¿Estás seguro que quieres eliminar esta noticia?"
                 )
               )
                 deleteNews(news.id);
+              
             }}
           />
         ) : null}
