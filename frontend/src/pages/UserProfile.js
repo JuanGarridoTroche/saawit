@@ -5,6 +5,7 @@ import useUserProfile from "../hooks/useUserProfile";
 import { AuthContext } from "../context/AuthContext";
 import { useContext, useState } from "react";
 import { editUserProfile } from "../services";
+import { NewsList } from "../components/NewsList";
 
 export const UserProfile = () => {
   const { idUser } = useParams();
@@ -166,16 +167,8 @@ export const UserProfile = () => {
               {<span>{new Date(user.createdAt).toLocaleDateString()}</span>}
             </label>
           </fieldset>
-          {/* <fieldset>
-            <h3>Cuenta:</h3>
-            { user.active ? null :
-              <label className="summary">Solicita la activación de tu cuenta a través del envío de una solicitud a tu correo electrónico</label>}            
-            <label>              
-              <span>{user.active ? "Activa" : "suspendida"}</span>
-            </label>
-          </fieldset> */}
         </form>
-      )}
+      )}      
     </section>
   );
 };

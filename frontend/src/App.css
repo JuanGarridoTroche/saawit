@@ -170,7 +170,6 @@ main>.breaking-news>.news-list>.single-news {
   justify-content: center;
   align-items: center;
   align-self: stretch;
-  /* height: 100%; */
 }
 
 main>.breaking-news>.news-list>.single-news > figure {
@@ -198,9 +197,7 @@ main>.breaking-news>.news-list>.single-news>figure .arrow-down {
 }
 
 main>.breaking-news>.news-list>.single-news a .photos {
-  width: 100%;  
-  /* max-height: 300px; */
-  /* padding: 20px 10px 10px 20px; */
+  width: 100%; 
 }
 
 main>.breaking-news>.news-list>.single-news .votes {
@@ -263,8 +260,6 @@ main>.breaking-news>.news-list>.single-news>section>.body {
   }
 
   main>.breaking-news>.news-list>.single-news a .photos {
-    /* max-height: 400px; */
-    /* width: 100%; */
     display: block;
     margin: auto;
     max-width: auto;
