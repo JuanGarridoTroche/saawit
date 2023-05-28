@@ -82,6 +82,7 @@ export const Register = () => {
             id="password"
             name="password"
             required
+            autoComplete="on"
             onChange={(e) => {
               setPwd(e.target.value);
             }}

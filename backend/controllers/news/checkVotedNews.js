@@ -1,6 +1,6 @@
 "use strict";
 
-const SelectVotedNewsQuery = require("../../bbdd/queries/news/SelectvotedNewsQuery");
+const SelectVotedNewsQuery = require("../../bbdd/queries/news/SelectVotedNewsQuery");
 const { generateError } = require("../../helpers");
 
 const checkVotedNews = async (req, res, next) => {

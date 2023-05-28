@@ -54,6 +54,7 @@ export const Login = () => {
           onChange={(e) => {
             setPassword(e.target.value);
           }}
+          autoComplete="on"
         />
         <button>Enviar</button>
       </form>
